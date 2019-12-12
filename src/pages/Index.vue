@@ -18,10 +18,6 @@
             </p>
             <p v-show="membershipDownloaded && !memberOf">
               Non sei membro di nessuna congregazione. <br />
-              Crea una nuova congregazione, e ne diventari amministratore,
-              potendo inserire nominativi e impegni <br />
-              Oppure associati ad una già esistente; fatti dare il codice di
-              invito e potrai visualizzare gli impegni, ma non amministrarli
             </p>
           </div>
         </transition>
@@ -32,8 +28,8 @@
         class="text-teal"
         v-show="membershipDownloaded && !memberOf"
       >
-        <q-tab label="Tab one" name="one" />
-        <q-tab label="Tab two" name="two" />
+        <q-tab label="Nuova" name="new" />
+        <q-tab label="Esistente" name="join" />
       </q-tabs>
 
       <q-separator v-show="membershipDownloaded && !memberOf" />
@@ -43,15 +39,33 @@
         animated
         v-show="membershipDownloaded && !memberOf"
       >
-        <q-tab-panel name="one">
-          The QCard component is a great way to display important pieces of
-          grouped content.
+        <q-tab-panel name="new">
+          Crea una nuova congregazione, e ne diventari amministratore, potendo
+          inserire nominativi e impegni
+
+          <div class="row q-mt-md">
+            <q-input
+              class="full-width"
+              outlined
+              v-model="new_congregation_name"
+              label="Nome della nuova congregazione"
+              stack-label
+            />
+          </div>
+
+          <div class="row q-mt-md">
+            <q-space />
+            <q-btn
+              color="secondary"
+              label="Crea"
+              @click="addMembershipAsAdmin"
+            />
+          </div>
         </q-tab-panel>
 
-        <q-tab-panel name="two">
-          With so much content to display at once, and often so little screen
-          real-estate, Cards have fast become the design pattern of choice for
-          many companies, including the likes of Google and Twitter.
+        <q-tab-panel name="join">
+          Associati ad una già esistente; fatti dare il codice di invito e
+          potrai visualizzare gli impegni, ma non amministrarli
         </q-tab-panel>
       </q-tab-panels>
 
@@ -63,17 +77,33 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
+import { mapGetters, mapActions } from "vuex";
+import { showErrorMessage } from "../functions/function-show-error-message";
+import { Loading } from "quasar";
 export default {
   name: "PageIndex",
   data() {
     return {
-      tab: "one"
+      tab: "new",
+      new_congregation_name: ""
     };
   },
   computed: {
     ...mapGetters("membership", ["membershipDownloaded", "memberOf"])
+  },
+  methods: {
+    ...mapActions("membership", ["fbAddCongregation"]),
+    addMembershipAsAdmin() {
+      Loading.show();
+      if (!this.new_congregation_name) {
+        showErrorMessage("Scegli come chiamare la nuova congregazione");
+        return;
+      }
+      this.fbAddCongregation({
+        name: this.new_congregation_name,
+        setAdmin: true
+      });
+    }
   }
 };
 </script>

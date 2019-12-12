@@ -1,5 +1,6 @@
 import { firebaseAuth, firebaseDb } from "../boot/firebase";
 import { showErrorMessage } from "../functions/function-show-error-message";
+import { Notify, Loading } from "quasar";
 
 const state = {
   membershipDownloaded: false,
@@ -14,6 +15,7 @@ const mutations = {
     state.membershipDownloaded = value;
   },
   setMembership(state, payload) {
+    console.log("setMembership", payload);
     if (payload.isMember) {
       state.memberOf = payload.name;
     } else {
@@ -28,8 +30,25 @@ const actions = {
 
     userMembership.on("child_added", snapshot => {
       let payload = {
-        name: snapshot.key,
-        isMember: snapshot.val()
+        name: snapshot.val().name,
+        isMember: true
+      };
+      commit("setMembership", payload);
+    });
+
+    userMembership.on("child_changed", snapshot => {
+      let payload = {
+        name: snapshot.val().name,
+        isMember: true
+      };
+      commit("setMembership", payload);
+    });
+
+    userMembership.on("child_removed", snapshot => {
+      console.log("memberOf - child_removed - ", snapshot.key, snapshot.val());
+      let payload = {
+        name: null,
+        isMember: false
       };
       commit("setMembership", payload);
     });
@@ -48,6 +67,27 @@ const actions = {
       error => {
         showErrorMessage(error.message);
         this.$router.replace("/auth");
+      }
+    );
+  },
+
+  fbAddCongregation(_, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let user_ref = firebaseDb.ref("memberOf/" + userId + "/");
+    let new_key_ref = user_ref.push();
+
+    new_key_ref.set(
+      {
+        name: payload.name,
+        isAdmin: payload.setAdmin
+      },
+      error => {
+        if (error) {
+          showErrorMessage(error.message);
+        } else {
+          Notify.create("Nuova congregazione creata");
+          Loading.hide();
+        }
       }
     );
   }
