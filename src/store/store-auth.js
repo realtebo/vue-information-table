@@ -56,6 +56,8 @@ const actions = {
         LocalStorage.set("loggedIn", true);
         // https://www.udemy.com/course/quasarframework/learn/lecture/16838528#questions
         this.$router.push("/").catch(() => {});
+
+        // Listening to membership data
         dispatch("membership/fbReadData", null, { root: true });
       } else {
         commit("setLoggedIn", false);

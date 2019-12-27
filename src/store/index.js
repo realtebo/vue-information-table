@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import auth from "./store-auth";
 import membership from "./store-membership";
+import publishers from "./store-publishers";
 
 Vue.use(Vuex);
 
@@ -15,7 +16,8 @@ export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       auth,
-      membership
+      membership,
+      publishers
     },
 
     // enable strict mode (adds overhead!)

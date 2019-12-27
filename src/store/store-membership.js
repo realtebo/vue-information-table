@@ -4,34 +4,43 @@ import { Notify, Loading } from "quasar";
 
 const state = {
   membershipDownloaded: false,
-  memberOf: null
+  memberOf: null,
+  isAdmin: false,
+  firebaseId: null
 };
 const getters = {
   membershipDownloaded: state => state.membershipDownloaded,
-  memberOf: state => state.memberOf
+  memberOf: state => {
+    return { name: state.memberOf, id: state.firebaseId };
+  }
 };
 const mutations = {
   setMembershipDownloaded(state, value) {
     state.membershipDownloaded = value;
   },
   setMembership(state, payload) {
-    console.log("setMembership", payload);
     if (payload.isMember) {
       state.memberOf = payload.name;
+      state.isAdmin = payload.isAdmin;
+      state.firebaseId = payload.firebaseId;
     } else {
       state.memberOf = null;
+      state.isAdmin = false;
+      state.firebaseId = null;
     }
   }
 };
 const actions = {
-  fbReadData({ commit }) {
+  fbReadData({ commit, dispatch }) {
     let userId = firebaseAuth.currentUser.uid;
     let userMembership = firebaseDb.ref("memberOf/" + userId);
 
     userMembership.on("child_added", snapshot => {
       let payload = {
         name: snapshot.val().name,
-        isMember: true
+        isMember: true,
+        isAdmin: snapshot.val().isAdmin,
+        firebaseId: snapshot.key
       };
       commit("setMembership", payload);
     });
@@ -39,7 +48,9 @@ const actions = {
     userMembership.on("child_changed", snapshot => {
       let payload = {
         name: snapshot.val().name,
-        isMember: true
+        isMember: true,
+        isAdmin: snapshot.val().isAdmin,
+        firebaseId: snapshot.key
       };
       commit("setMembership", payload);
     });
@@ -48,7 +59,9 @@ const actions = {
       console.log("memberOf - child_removed - ", snapshot.key, snapshot.val());
       let payload = {
         name: null,
-        isMember: false
+        isMember: false,
+        isAdmin: false,
+        firebaseId: null
       };
       commit("setMembership", payload);
     });
@@ -63,6 +76,8 @@ const actions = {
       "value",
       () => {
         commit("setMembershipDownloaded", true);
+        // Listening to publishers data
+        dispatch("publishers/listenFirebasePublishers", null, { root: true });
       },
       error => {
         showErrorMessage(error.message);
@@ -75,7 +90,6 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let user_ref = firebaseDb.ref("memberOf/" + userId + "/");
     let new_key_ref = user_ref.push();
-
     new_key_ref.set(
       {
         name: payload.name,

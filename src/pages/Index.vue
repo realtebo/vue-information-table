@@ -14,7 +14,7 @@
           <div>
             <p v-show="membershipDownloaded && memberOf">
               Sei parte della congregazione di
-              {{ memberOf }}
+              {{ memberOf.name }}
             </p>
             <p v-show="membershipDownloaded && !memberOf">
               Non sei membro di nessuna congregazione. <br />
