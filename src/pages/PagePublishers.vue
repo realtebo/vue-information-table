@@ -16,7 +16,17 @@
             v-ripple
             @click="openForEdit(key, publisher)"
           >
-            <span class="text-h5">{{ publisher.fullName }}</span>
+            <q-item-section>
+              <q-item-label>
+                <span class="text-h5">{{ publisher.fullName }}</span>
+              </q-item-label>
+              <q-item-label
+                caption
+                v-if="publisher.conductsMeetingsForFieldService"
+              >
+                Conducts Meetings for Field Service
+              </q-item-label>
+            </q-item-section>
           </q-item>
         </q-list>
       </q-scroll-area>
@@ -85,6 +95,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.full-height {
+  height: 99% !important;
+}
+.full-width {
+  width: 99% !important;
+}
 .q-scroll-area-publishers {
   display: flex;
   flex-grow: 1;

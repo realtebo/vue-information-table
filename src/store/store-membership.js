@@ -78,6 +78,10 @@ const actions = {
         commit("setMembershipDownloaded", true);
         // Listening to publishers data
         dispatch("publishers/listenFirebasePublishers", null, { root: true });
+        // Listening to meetings for field service data
+        dispatch("meetingsForFieldService/listenFirebaseMeetings", null, {
+          root: true
+        });
       },
       error => {
         showErrorMessage(error.message);

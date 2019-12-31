@@ -4,6 +4,7 @@ import Vuex from "vuex";
 import auth from "./store-auth";
 import membership from "./store-membership";
 import publishers from "./store-publishers";
+import meetingsForFieldService from "./store-meetings-for-field-service";
 
 Vue.use(Vuex);
 
@@ -17,7 +18,8 @@ export default function(/* { ssrContext } */) {
     modules: {
       auth,
       membership,
-      publishers
+      publishers,
+      meetingsForFieldService
     },
 
     // enable strict mode (adds overhead!)
