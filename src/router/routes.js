@@ -18,6 +18,10 @@ const routes = [
       {
         path: "/meetings-for-field-service",
         component: () => import("pages/PageMeetingsForFieldService.vue")
+      },
+      {
+        path: "/public-meeting-chairmans",
+        component: () => import("pages/PagePublicMeetingChairmans.vue")
       }
     ]
   }

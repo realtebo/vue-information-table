@@ -17,10 +17,16 @@
         />
         <q-separator />
         <q-toggle
-          color="pink"
+          color="primary"
           :label="conductsMeetingsForFieldServiceLabel"
           v-model="publisherToSubmit.conductsMeetingsForFieldService"
           icon="card_travel"
+        />
+        <q-toggle
+          color="primary"
+          :label="presidesAsPublicMeetingChairmanLabel"
+          v-model="publisherToSubmit.presidesAsPublicMeetingChairman"
+          icon="fas fa-user-tie"
         />
       </q-card-section>
 
@@ -41,7 +47,8 @@ export default {
     return {
       publisherToSubmit: {
         fullName: "",
-        conductsMeetingsForFieldService: false
+        conductsMeetingsForFieldService: false,
+        presidesAsPublicMeetingChairman: false
       }
     };
   },
@@ -51,6 +58,13 @@ export default {
         (this.publisherToSubmit.conductsMeetingsForFieldService
           ? ""
           : "Do Not ") + "Conducts Meeting for Field Service"
+      );
+    },
+    presidesAsPublicMeetingChairmanLabel() {
+      return (
+        (this.publisherToSubmit.presidesAsPublicMeetingChairman
+          ? ""
+          : "Do Not ") + "Presides as Public Meeting's Chairman"
       );
     }
   },

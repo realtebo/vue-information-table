@@ -26,6 +26,12 @@
               >
                 Conducts Meetings for Field Service
               </q-item-label>
+              <q-item-label
+                caption
+                v-if="publisher.presidesAsPublicMeetingChairman"
+              >
+                Presides as Public Meeting's Chairman
+              </q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

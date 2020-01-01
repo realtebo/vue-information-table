@@ -46,6 +46,20 @@ const getters = {
   },
   numberOfConductorsOfMeetingsForFieldService: (state, getters) => {
     return Object.keys(getters.conductorsOfMeetingsForFieldService).length;
+  },
+  publicMeetingChairmans: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.presidesAsPublicMeetingChairman) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfPublicMeetingChairmans: (state, getters) => {
+    return Object.keys(getters.publicMeetingChairmans).length;
   }
 };
 
