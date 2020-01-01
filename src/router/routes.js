@@ -26,6 +26,10 @@ const routes = [
       {
         path: "/public-meeting-readers",
         component: () => import("pages/PagePublicMeetingReaders.vue")
+      },
+      {
+        path: "/congregation-settings",
+        component: () => import("pages/PageCongregationSettings.vue")
       }
     ]
   }

@@ -99,6 +99,16 @@
             <q-item-label caption>Anagraphics and Roles</q-item-label>
           </q-item-section>
         </q-item>
+
+        <q-item clickable to="/congregation-settings">
+          <q-item-section avatar>
+            <q-icon name="fas fa-cog" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Congregation Settings</q-item-label>
+            <q-item-label caption>Customize roles and department</q-item-label>
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 

@@ -41,6 +41,8 @@ const mutations = {
     Vue.set(state.meetings, payload.id, payload.meeting);
   },
   updateMeeting(state, payload) {
+    // Si usa Object.assign perchè payload.updates contiene
+    // un oggetto
     Object.assign(state.meetings[payload.id], payload.updates);
   },
   deleteMeeting(state, id) {

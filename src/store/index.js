@@ -7,6 +7,7 @@ import publishers from "./store-publishers";
 import meetingsForFieldService from "./store-meetings-for-field-service";
 import publicMeetingChairmans from "./store-public-meeting-chairmans";
 import publicMeetingReaders from "./store-public-meeting-readers";
+import settings from "./store-settings";
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ export default function(/* { ssrContext } */) {
       publishers,
       meetingsForFieldService,
       publicMeetingChairmans,
-      publicMeetingReaders
+      publicMeetingReaders,
+      settings
     },
 
     // enable strict mode (adds overhead!)
