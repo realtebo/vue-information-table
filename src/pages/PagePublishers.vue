@@ -46,6 +46,10 @@
               <q-item-label caption v-if="publisher.microphoneHandler">
                 Serves has Microphone Handler
               </q-item-label>
+
+              <q-item-label caption v-if="publisher.attendant">
+                Serves has Attendant
+              </q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

@@ -47,6 +47,13 @@
           v-model="publisherToSubmit.microphoneHandler"
           icon="fas fa-microphone"
         />
+        <q-toggle
+          class="full-width"
+          color="primary"
+          :label="attendantLabel"
+          v-model="publisherToSubmit.attendant"
+          icon="mdi-shield-account"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -75,7 +82,8 @@ export default {
         presidesAsPublicMeetingChairman: false,
         readsWatchtower: false,
         assignedToSoundDepartment: false,
-        microphoneHandler: false
+        microphoneHandler: false,
+        attendantLabel: false
       }
     };
   },
@@ -111,6 +119,12 @@ export default {
       return (
         (this.publisherToSubmit.microphoneHandler ? "" : "Do Not ") +
         "Serves as Microphone Handler"
+      );
+    },
+    attendantLabel() {
+      return (
+        (this.publisherToSubmit.attendant ? "" : "Do Not ") +
+        "Serves as Attendant"
       );
     }
   },
