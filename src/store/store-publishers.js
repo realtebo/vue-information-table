@@ -32,6 +32,20 @@ const getters = {
     });
 
     return publishersSorted;
+  },
+  conductorsOfMeetingsForFieldService: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.conductsMeetingsForFieldService) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfConductorsOfMeetingsForFieldService: (state, getters) => {
+    return Object.keys(getters.conductorsOfMeetingsForFieldService).length;
   }
 };
 
@@ -82,8 +96,6 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        let keys = Object.keys(payload.updates);
-        console.log("updatePublisher has no errors, keys are: ", keys);
         Notify.create("Publisher updated");
       }
     });

@@ -33,6 +33,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-# Firebase configuration
-.firebaserc
+# Firebase settings
 firebase.json
+.firebaserc

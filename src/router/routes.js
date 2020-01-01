@@ -14,6 +14,10 @@ const routes = [
       {
         path: "/publishers",
         component: () => import("pages/PagePublishers.vue")
+      },
+      {
+        path: "/meetings-for-field-service",
+        component: () => import("pages/PageMeetingsForFieldService.vue")
       }
     ]
   }

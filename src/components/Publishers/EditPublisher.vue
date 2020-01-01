@@ -15,6 +15,13 @@
           label="Full Name"
           stack-label
         />
+        <q-separator />
+        <q-toggle
+          color="pink"
+          :label="conductsMeetingsForFieldServiceLabel"
+          v-model="publisherToSubmit.conductsMeetingsForFieldService"
+          icon="card_travel"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -38,12 +45,21 @@ export default {
   data() {
     return {
       publisherToSubmit: {
-        fullName: ""
+        fullName: "",
+        conductsMeetingsForFieldService: false
       }
     };
   },
 
-  computed: {},
+  computed: {
+    conductsMeetingsForFieldServiceLabel() {
+      return (
+        (this.publisherToSubmit.conductsMeetingsForFieldService
+          ? ""
+          : "Do Not ") + "Conducts Meeting for Field Service"
+      );
+    }
+  },
 
   props: ["id", "publisher"],
 
