@@ -90,6 +90,9 @@ const actions = {
         dispatch("settings/listenFirebaseSettings", null, {
           root: true
         });
+        dispatch("soundDepartment/listenFirebaseMeetings", null, {
+          root: true
+        });
       },
       error => {
         showErrorMessage(error.message);

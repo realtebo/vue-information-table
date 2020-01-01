@@ -28,6 +28,10 @@ const routes = [
         component: () => import("pages/PagePublicMeetingReaders.vue")
       },
       {
+        path: "/sound-department",
+        component: () => import("pages/PageSoundDepartment.vue")
+      },
+      {
         path: "/congregation-settings",
         component: () => import("pages/PageCongregationSettings.vue")
       }

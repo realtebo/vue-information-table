@@ -8,6 +8,7 @@ import meetingsForFieldService from "./store-meetings-for-field-service";
 import publicMeetingChairmans from "./store-public-meeting-chairmans";
 import publicMeetingReaders from "./store-public-meeting-readers";
 import settings from "./store-settings";
+import soundDepartment from "./store-sound-department";
 
 Vue.use(Vuex);
 
@@ -25,7 +26,8 @@ export default function(/* { ssrContext } */) {
       meetingsForFieldService,
       publicMeetingChairmans,
       publicMeetingReaders,
-      settings
+      settings,
+      soundDepartment
     },
 
     // enable strict mode (adds overhead!)

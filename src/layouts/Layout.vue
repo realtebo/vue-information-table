@@ -86,6 +86,16 @@
           </q-item-section>
         </q-item>
 
+        <q-item clickable to="/sound-department">
+          <q-item-section avatar>
+            <q-icon name="mdi-surround-sound" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Sound Department</q-item-label>
+            <q-item-label caption>Mixer, Pc, etc...</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-separator />
 
         <q-item-label header>Settings</q-item-label>

@@ -38,6 +38,10 @@
               <q-item-label caption v-if="publisher.readsWatchtower">
                 Reads Watchtower at Public Meetings
               </q-item-label>
+
+              <q-item-label caption v-if="publisher.assignedToSoundDepartment">
+                Assigned to Sound Department
+              </q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

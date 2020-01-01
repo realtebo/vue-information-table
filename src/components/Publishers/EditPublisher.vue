@@ -34,6 +34,12 @@
           v-model="publisherToSubmit.readsWatchtower"
           icon="mdi-chess-rook"
         />
+        <q-toggle
+          color="primary"
+          :label="assignedToSoundDepartmentLabel"
+          v-model="publisherToSubmit.assignedToSoundDepartment"
+          icon="mdi-surround-sound"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -60,7 +66,8 @@ export default {
         fullName: "",
         conductsMeetingsForFieldService: false,
         presidesAsPublicMeetingChairman: false,
-        readsWatchtower: false
+        readsWatchtower: false,
+        assignedToSoundDepartment: false
       }
     };
   },
@@ -84,6 +91,12 @@ export default {
       return (
         (this.publisherToSubmit.readsWatchtower ? "" : "Do Not ") +
         "Reads Watchtower at Public Meetings"
+      );
+    },
+    assignedToSoundDepartmentLabel() {
+      return (
+        (this.publisherToSubmit.assignedToSoundDepartment ? "" : "Not ") +
+        "Assigned to Sound Department"
       );
     }
   },

@@ -74,6 +74,20 @@ const getters = {
   },
   numberOfPublicMeetingReaders: (state, getters) => {
     return Object.keys(getters.publicMeetingReaders).length;
+  },
+  assignedToSoundDepartment: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.assignedToSoundDepartment) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfAssignedToSoundDepartment: (state, getters) => {
+    return Object.keys(getters.publicMeetingReaders).length;
   }
 };
 
