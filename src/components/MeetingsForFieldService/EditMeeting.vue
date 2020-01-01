@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-section class="row">
-      <div class="text-h6">Add Meeting for Field Service</div>
+      <div class="text-h6">Edit Meeting for Field Service</div>
       <q-space />
       <q-btn flat round dense icon="close" v-close-popup />
     </q-card-section>
@@ -45,6 +45,11 @@
         </q-card-section>
 
         <q-card-actions align="right">
+          <q-btn
+            label="Delete"
+            color="negative"
+            @click.stop="promptToDelete(id)"
+          />
           <q-btn label="Save" type="submit" color="primary" />
         </q-card-actions>
       </q-form>
@@ -63,8 +68,8 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: "AddMeeting",
-
+  name: "EditMeeting",
+  props: ["id", "meeting"],
   data() {
     return {
       meetingToSubmit: {
@@ -72,13 +77,6 @@ export default {
         who: null
       }
     };
-  },
-  methods: {
-    ...mapActions("meetingsForFieldService", ["addMeeting"]),
-    submitForm() {
-      this.addMeeting(this.meetingToSubmit);
-      this.$emit("close");
-    }
   },
   computed: {
     ...mapGetters("publishers", [
@@ -96,6 +94,40 @@ export default {
         });
       });
       return options;
+    }
+  },
+  mounted() {
+    this.meetingToSubmit = Object.assign({}, this.meeting);
+  },
+  methods: {
+    ...mapActions("meetingsForFieldService", [
+      "updateMeeting",
+      "deleteMeeting"
+    ]),
+    submitForm() {
+      this.updateMeeting({
+        id: this.is,
+        updates: this.meetingToSubmit
+      });
+      this.$emit("close");
+    },
+    promptToDelete(id) {
+      this.$q
+        .dialog({
+          title: "Confirm",
+          message: "Really want to delete it?",
+          ok: {
+            color: "primary"
+          },
+          cancel: {
+            color: "negative"
+          },
+          persistent: true
+        })
+        .onOk(() => {
+          this.deleteMeeting(id);
+          this.$emit("close");
+        });
     }
   }
 };
