@@ -42,8 +42,6 @@
       content-class="bg-grey-2"
     >
       <q-list>
-        <q-item-label header>Essential Links </q-item-label>
-
         <q-item clickable to="/">
           <q-item-section avatar>
             <q-icon name="home" />
@@ -54,15 +52,9 @@
           </q-item-section>
         </q-item>
 
-        <q-item clickable to="/publishers">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Publishers</q-item-label>
-            <q-item-label caption>Anagraphics</q-item-label>
-          </q-item-section>
-        </q-item>
+        <q-separator />
+
+        <q-item-label header>Schedules</q-item-label>
 
         <q-item clickable to="/meetings-for-field-service">
           <q-item-section avatar>
@@ -71,6 +63,20 @@
           <q-item-section>
             <q-item-label>Meetings for Field Service</q-item-label>
             <q-item-label caption>View and Edit Schedules</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-separator />
+
+        <q-item-label header>Settings</q-item-label>
+
+        <q-item clickable to="/publishers">
+          <q-item-section avatar>
+            <q-icon name="school" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Publishers</q-item-label>
+            <q-item-label caption>Anagraphics</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
