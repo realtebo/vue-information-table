@@ -50,7 +50,6 @@ const actions = {
     );
 
     settingsRef.on("child_added", snapshot => {
-      console.log("Settings added", snapshot.key, snapshot.val());
       let payload = {
         id: snapshot.key,
         setting: snapshot.val()
@@ -59,7 +58,6 @@ const actions = {
     });
 
     settingsRef.on("child_changed", snapshot => {
-      console.log("Settings changed", snapshot.key, snapshot.val());
       let payload = {
         id: snapshot.key,
         updates: snapshot.val()
@@ -68,7 +66,6 @@ const actions = {
     });
 
     settingsRef.on("child_removed", snapshot => {
-      console.log("Settings removed", snapshot.key);
       commit("deleteSetting", snapshot.key);
     });
   },

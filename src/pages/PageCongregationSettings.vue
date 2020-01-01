@@ -34,10 +34,6 @@ export default {
         return this.noOfPeopleAtSoundDepartment;
       },
       set: function(newValue) {
-        console.log(
-          "trying to set new value of peopleAtSoundDepartment",
-          newValue
-        );
         this.updateSetting({
           key: "noOfPeopleAtSoundDepartment",
           value: newValue
