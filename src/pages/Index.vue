@@ -12,11 +12,11 @@
           leave-active-class="animated fadeOut"
         >
           <div>
-            <p v-show="membershipDownloaded && memberOf">
+            <p v-show="membershipDownloaded && memberOf.id">
               Sei parte della congregazione di
               {{ memberOf.name }}
             </p>
-            <p v-show="membershipDownloaded && !memberOf">
+            <p v-show="membershipDownloaded && !memberOf.id">
               Non sei membro di nessuna congregazione. <br />
             </p>
           </div>
@@ -26,18 +26,18 @@
       <q-tabs
         v-model="tab"
         class="text-teal"
-        v-show="membershipDownloaded && !memberOf"
+        v-show="membershipDownloaded && !memberOf.id"
       >
         <q-tab label="Nuova" name="new" />
         <q-tab label="Esistente" name="join" />
       </q-tabs>
 
-      <q-separator v-show="membershipDownloaded && !memberOf" />
+      <q-separator v-show="membershipDownloaded && !memberOf.id" />
 
       <q-tab-panels
         v-model="tab"
         animated
-        v-show="membershipDownloaded && !memberOf"
+        v-show="membershipDownloaded && !memberOf.id"
       >
         <q-tab-panel name="new">
           Crea una nuova congregazione, e ne diventari amministratore, potendo
