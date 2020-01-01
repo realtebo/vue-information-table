@@ -84,6 +84,9 @@ const actions = {
         dispatch("publicMeetingChairmans/listenFirebaseMeetings", null, {
           root: true
         });
+        dispatch("publicMeetingReaders/listenFirebaseMeetings", null, {
+          root: true
+        });
       },
       error => {
         showErrorMessage(error.message);

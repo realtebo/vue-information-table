@@ -76,6 +76,16 @@
           </q-item-section>
         </q-item>
 
+        <q-item clickable to="/public-meeting-readers">
+          <q-item-section avatar>
+            <q-icon name="mdi-chess-rook" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Watchtower's Readers</q-item-label>
+            <q-item-label caption>For Public Meetings</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-separator />
 
         <q-item-label header>Settings</q-item-label>
@@ -86,7 +96,7 @@
           </q-item-section>
           <q-item-section>
             <q-item-label>Publishers</q-item-label>
-            <q-item-label caption>Anagraphics</q-item-label>
+            <q-item-label caption>Anagraphics and Roles</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

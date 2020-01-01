@@ -60,6 +60,20 @@ const getters = {
   },
   numberOfPublicMeetingChairmans: (state, getters) => {
     return Object.keys(getters.publicMeetingChairmans).length;
+  },
+  publicMeetingReaders: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.readsWatchtower) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfPublicMeetingReaders: (state, getters) => {
+    return Object.keys(getters.publicMeetingReaders).length;
   }
 };
 

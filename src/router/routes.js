@@ -22,6 +22,10 @@ const routes = [
       {
         path: "/public-meeting-chairmans",
         component: () => import("pages/PagePublicMeetingChairmans.vue")
+      },
+      {
+        path: "/public-meeting-readers",
+        component: () => import("pages/PagePublicMeetingReaders.vue")
       }
     ]
   }

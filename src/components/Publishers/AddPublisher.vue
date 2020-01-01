@@ -28,6 +28,12 @@
           v-model="publisherToSubmit.presidesAsPublicMeetingChairman"
           icon="fas fa-user-tie"
         />
+        <q-toggle
+          color="primary"
+          :label="readsWatchtowerLabel"
+          v-model="publisherToSubmit.readsWatchtower"
+          icon="mdi-chess-rook"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -48,7 +54,8 @@ export default {
       publisherToSubmit: {
         fullName: "",
         conductsMeetingsForFieldService: false,
-        presidesAsPublicMeetingChairman: false
+        presidesAsPublicMeetingChairman: false,
+        readsWatchtower: false
       }
     };
   },
@@ -65,6 +72,12 @@ export default {
         (this.publisherToSubmit.presidesAsPublicMeetingChairman
           ? ""
           : "Do Not ") + "Presides as Public Meeting's Chairman"
+      );
+    },
+    readsWatchtowerLabel() {
+      return (
+        (this.publisherToSubmit.readsWatchtower ? "" : "Do Not ") +
+        "Reads Watchtower at Public Meetings"
       );
     }
   },
