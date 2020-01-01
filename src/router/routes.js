@@ -38,6 +38,10 @@ const routes = [
       {
         path: "/microphone-handlers",
         component: () => import("pages/PageMicrophoneHandlers.vue")
+      },
+      {
+        path: "/attendants",
+        component: () => import("pages/PageAttendants.vue")
       }
     ]
   }

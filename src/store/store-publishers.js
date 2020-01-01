@@ -102,6 +102,20 @@ const getters = {
   },
   numberOfMicrophoneHandlers: (state, getters) => {
     return Object.keys(getters.publicMeetingReaders).length;
+  },
+  attendants: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.attendant) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfAttendants: (state, getters) => {
+    return Object.keys(getters.publicMeetingReaders).length;
   }
 };
 

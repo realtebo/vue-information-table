@@ -83,7 +83,7 @@ export default {
         readsWatchtower: false,
         assignedToSoundDepartment: false,
         microphoneHandler: false,
-        attendantLabel: false
+        attendant: false
       }
     };
   },

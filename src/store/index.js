@@ -10,6 +10,7 @@ import publicMeetingReaders from "./store-public-meeting-readers";
 import settings from "./store-settings";
 import soundDepartment from "./store-sound-department";
 import microphoneHandlers from "./store-microphone-handlers";
+import attendants from "./store-attendants";
 
 Vue.use(Vuex);
 
@@ -29,7 +30,8 @@ export default function(/* { ssrContext } */) {
       publicMeetingReaders,
       settings,
       soundDepartment,
-      microphoneHandlers
+      microphoneHandlers,
+      attendants
     },
 
     // enable strict mode (adds overhead!)

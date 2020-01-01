@@ -96,6 +96,9 @@ const actions = {
         dispatch("microphoneHandlers/listenFirebaseMeetings", null, {
           root: true
         });
+        dispatch("attendants/listenFirebaseMeetings", null, {
+          root: true
+        });
       },
       error => {
         showErrorMessage(error.message);
