@@ -34,6 +34,6 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
 
     // allow console.log during development only
-    "no-console": process.env.NODE_ENV === "production" ? "warning" : "off"
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off"
   }
 };

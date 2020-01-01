@@ -55,8 +55,7 @@ const actions = {
       commit("setMembership", payload);
     });
 
-    userMembership.on("child_removed", snapshot => {
-      console.log("memberOf - child_removed - ", snapshot.key, snapshot.val());
+    userMembership.on("child_removed", () => {
       let payload = {
         name: null,
         isMember: false,
