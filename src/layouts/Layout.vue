@@ -96,6 +96,16 @@
           </q-item-section>
         </q-item>
 
+        <q-item clickable to="/microphone-handlers">
+          <q-item-section avatar>
+            <q-icon name="fas fa-microphone" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Microphone Handlers</q-item-label>
+            <q-item-label caption>Schedules</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-separator />
 
         <q-item-label header>Settings</q-item-label>

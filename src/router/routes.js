@@ -34,6 +34,10 @@ const routes = [
       {
         path: "/congregation-settings",
         component: () => import("pages/PageCongregationSettings.vue")
+      },
+      {
+        path: "/microphone-handlers",
+        component: () => import("pages/PageMicrophoneHandlers.vue")
       }
     ]
   }

@@ -40,6 +40,13 @@
           v-model="publisherToSubmit.assignedToSoundDepartment"
           icon="mdi-surround-sound"
         />
+        <q-toggle
+          class="full-width"
+          color="primary"
+          :label="microphoneHandlerLabel"
+          v-model="publisherToSubmit.microphoneHandler"
+          icon="fas fa-microphone"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -67,7 +74,8 @@ export default {
         conductsMeetingsForFieldService: false,
         presidesAsPublicMeetingChairman: false,
         readsWatchtower: false,
-        assignedToSoundDepartment: false
+        assignedToSoundDepartment: false,
+        microphoneHandler: false
       }
     };
   },
@@ -97,6 +105,12 @@ export default {
       return (
         (this.publisherToSubmit.assignedToSoundDepartment ? "" : "Not ") +
         "Assigned to Sound Department"
+      );
+    },
+    microphoneHandlerLabel() {
+      return (
+        (this.publisherToSubmit.microphoneHandler ? "" : "Do Not ") +
+        "Serves as Microphone Handler"
       );
     }
   },

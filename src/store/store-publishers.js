@@ -88,6 +88,20 @@ const getters = {
   },
   numberOfAssignedToSoundDepartment: (state, getters) => {
     return Object.keys(getters.publicMeetingReaders).length;
+  },
+  microphoneHandlers: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.microphoneHandler) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfMicrophoneHandlers: (state, getters) => {
+    return Object.keys(getters.publicMeetingReaders).length;
   }
 };
 
