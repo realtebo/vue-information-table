@@ -90,7 +90,7 @@ export default {
     ...mapActions("publicMeetingReaders", ["updateMeeting", "deleteMeeting"]),
     submitForm() {
       this.updateMeeting({
-        id: this.is,
+        id: this.id,
         updates: this.meetingToSubmit
       });
       this.$emit("close");
