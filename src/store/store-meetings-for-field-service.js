@@ -37,6 +37,10 @@ const getters = {
 };
 
 const mutations = {
+  reset(state) {
+    state.meetingsDownloaded = false;
+    state.meetings = {};
+  },
   setMeetingsDownloaded(state, value) {
     state.meetingsDownloaded = value;
   },
@@ -52,6 +56,9 @@ const mutations = {
 };
 
 const actions = {
+  reset({ commit }) {
+    commit("reset");
+  },
   listenFirebaseMeetings({ commit, rootGetters }) {
     let userMembership = rootGetters["membership/memberOf"];
     let congregationId = userMembership.id;

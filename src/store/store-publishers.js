@@ -120,6 +120,10 @@ const getters = {
 };
 
 const mutations = {
+  reset(state) {
+    state.publishersDownloaded = false;
+    state.publishers = {};
+  },
   setPublishersDownloaded(state, value) {
     state.publishersDownloaded = value;
   },
@@ -135,6 +139,9 @@ const mutations = {
 };
 
 const actions = {
+  reset({ commit }) {
+    commit("reset");
+  },
   addPublisher({ rootGetters }, publisher) {
     let publisherId = uid();
     let payload = {

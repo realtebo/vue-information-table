@@ -51,6 +51,10 @@ const actions = {
   handleAuthStateChange({ commit, dispatch }) {
     firebaseAuth.onAuthStateChanged(user => {
       Loading.hide();
+
+      // Vengono svuotati tutti gli sto a cascata grazie a questa chiamata
+      dispatch("membership/reset", null, { root: true });
+
       if (user) {
         commit("setLoggedIn", true);
         LocalStorage.set("loggedIn", true);

@@ -31,6 +31,24 @@ const mutations = {
   }
 };
 const actions = {
+  reset({ commit, dispatch }) {
+    let payload = {
+      name: null,
+      isMember: false,
+      isAdmin: false,
+      firebaseId: null
+    };
+    commit("setMembership", payload);
+
+    dispatch("publishers/reset", null, { root: true });
+    dispatch("meetingsForFieldService/reset", null, { root: true });
+    dispatch("publicMeetingChairmans/reset", null, { root: true });
+    dispatch("publicMeetingReaders/reset", null, { root: true });
+    dispatch("settings/reset", null, { root: true });
+    dispatch("soundDepartment/reset", null, { root: true });
+    dispatch("microphoneHandlers/reset", null, { root: true });
+    dispatch("attendants/reset", null, { root: true });
+  },
   fbReadData({ commit, dispatch }) {
     let userId = firebaseAuth.currentUser.uid;
     let userMembership = firebaseDb.ref("memberOf/" + userId);
@@ -99,6 +117,9 @@ const actions = {
         dispatch("attendants/listenFirebaseMeetings", null, {
           root: true
         });
+
+        // Se si aggiungono degli altri listeners, assicurarsi di eseguire
+        // il complementare reset nella action reset, poco più sopra
       },
       error => {
         showErrorMessage(error.message);
