@@ -2,6 +2,7 @@ import Vue from "vue";
 import { firebaseDb } from "../boot/firebase";
 import { uid, Notify } from "quasar";
 import { showErrorMessage } from "../functions/function-show-error-message";
+import { date } from "quasar";
 
 const state = {
   meetingsDownloaded: false,
@@ -59,7 +60,7 @@ const actions = {
   reset({ commit }) {
     commit("reset");
   },
-  listenFirebaseMeetings({ commit, rootGetters }) {
+  listenFirebaseMeetings({ dispatch, commit, rootGetters }) {
     let userMembership = rootGetters["membership/memberOf"];
     let congregationId = userMembership.id;
     let meetingsRef = firebaseDb.ref(
@@ -82,7 +83,13 @@ const actions = {
         id: snapshot.key,
         meeting: snapshot.val()
       };
-      commit("addMeeting", payload);
+
+      const today = date.formatDate(Date.now(), "YYYY-MM-DD");
+      if (today <= payload.meeting.when) {
+        commit("addMeeting", payload);
+      } else {
+        dispatch("deleteMeeting", snapshot.key);
+      }
     });
 
     meetingsRef.on("child_changed", snapshot => {
