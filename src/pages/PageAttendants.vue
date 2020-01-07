@@ -1,9 +1,9 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="q-pa-md absolute full-width full-height column">
-      <h4 class="q-mt-none q-pt-sm">Attendants</h4>
+  <q-page>
+    <internal-container>
+      <page-title>Attendants</page-title>
 
-      <q-scroll-area class="q-scroll-area-custom">
+      <scroll-area>
         <q-list
           v-if="Object.keys(meetingsSorted).length > 0"
           separator
@@ -38,9 +38,9 @@
             </q-item-section>
           </q-item>
         </q-list>
-      </q-scroll-area>
+      </scroll-area>
 
-      <div class="absolute-bottom text-center q-mb-lg no-pointer-events">
+      <div class="fixed-bottom text-center q-mb-lg no-pointer-events">
         <q-btn
           round
           color="primary"
@@ -62,7 +62,7 @@
           :meeting="meetingSelected"
         />
       </q-dialog>
-    </div>
+    </internal-container>
   </q-page>
 </template>
 
@@ -70,6 +70,9 @@
 import { mapGetters } from "vuex";
 import AddMeeting from "../components/Attendants/AddMeeting";
 import EditMeeting from "../components/Attendants/EditMeeting";
+import PageTitle from "../components/Shared/PageTitle";
+import ScrollArea from "../components/Shared/ScrollArea";
+import InternalContainer from "../components/Shared/InternalContainer";
 export default {
   name: "PageAttendants",
   data() {
@@ -82,7 +85,10 @@ export default {
   },
   components: {
     AddMeeting,
-    EditMeeting
+    EditMeeting,
+    PageTitle,
+    ScrollArea,
+    InternalContainer
   },
   computed: {
     ...mapGetters("attendants", ["meetingsSorted"])
@@ -101,19 +107,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.full-height {
-  height: 99% !important;
-}
-.full-width {
-  width: 99% !important;
-}
-.q-scroll-area-custom {
-  display: flex;
-  flex-grow: 1;
-  .mobile & {
-    flex-basis: 100px;
-  }
-}
-</style>

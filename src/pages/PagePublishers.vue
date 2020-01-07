@@ -1,9 +1,9 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="q-pa-md absolute full-width full-height column">
-      <h4 class="q-mt-none q-pt-sm">Publishers of {{ memberOf.name }}</h4>
+  <q-page>
+    <internal-container>
+      <page-title>Publishers of {{ memberOf.name }}</page-title>
 
-      <q-scroll-area class="q-scroll-area-publishers">
+      <scroll-area>
         <q-list
           v-if="Object.keys(publishersSorted).length > 0"
           separator
@@ -53,9 +53,9 @@
             </q-item-section>
           </q-item>
         </q-list>
-      </q-scroll-area>
+      </scroll-area>
 
-      <div class="absolute-bottom text-center q-mb-lg no-pointer-events">
+      <div class="fixed-bottom text-center q-mb-lg no-pointer-events">
         <q-btn
           round
           color="primary"
@@ -77,7 +77,7 @@
           :publisher="publisherSelected"
         />
       </q-dialog>
-    </div>
+    </internal-container>
   </q-page>
 </template>
 
@@ -85,6 +85,9 @@
 import { mapGetters } from "vuex";
 import AddPublisher from "../components/Publishers/AddPublisher";
 import EditPublisher from "../components/Publishers/EditPublisher";
+import PageTitle from "../components/Shared/PageTitle";
+import ScrollArea from "../components/Shared/ScrollArea";
+import InternalContainer from "../components/Shared/InternalContainer";
 export default {
   name: "PagePublishers",
   data() {
@@ -97,7 +100,10 @@ export default {
   },
   components: {
     AddPublisher,
-    EditPublisher
+    EditPublisher,
+    PageTitle,
+    ScrollArea,
+    InternalContainer
   },
   computed: {
     ...mapGetters("membership", ["memberOf"]),
@@ -117,19 +123,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.full-height {
-  height: 99% !important;
-}
-.full-width {
-  width: 99% !important;
-}
-.q-scroll-area-publishers {
-  display: flex;
-  flex-grow: 1;
-  .mobile & {
-    flex-basis: 100px;
-  }
-}
-</style>

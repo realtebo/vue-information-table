@@ -1,9 +1,11 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="q-pa-md absolute full-width full-height column">
-      <h4 class="q-mt-none q-pt-sm">Public Meeting's Chairmans</h4>
+  <q-page>
+    <internal-container>
+      <page-title>
+        Public Meeting's Chairmans
+      </page-title>
 
-      <q-scroll-area class="q-scroll-area-chairmans">
+      <scroll-area>
         <q-list
           v-if="Object.keys(meetingsSorted).length > 0"
           separator
@@ -28,9 +30,9 @@
             </q-item-section>
           </q-item>
         </q-list>
-      </q-scroll-area>
+      </scroll-area>
 
-      <div class="absolute-bottom text-center q-mb-lg no-pointer-events">
+      <div class="fixed-bottom text-center q-mb-lg no-pointer-events">
         <q-btn
           round
           color="primary"
@@ -52,7 +54,7 @@
           :meeting="meetingSelected"
         />
       </q-dialog>
-    </div>
+    </internal-container>
   </q-page>
 </template>
 
@@ -60,6 +62,9 @@
 import { mapGetters } from "vuex";
 import AddMeeting from "../components/PublicMeetingChairmans/AddMeeting";
 import EditMeeting from "../components/PublicMeetingChairmans/EditMeeting";
+import PageTitle from "../components/Shared/PageTitle";
+import ScrollArea from "../components/Shared/ScrollArea";
+import InternalContainer from "../components/Shared/InternalContainer";
 export default {
   name: "PagePublicMeetingChairmans",
   data() {
@@ -72,7 +77,10 @@ export default {
   },
   components: {
     AddMeeting,
-    EditMeeting
+    EditMeeting,
+    PageTitle,
+    ScrollArea,
+    InternalContainer
   },
   computed: {
     ...mapGetters("publicMeetingChairmans", ["meetingsSorted"])
@@ -91,19 +99,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.full-height {
-  height: 99% !important;
-}
-.full-width {
-  width: 99% !important;
-}
-.q-scroll-area-chairmans {
-  display: flex;
-  flex-grow: 1;
-  .mobile & {
-    flex-basis: 100px;
-  }
-}
-</style>
