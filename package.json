@@ -15,7 +15,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "firebase": "^7.5.0",
-    "quasar": "^1.5.9",
+    "quasar": "^1.6.1",
     "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
