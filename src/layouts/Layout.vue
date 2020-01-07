@@ -15,23 +15,25 @@
           JW Information Table
         </q-toolbar-title>
 
-        <q-btn
-          v-if="loggedIn"
-          @click="logoutUser"
-          flat
-          icon-right="account_circle"
-          label="Logout"
-          class="absolute-right"
-        />
+        <template v-if="$q.platform.is.desktop">
+          <q-btn
+            v-if="loggedIn"
+            @click="logoutUser"
+            flat
+            icon-right="account_circle"
+            label="Logout"
+            class="absolute-right"
+          />
 
-        <q-btn
-          v-else
-          to="/auth"
-          flat
-          icon-right="account_circle"
-          label="Login"
-          class="absolute-right"
-        />
+          <q-btn
+            v-else
+            to="/auth"
+            flat
+            icon-right="account_circle"
+            label="Login"
+            class="absolute-right"
+          />
+        </template>
       </q-toolbar>
     </q-header>
 
@@ -158,6 +160,9 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["logoutUser"])
+  },
+  mounted() {
+    console.log(this.$q.is);
   },
   data() {
     return {

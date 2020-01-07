@@ -19,6 +19,22 @@
             <p v-show="membershipDownloaded && !memberOf.id">
               Non sei membro di nessuna congregazione. <br />
             </p>
+
+            <div
+              class="row q-mb-md"
+              v-show="membershipDownloaded && memberOf.id"
+            >
+              <div class="col text-center">
+                <q-btn
+                  align="around"
+                  class="btn-fixed-width"
+                  color="accent"
+                  label="Logout"
+                  icon="account_circle"
+                  @click="logoutUser"
+                />
+              </div>
+            </div>
           </div>
         </transition>
       </q-card-section>
@@ -93,6 +109,7 @@ export default {
   },
   methods: {
     ...mapActions("membership", ["fbAddCongregation"]),
+    ...mapActions("auth", ["logoutUser"]),
     addMembershipAsAdmin() {
       Loading.show();
       if (!this.new_congregation_name) {
