@@ -41,6 +41,7 @@
           />
 
           <q-select
+            v-if="noOfPeopleAtSoundDepartment > 2"
             class="q-mb-sm"
             outlined
             v-model="meetingToSubmit.who3"
@@ -84,6 +85,7 @@ export default {
       "assignedToSoundDepartment",
       "numberOfAssignedToSoundDepartment"
     ]),
+    ...mapGetters("settings", ["noOfPeopleAtSoundDepartment"]),
     publishersOptions: function() {
       let options = [];
       let publishers = this.assignedToSoundDepartment;

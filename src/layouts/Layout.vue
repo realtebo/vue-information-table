@@ -161,9 +161,6 @@ export default {
   methods: {
     ...mapActions("auth", ["logoutUser"])
   },
-  mounted() {
-    console.log(this.$q.is);
-  },
   data() {
     return {
       leftDrawerOpen: false
