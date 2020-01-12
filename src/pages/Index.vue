@@ -169,6 +169,13 @@
             - {{ meeting.CHRISTIAN_LIFE_CHAIRMAN }}
           </div>
         </div>
+
+        <div v-if="meeting.BOOK_READER" class="q-mb-sm">
+          <div class="bold">
+            BOOK'S READER: <br />
+            - {{ meeting.BOOK_READER }}
+          </div>
+        </div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -207,6 +214,9 @@ export default {
     }),
     ...mapGetters("christianLifeChairmans", {
       christianLifeChairmans: "meetingsSorted"
+    }),
+    ...mapGetters("bookReaders", {
+      bookReaders: "meetingsSorted"
     }),
 
     meetingsByDate: function() {
@@ -277,6 +287,14 @@ export default {
       type = "CHRISTIAN_LIFE_CHAIRMAN";
       Object.keys(this.christianLifeChairmans).forEach(key => {
         const item = this.christianLifeChairmans[key];
+        out[item.when] = out[item.when] || {};
+        out[item.when][type] = out[item.when][type] || {};
+        out[item.when][type] = item.who.label;
+      });
+
+      type = "BOOK_READER";
+      Object.keys(this.bookReaders).forEach(key => {
+        const item = this.bookReaders[key];
         out[item.when] = out[item.when] || {};
         out[item.when][type] = out[item.when][type] || {};
         out[item.when][type] = item.who.label;

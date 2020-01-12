@@ -60,6 +60,12 @@
           v-model="publisherToSubmit.presidesAsChristianLifeChairman"
           icon="fas fa-user-tie"
         />
+        <q-toggle
+          color="primary"
+          :label="readsBookLabel"
+          v-model="publisherToSubmit.readsBook"
+          icon="mdi-book-open-page-variant"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -132,6 +138,12 @@ export default {
         (this.publisherToSubmit.presidesAsChristianLifeChairman
           ? ""
           : "Do Not ") + "Presides as Christian Life Meeting's Chairman"
+      );
+    },
+    readsBookLabel() {
+      return (
+        (this.publisherToSubmit.readsBook ? "" : "Do Not ") +
+        "Reads Book at Christian Life Meetings"
       );
     }
   },
