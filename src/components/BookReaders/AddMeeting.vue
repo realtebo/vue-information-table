@@ -72,8 +72,6 @@ export default {
   computed: {
     ...mapGetters("publishers", ["bookReaders", "numberOfBookReaders"]),
     publishersOptions: function() {
-      console.log("Lettori libro: ", this.numberOfBookReaders);
-      console.log(this.bookReaders);
       let options = [];
       let publishers = this.bookReaders;
       Object.keys(publishers).forEach(key => {
