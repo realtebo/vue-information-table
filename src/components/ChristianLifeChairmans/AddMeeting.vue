@@ -40,8 +40,8 @@
     </template>
     <template v-else>
       <q-card-section>
-        There are no publishers enabled as Chairman for Pubblic Meetings. Go to
-        Publishers's list and enable at least one publisher for this role
+        There are no publishers enabled as Chairman for Christian Life Meetings.
+        Go to Publishers's list and enable at least one publisher for this role
       </q-card-section>
     </template>
   </q-card>
