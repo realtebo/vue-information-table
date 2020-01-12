@@ -117,6 +117,9 @@ const actions = {
         dispatch("attendants/listenFirebaseMeetings", null, {
           root: true
         });
+        dispatch("christianLifeChairmans/listenFirebaseMeetings", null, {
+          root: true
+        });
 
         // Se si aggiungono degli altri listeners, assicurarsi di eseguire
         // il complementare reset nella action reset, poco più sopra

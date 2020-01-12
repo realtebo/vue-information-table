@@ -11,6 +11,7 @@ import settings from "./store-settings";
 import soundDepartment from "./store-sound-department";
 import microphoneHandlers from "./store-microphone-handlers";
 import attendants from "./store-attendants";
+import christianLifeChairmans from "./store-christian-life-chairmans";
 
 Vue.use(Vuex);
 
@@ -31,7 +32,8 @@ export default function(/* { ssrContext } */) {
       settings,
       soundDepartment,
       microphoneHandlers,
-      attendants
+      attendants,
+      christianLifeChairmans
     },
 
     // enable strict mode (adds overhead!)

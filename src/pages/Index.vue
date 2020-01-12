@@ -162,6 +162,13 @@
             </span>
           </div>
         </div>
+
+        <div v-if="meeting.CHRISTIAN_LIFE_CHAIRMAN" class="q-mb-sm">
+          <div class="bold">
+            CHAIRMAN: <br />
+            - {{ meeting.CHRISTIAN_LIFE_CHAIRMAN }}
+          </div>
+        </div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -198,11 +205,14 @@ export default {
     ...mapGetters("meetingsForFieldService", {
       meetingsForFieldService: "meetingsSorted"
     }),
+    ...mapGetters("christianLifeChairmans", {
+      christianLifeChairmans: "meetingsSorted"
+    }),
 
     meetingsByDate: function() {
       let out = {};
-      let type = "ATTENDANTS";
 
+      let type = "ATTENDANTS";
       Object.keys(this.attendants).forEach(key => {
         const item = this.attendants[key];
         out[item.when] = out[item.when] || {};
@@ -262,6 +272,14 @@ export default {
         out[day] = out[day] || {};
         out[day][type] = out[day][type] || {};
         out[day][type][hour] = item.who.label;
+      });
+
+      type = "CHRISTIAN_LIFE_CHAIRMAN";
+      Object.keys(this.christianLifeChairmans).forEach(key => {
+        const item = this.christianLifeChairmans[key];
+        out[item.when] = out[item.when] || {};
+        out[item.when][type] = out[item.when][type] || {};
+        out[item.when][type] = item.who.label;
       });
 
       let sorted = {};

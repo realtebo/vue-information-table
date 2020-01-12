@@ -54,6 +54,12 @@
           v-model="publisherToSubmit.attendant"
           icon="mdi-shield-account"
         />
+        <q-toggle
+          color="primary"
+          :label="presidesAsChristianLifeChairmanLabel"
+          v-model="publisherToSubmit.presidesAsChristianLifeChairman"
+          icon="fas fa-user-tie"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -119,6 +125,13 @@ export default {
       return (
         (this.publisherToSubmit.attendant ? "" : "Do Not ") +
         "Serves as Attendant"
+      );
+    },
+    presidesAsChristianLifeChairmanLabel() {
+      return (
+        (this.publisherToSubmit.presidesAsChristianLifeChairman
+          ? ""
+          : "Do Not ") + "Presides as Christian Life Meeting's Chairman"
       );
     }
   },

@@ -42,6 +42,10 @@ const routes = [
       {
         path: "/attendants",
         component: () => import("pages/PageAttendants.vue")
+      },
+      {
+        path: "/christian-life-chairmans",
+        component: () => import("pages/PageChristianLifeChairmans.vue")
       }
     ]
   }

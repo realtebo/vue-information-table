@@ -118,6 +118,16 @@
           </q-item-section>
         </q-item>
 
+        <q-item clickable to="/christian-life-chairmans">
+          <q-item-section avatar>
+            <q-icon name="fas fa-user-tie" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Chairmans</q-item-label>
+            <q-item-label caption>For Christian Life Meeting</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-separator />
 
         <q-item-label header>Settings</q-item-label>

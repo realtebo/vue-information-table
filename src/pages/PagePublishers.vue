@@ -50,6 +50,13 @@
               <q-item-label caption v-if="publisher.attendant">
                 Serves has Attendant
               </q-item-label>
+
+              <q-item-label
+                caption
+                v-if="publisher.presidesAsChristianLifeChairman"
+              >
+                Presides as Christian Life Meeting's Chairman
+              </q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

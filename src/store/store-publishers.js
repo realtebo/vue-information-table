@@ -116,6 +116,20 @@ const getters = {
   },
   numberOfAttendants: (state, getters) => {
     return Object.keys(getters.publicMeetingReaders).length;
+  },
+  christianLifeChairmans: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.presidesAsChristianLifeChairman) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfChristianLifeChairmans: (state, getters) => {
+    return Object.keys(getters.christianLifeChairmans).length;
   }
 };
 
