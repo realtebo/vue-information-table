@@ -4,16 +4,10 @@ import Vuex from "vuex";
 import auth from "./store-auth";
 import membership from "./store-membership";
 import publishers from "./store-publishers";
-import meetingsForFieldService from "./store-meetings-for-field-service";
-import publicMeetingChairmans from "./store-public-meeting-chairmans";
-import publicMeetingReaders from "./store-public-meeting-readers";
 import settings from "./store-settings";
-import soundDepartment from "./store-sound-department";
-import microphoneHandlers from "./store-microphone-handlers";
-import attendants from "./store-attendants";
-import christianLifeChairmans from "./store-christian-life-chairmans";
-import bookReaders from "./store-book-readers";
-import christianLifePrayers from "./store-christian-life-prayers";
+
+// "Standard" store
+import { storeFarm } from "./store-farm";
 
 Vue.use(Vuex);
 
@@ -28,16 +22,17 @@ export default function(/* { ssrContext } */) {
       auth,
       membership,
       publishers,
-      meetingsForFieldService,
-      publicMeetingChairmans,
-      publicMeetingReaders,
       settings,
-      soundDepartment,
-      microphoneHandlers,
-      attendants,
-      christianLifeChairmans,
-      bookReaders,
-      christianLifePrayers
+
+      meetingsForFieldService: storeFarm("/meetings-for-field-service/"),
+      publicMeetingChairmans: storeFarm("/public-meeting-chairmans/"),
+      publicMeetingReaders: storeFarm("/public-meeting-readers/"),
+      soundDepartment: storeFarm("/sound-department/"),
+      microphoneHandlers: storeFarm("/microphone-handlers/"),
+      attendants: storeFarm("/attendants/"),
+      christianLifeChairmans: storeFarm("/christian-life-chairmans/"),
+      bookReaders: storeFarm("/book-readers/"),
+      christianLifePrayers: storeFarm("/christian-life-prayers/")
     },
 
     // enable strict mode (adds overhead!)

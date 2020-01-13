@@ -48,6 +48,9 @@ const actions = {
     dispatch("soundDepartment/reset", null, { root: true });
     dispatch("microphoneHandlers/reset", null, { root: true });
     dispatch("attendants/reset", null, { root: true });
+    dispatch("christianLifeChairmans/reset", null, { root: true });
+    dispatch("bookReaders/reset", null, { root: true });
+    dispatch("christianLifePrayers/reset", null, { root: true });
   },
   fbReadData({ commit, dispatch }) {
     let userId = firebaseAuth.currentUser.uid;
