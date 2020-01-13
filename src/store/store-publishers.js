@@ -144,6 +144,20 @@ const getters = {
   },
   numberOfBookReaders: (state, getters) => {
     return Object.keys(getters.bookReaders).length;
+  },
+  christianLifePrayers: (state, getters) => {
+    let publishersFiltered = {};
+    let publishers = getters.publishersSorted;
+    Object.keys(publishers).forEach(key => {
+      let publisher = publishers[key];
+      if (publisher.offersPrayerAtChristianLifeMeetings) {
+        publishersFiltered[key] = publisher;
+      }
+    });
+    return publishersFiltered;
+  },
+  numberOfChristianLifePrayers: (state, getters) => {
+    return Object.keys(getters.christianLifePrayers).length;
   }
 };
 

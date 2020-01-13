@@ -61,6 +61,13 @@
               <q-item-label caption v-if="publisher.readsBook">
                 Reads Book at Christian Life Meeting
               </q-item-label>
+
+              <q-item-label
+                caption
+                v-if="publisher.offersPrayerAtChristianLifeMeetings"
+              >
+                Offers Prayer at Christian Life Meetings
+              </q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

@@ -50,6 +50,10 @@ const routes = [
       {
         path: "/book-readers",
         component: () => import("pages/PageBookReaders.vue")
+      },
+      {
+        path: "/christian-life-prayers",
+        component: () => import("pages/PageChristianLifePrayers.vue")
       }
     ]
   }

@@ -176,6 +176,18 @@
             - {{ meeting.BOOK_READER }}
           </div>
         </div>
+
+        <div v-if="meeting.CHRISTIAN_LIFE_PRAYERS" class="q-mb-sm">
+          <div class="bold">
+            CHRISTIAN LIFE PRAYERS: <br />
+            <span
+              v-for="(name, index) in meeting.CHRISTIAN_LIFE_PRAYERS"
+              :key="`att_${when}_${index}`"
+            >
+              <span v-if="name"> - {{ name }} <br /> </span>
+            </span>
+          </div>
+        </div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -217,6 +229,9 @@ export default {
     }),
     ...mapGetters("bookReaders", {
       bookReaders: "meetingsSorted"
+    }),
+    ...mapGetters("christianLifePrayers", {
+      christianLifePrayers: "meetingsSorted"
     }),
 
     meetingsByDate: function() {
@@ -298,6 +313,18 @@ export default {
         out[item.when] = out[item.when] || {};
         out[item.when][type] = out[item.when][type] || {};
         out[item.when][type] = item.who.label;
+      });
+
+      type = "CHRISTIAN_LIFE_PRAYERS";
+      Object.keys(this.christianLifePrayers).forEach(key => {
+        const item = this.christianLifePrayers[key];
+        out[item.when] = out[item.when] || {};
+        out[item.when][type] = out[item.when][type] || {};
+        out[item.when][type] = [
+          item.who1 ? item.who1.label : null,
+          item.who2 ? item.who2.label : null,
+          item.who3 ? item.who3.label : null
+        ];
       });
 
       let sorted = {};

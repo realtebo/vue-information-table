@@ -13,6 +13,7 @@ import microphoneHandlers from "./store-microphone-handlers";
 import attendants from "./store-attendants";
 import christianLifeChairmans from "./store-christian-life-chairmans";
 import bookReaders from "./store-book-readers";
+import christianLifePrayers from "./store-christian-life-prayers";
 
 Vue.use(Vuex);
 
@@ -35,7 +36,8 @@ export default function(/* { ssrContext } */) {
       microphoneHandlers,
       attendants,
       christianLifeChairmans,
-      bookReaders
+      bookReaders,
+      christianLifePrayers
     },
 
     // enable strict mode (adds overhead!)

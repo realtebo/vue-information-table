@@ -138,6 +138,16 @@
           </q-item-section>
         </q-item>
 
+        <q-item clickable to="/christian-life-prayers">
+          <q-item-section avatar>
+            <q-icon name="fas fa-praying-hands" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Prayers</q-item-label>
+            <q-item-label caption>For Christian Life Meetings</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-separator />
 
         <q-item-label header>Settings</q-item-label>

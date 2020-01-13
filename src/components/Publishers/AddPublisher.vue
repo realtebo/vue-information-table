@@ -66,6 +66,12 @@
           v-model="publisherToSubmit.readsBook"
           icon="mdi-book-open-page-variant"
         />
+        <q-toggle
+          color="primary"
+          :label="offersPrayerAtChristianLifeMeetingsLabel"
+          v-model="publisherToSubmit.offersPrayerAtChristianLifeMeetings"
+          icon="fas fa-praying-hands"
+        />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -111,7 +117,7 @@ export default {
     },
     readsWatchtowerLabel() {
       return (
-        (this.publisherToSubmit.readsWatchtower ? "" : "Do Not ") +
+        (this.publisherToSubmit.readsWatchtower ? "" : "Does Not ") +
         "Reads Watchtower at Public Meetings"
       );
     },
@@ -123,13 +129,13 @@ export default {
     },
     microphoneHandlerLabel() {
       return (
-        (this.publisherToSubmit.microphoneHandler ? "" : "Do Not ") +
+        (this.publisherToSubmit.microphoneHandler ? "" : "Does Not ") +
         "Serves as Microphone Handler"
       );
     },
     attendantLabel() {
       return (
-        (this.publisherToSubmit.attendant ? "" : "Do Not ") +
+        (this.publisherToSubmit.attendant ? "" : "Does Not ") +
         "Serves as Attendant"
       );
     },
@@ -137,13 +143,20 @@ export default {
       return (
         (this.publisherToSubmit.presidesAsChristianLifeChairman
           ? ""
-          : "Do Not ") + "Presides as Christian Life Meeting's Chairman"
+          : "Does Not ") + "Presides as Christian Life Meeting's Chairman"
       );
     },
     readsBookLabel() {
       return (
-        (this.publisherToSubmit.readsBook ? "" : "Do Not ") +
+        (this.publisherToSubmit.readsBook ? "" : "Does Not ") +
         "Reads Book at Christian Life Meetings"
+      );
+    },
+    offersPrayerAtChristianLifeMeetingsLabel() {
+      return (
+        (this.publisherToSubmit.offersPrayerAtChristianLifeMeetings
+          ? ""
+          : "Does Not ") + "Offers Prayer at Christian Life Meeting"
       );
     }
   },
