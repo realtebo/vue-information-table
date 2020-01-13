@@ -16,44 +16,45 @@ const routes = [
         component: () => import("pages/PagePublishers.vue")
       },
       {
-        path: "/meetings-for-field-service",
-        component: () => import("pages/PageMeetingsForFieldService.vue")
-      },
-      {
-        path: "/public-meeting-chairmans",
-        component: () => import("pages/PagePublicMeetingChairmans.vue")
-      },
-      {
-        path: "/public-meeting-readers",
-        component: () => import("pages/PagePublicMeetingReaders.vue")
-      },
-      {
-        path: "/sound-department",
-        component: () => import("pages/PageSoundDepartment.vue")
-      },
-      {
         path: "/congregation-settings",
         component: () => import("pages/PageCongregationSettings.vue")
       },
       {
+        path: "/meetings-for-field-service",
+        component: () =>
+          import("pages/meetings/PageMeetingsForFieldService.vue")
+      },
+      {
+        path: "/public-meeting-chairmans",
+        component: () => import("pages/meetings/PagePublicMeetingChairmans.vue")
+      },
+      {
+        path: "/public-meeting-readers",
+        component: () => import("pages/meetings/PagePublicMeetingReaders.vue")
+      },
+      {
+        path: "/sound-department",
+        component: () => import("pages/meetings/PageSoundDepartment.vue")
+      },
+      {
         path: "/microphone-handlers",
-        component: () => import("pages/PageMicrophoneHandlers.vue")
+        component: () => import("pages/meetings/PageMicrophoneHandlers.vue")
       },
       {
         path: "/attendants",
-        component: () => import("pages/PageAttendants.vue")
+        component: () => import("pages/meetings/PageAttendants.vue")
       },
       {
         path: "/christian-life-chairmans",
-        component: () => import("pages/PageChristianLifeChairmans.vue")
+        component: () => import("pages/meetings/PageChristianLifeChairmans.vue")
       },
       {
         path: "/book-readers",
-        component: () => import("pages/PageBookReaders.vue")
+        component: () => import("pages/meetings/PageBookReaders.vue")
       },
       {
         path: "/christian-life-prayers",
-        component: () => import("pages/PageChristianLifePrayers.vue")
+        component: () => import("pages/meetings/PageChristianLifePrayers.vue")
       }
     ]
   }
