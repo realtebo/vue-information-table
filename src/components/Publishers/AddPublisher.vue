@@ -96,7 +96,10 @@ export default {
         readsWatchtower: false,
         assignedToSoundDepartment: false,
         microphoneHandler: false,
-        attendant: false
+        attendant: false,
+        presidesAsChristianLifeChairman: false,
+        readsBook: false,
+        offersPrayerAtChristianLifeMeetings: false
       }
     };
   },

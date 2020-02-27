@@ -101,7 +101,10 @@ export default {
         readsWatchtower: false,
         assignedToSoundDepartment: false,
         microphoneHandler: false,
-        attendant: false
+        attendant: false,
+        presidesAsChristianLifeChairman: false,
+        readsBook: false,
+        offersPrayerAtChristianLifeMeetings: false
       }
     };
   },
@@ -170,12 +173,20 @@ export default {
   props: ["id", "publisher"],
 
   methods: {
-    ...mapActions("publishers", ["updatePublisher", "deletePublisher"]),
+    ...mapActions("publishers", [
+      "addPublisher",
+      // "updatePublisher",
+      "deletePublisher"
+    ]),
     submitForm() {
+      /*
       this.updatePublisher({
         id: this.id,
         updates: this.publisherToSubmit
       });
+      */
+      this.deletePublisher(this.id);
+      this.addPublisher(this.publisherToSubmit);
       this.$emit("close");
     },
     promptToDelete(id) {
