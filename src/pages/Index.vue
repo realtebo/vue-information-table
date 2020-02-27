@@ -3,7 +3,7 @@
     <q-card class="relative-position card-congregazione">
       <q-card-section>
         <div class="text-h6">
-          Congregation
+          {{ $t("Congregation") }}
           <span v-if="membershipDownloaded && memberOf.id">
             : {{ memberOf.name }}
           </span>
@@ -18,7 +18,8 @@
         >
           <div>
             <p v-if="!memberOf.id">
-              Non sei membro di nessuna congregazione. <br />
+              {{ $t("Actually you are not member of any congregation") }}.
+              <br />
             </p>
 
             <div
@@ -34,7 +35,7 @@
                   class="btn-fixed-width"
                   color="accent"
                   icon="account_circle"
-                  label="Logout"
+                  :label="$t('Logout')"
                 />
               </div>
             </div>
@@ -47,8 +48,8 @@
         v-model="tab"
         v-show="membershipDownloaded && !memberOf.id"
       >
-        <q-tab label="Nuova" name="new" />
-        <q-tab label="Esistente" name="join" />
+        <q-tab :label="$t('New')" name="new" />
+        <q-tab :label="$t('Existing')" name="join" />
       </q-tabs>
 
       <q-separator v-show="membershipDownloaded && !memberOf.id" />
@@ -59,13 +60,16 @@
         v-show="membershipDownloaded && !memberOf.id"
       >
         <q-tab-panel name="new">
-          Crea una nuova congregazione, e ne diventari amministratore, potendo
-          inserire nominativi e impegni
+          {{
+            $t(
+              "Create a new congregation, and become its administrator, being able to enter names and commitments"
+            )
+          }}
 
           <div class="row q-mt-md">
             <q-input
               class="full-width"
-              label="Nome della nuova congregazione"
+              :label="$t('Name of the new congregation')"
               outlined
               stack-label
               v-model="new_congregation_name"
@@ -77,14 +81,17 @@
             <q-btn
               @click="addMembershipAsAdmin"
               color="secondary"
-              label="Crea"
+              :label="$t('Create')"
             />
           </div>
         </q-tab-panel>
 
         <q-tab-panel name="join">
-          Associati ad una già esistente; fatti dare il codice di invito e
-          potrai visualizzare gli impegni, ma non amministrarli
+          {{
+            $t(
+              "Associate with an existing one; get the invitation code and you will be able to view the pledges, but not administer them"
+            )
+          }}
         </q-tab-panel>
       </q-tab-panels>
 
@@ -122,7 +129,7 @@ export default {
     addMembershipAsAdmin() {
       Loading.show();
       if (!this.new_congregation_name) {
-        showErrorMessage("Scegli come chiamare la nuova congregazione");
+        showErrorMessage(this.$t("Choose what to call your new congregation"));
         return;
       }
       this.fbAddCongregation({

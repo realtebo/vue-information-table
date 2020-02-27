@@ -10,7 +10,7 @@
 
         <div v-if="meeting.ATTENDANTS" class="q-mb-sm">
           <div class="bold">
-            ATTENDANTS: <br />
+            {{ $t("attendants") | toUpperCase }}: <br />
             <span
               v-for="(name, index) in meeting.ATTENDANTS"
               :key="`att_${when}_${index}`"
@@ -22,7 +22,7 @@
 
         <div v-if="meeting.MICROPHONE_HANDLERS" class="q-mb-sm">
           <div class="bold">
-            MICROPHONE HANDLERS: <br />
+            {{ $t("microphone handlers") | toUpperCase }}: <br />
             <span
               v-for="(name, index) in meeting.MICROPHONE_HANDLERS"
               :key="`att_${when}_${index}`"
@@ -34,7 +34,7 @@
 
         <div v-if="meeting.SOUND_DEPARTMENT" class="q-mb-sm">
           <div class="bold">
-            SOUND DEPARTMENT: <br />
+            {{ $t("sound department") | toUpperCase }}: <br />
             <span
               v-for="(name, index) in meeting.SOUND_DEPARTMENT"
               :key="`att_${when}_${index}`"
@@ -46,21 +46,21 @@
 
         <div v-if="meeting.PUBLIC_MEETING_CHAIRMAN" class="q-mb-sm">
           <div class="bold">
-            CHAIRMAN: <br />
+            {{ $t("chairman") | toUpperCase }}: <br />
             - {{ meeting.PUBLIC_MEETING_CHAIRMAN }}
           </div>
         </div>
 
         <div v-if="meeting.WATCHTOWER_READER" class="q-mb-sm">
           <div class="bold">
-            WATCHTOWER READER: <br />
+            {{ $t("watchtower reader") | toUpperCase }}: <br />
             - {{ meeting.WATCHTOWER_READER }}
           </div>
         </div>
 
         <div v-if="meeting.MEETINGS_FOR_FIELD_SERVICE">
           <div class="bold">
-            MEETINGS FOR FIELD SERVICE: <br />
+            {{ $t("meetings for field service") | toUpperCase }}: <br />
             <span
               v-for="(name, hour) in meeting.MEETINGS_FOR_FIELD_SERVICE"
               :key="`mffs_${when}_${hour}`"
@@ -72,21 +72,21 @@
 
         <div v-if="meeting.CHRISTIAN_LIFE_CHAIRMAN" class="q-mb-sm">
           <div class="bold">
-            CHAIRMAN: <br />
+            {{ $t("chairman") | toUpperCase }}: <br />
             - {{ meeting.CHRISTIAN_LIFE_CHAIRMAN }}
           </div>
         </div>
 
         <div v-if="meeting.BOOK_READER" class="q-mb-sm">
           <div class="bold">
-            BOOK'S READER: <br />
+            {{ $t("book study reader") | toUpperCase }}: <br />
             - {{ meeting.BOOK_READER }}
           </div>
         </div>
 
         <div v-if="meeting.CHRISTIAN_LIFE_PRAYERS" class="q-mb-sm">
           <div class="bold">
-            CHRISTIAN LIFE PRAYERS: <br />
+            {{ $t("christian life meeting prayers") | toUpperCase }}: <br />
             <span
               v-for="(name, index) in meeting.CHRISTIAN_LIFE_PRAYERS"
               :key="`att_${when}_${index}`"

@@ -1,0 +1,43 @@
+export default {
+  "Actually you are not member of any congregation":
+    "Per ora non sei parte di nessuna congregazione",
+  "Anagraphics and Roles": "Anagrafiche e Incarichi",
+  "Associate with an existing one; get the invitation code and you will be able to view the pledges, but not administer them":
+    "Associati ad una già esistente; fatti dare il codice di invito e potrai visualizzare gli impegni, ma non amministrarli",
+  attendants: "uscieri",
+  "book study reader": "lettore studio di libro",
+  "book study readers": "lettori studio di libro",
+  chairman: "presidente",
+  chairmans: "presidenti",
+  "Choose what to call your new congregation":
+    "Scegli come chiamare la nuova congregazione",
+  "christian life meeting prayers": "preghiera adunanza vita cristiana",
+  Congregation: "Congregazione",
+  "congregation settings": "impostazioni di congregazione",
+  "Create a new congregation, and become its administrator, being able to enter names and commitments":
+    "Crea una nuova congregazione, e ne diventari amministratore, potendo inserire nominativi e impegni",
+  Create: "Crea",
+  "Customize roles and departments": "Personalizza incarichi e reparti",
+  Dashboard: "Bacheca",
+  "For Christian Life Meeting": "Per l'adunanza Vita Cristiana",
+  "For Public Meetings": "Per l'adunanza pubblica",
+  Existing: "Esistente",
+  Home: "Pagina inziale",
+  Login: "Accedi",
+  Logout: "Esci",
+  "meetings for field service": "Adunanze per il ministero di campo",
+  "microphone handlers": "microfonisti",
+  "Mixer, Pc, etc...": "Mixer, Pc, etc...",
+  "Name of the new congregation": "Nome della nuova congregazione",
+  New: "Nuova",
+  "Number of people": "Numero di persone",
+  prayers: "preghiere",
+  publishers: "proclamatori",
+  schedules: "programmi",
+  Settings: "Impostazioni",
+  "Sorry, nothing here": "Spiacente, ma qui non c'è nulla",
+  "sound department": "reparto acustica",
+  "View and Edit Schedules": "Visualizza e modifica i programmi",
+  "watchtower reader": "lettore torre di guardia",
+  "watchtower's readers": "lettori torre di guardia"
+};

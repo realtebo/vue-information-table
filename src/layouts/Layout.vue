@@ -8,7 +8,6 @@
           round
           @click="leftDrawerOpen = !leftDrawerOpen"
           icon="menu"
-          aria-label="Menu"
         />
 
         <q-toolbar-title class="absolute-center">
@@ -21,7 +20,7 @@
             @click="logoutUser"
             flat
             icon-right="account_circle"
-            label="Logout"
+            :label="$t('Logout')"
             class="absolute-right"
           />
 
@@ -30,7 +29,7 @@
             to="/auth"
             flat
             icon-right="account_circle"
-            label="Login"
+            :label="$t('Login')"
             class="absolute-right"
           />
         </template>
@@ -44,91 +43,96 @@
       content-class="bg-grey-2"
     >
       <q-list>
-        <sidebar-item to="/" icon="home" label="Home" caption="Dashboard" />
+        <sidebar-item
+          to="/"
+          icon="home"
+          :label="$t('Home')"
+          :caption="$t('Dashboard')"
+        />
 
         <q-separator />
 
-        <q-item-label header>Schedules</q-item-label>
+        <q-item-label header>{{ $t("schedules") | titleCase }} </q-item-label>
 
         <sidebar-item
           to="/meetings-for-field-service"
           icon="card_travel"
-          label="Meetings for Field Service"
-          caption="View and Edit Schedules"
+          :label="$t('meetings for field service') | titleCase"
+          :caption="$t('View and Edit Schedules')"
         />
 
         <sidebar-item
           to="/public-meeting-chairmans"
           icon="fas fa-user-tie"
-          label="Chairmans"
-          caption="For Public Meetings"
+          :label="$t('chairmans') | titleCase"
+          :caption="$t('For Public Meetings')"
         />
 
         <sidebar-item
           to="/public-meeting-readers"
           icon="mdi-chess-rook"
-          label="Watchtower's Readers"
-          caption="For Public Meetings"
+          :label="$t('watchtower\'s readers') | titleCase"
+          :caption="$t('For Public Meetings')"
         />
 
         <sidebar-item
           to="/sound-department"
           icon="mdi-surround-sound"
-          label="Sound Department"
-          caption="Mixer, Pc, etc..."
+          :label="$t('sound department') | titleCase"
+          :caption="$t('Mixer, Pc, etc...')"
         />
 
         <sidebar-item
           to="/microphone-handlers"
           icon="fas fa-microphone"
-          label="Microphone Handlers"
-          caption="Schedules"
+          :label="$t('microphone handlers') | titleCase"
+          :caption="$t('schedules') | titleCase"
         />
 
         <sidebar-item
           to="/attendants"
           icon="mdi-shield-account"
-          label="Attendants"
-          caption="Schedules"
+          :label="$t('attendants') | titleCase"
+          :caption="$t('schedules') | titleCase"
         />
 
         <sidebar-item
           to="/christian-life-chairmans"
           icon="fas fa-user-tie"
-          label="Chairmans"
-          caption="For Christian Life Meeting"
+          :label="$t('chairmans') | titleCase"
+          :caption="$t('For Christian Life Meeting')"
         />
 
         <sidebar-item
           to="/christian-life-prayers"
           icon="fas fa-praying-hands"
-          label="Prayers"
-          caption="For Christian Life Meetings"
+          :label="$t('prayers') | titleCase"
+          :caption="$t('For Christian Life Meeting')"
         />
 
         <sidebar-item
           to="/book-readers"
           icon="mdi-book-open-page-variant"
-          label="Book's Readers"
-          caption="For Christian Life Meetings"
+          :label="$t('book study readers') | titleCase"
+          :caption="$t('For Christian Life Meeting')"
         />
 
         <q-separator />
 
-        <q-item-label header>Settings</q-item-label>
+        <q-item-label header>{{ $t("Settings") }} </q-item-label>
 
         <sidebar-item
           to="/publishers"
           icon="school"
-          label="Publishers"
-          caption="Anagraphics and Roles"
+          :label="$t('publishers') | titleCase"
+          :caption="$t('Anagraphics and Roles')"
         />
 
         <sidebar-item
           to="/congregation-settings"
           icon="fas fa-cog"
-          label="Congregation Settings"
-          caption="Customize roles and department"
+          :label="$t('congregation settings') | titleCase"
+          :caption="$t('Customize roles and departments')"
         />
       </q-list>
     </q-drawer>

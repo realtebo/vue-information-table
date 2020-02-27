@@ -1308,7 +1308,7 @@
     babel-plugin-module-resolver "^4.0.0"
     babel-plugin-transform-imports "^1.0.0"
 
-"@quasar/extras@^1.4.0":
+"@quasar/extras@^1.5.2":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.5.2.tgz#12fb0aa0f150cc749670d2b3198f712a10c344b2"
   integrity sha512-4hwibnTNHM0OmZl6T3PN6CaHnVOmsCWpNwgFhJS0zMfsQ2z2s1OxObOFVDSSBuPT+sRk3iakhMLRaohNze0HYA==
@@ -4341,7 +4341,7 @@ findup@^0.1.5:
     colors "~0.6.0-1"
     commander "~2.1.0"
 
-firebase@^7.5.0:
+firebase@^7.9.1:
   version "7.9.1"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-7.9.1.tgz#e2fe163f37220083d47537b12f91f754d2245695"
   integrity sha512-yF80JPxLDXypBxhOeJDKULeP1MwZ/+Clovx3JZOvzH9yoRhIZZBx17/vkQFb7d0b+ICqwrKIofgpPzPef+CMpw==
@@ -9553,7 +9553,7 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
-vue-i18n@^8.0.0:
+vue-i18n@^8.15.4:
   version "8.15.4"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.15.4.tgz#1bfba2b6a6cb6de7b44f0f0aa89ad775fc902bc2"
   integrity sha512-brhbJRB/gyWlroAhQZU0TNTQzNonbkHmzH4HlJzs7c+DsVIhB5OlRHg3zAl+85kkT8mpxzvBE6Bm1slqnRRmsg==

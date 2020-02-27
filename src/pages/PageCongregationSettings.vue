@@ -1,11 +1,13 @@
 <template>
   <q-page padding>
     <q-list bordered padding class="q-mb-md">
-      <q-item-label header>Sound Department</q-item-label>
+      <q-item-label header>{{
+        $t("sound department") | titleCase
+      }}</q-item-label>
 
       <q-item tag="label">
         <q-item-section>
-          <q-item-label>Number of people</q-item-label>
+          <q-item-label>{{ $t("Number of people") }}</q-item-label>
           <q-item-label caption>{{ peopleAtSoundDepartment }}</q-item-label>
         </q-item-section>
 
