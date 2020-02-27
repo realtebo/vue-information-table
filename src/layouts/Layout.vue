@@ -44,133 +44,92 @@
       content-class="bg-grey-2"
     >
       <q-list>
-        <q-item clickable to="/">
-          <q-item-section avatar>
-            <q-icon name="home" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Home</q-item-label>
-            <q-item-label caption>Dashboard</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item to="/" icon="home" label="Home" caption="Dashboard" />
 
         <q-separator />
 
         <q-item-label header>Schedules</q-item-label>
 
-        <q-item clickable to="/meetings-for-field-service">
-          <q-item-section avatar>
-            <q-icon name="card_travel" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Meetings for Field Service</q-item-label>
-            <q-item-label caption>View and Edit Schedules</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/meetings-for-field-service"
+          icon="card_travel"
+          label="Meetings for Field Service"
+          caption="View and Edit Schedules"
+        />
 
-        <q-item clickable to="/public-meeting-chairmans">
-          <q-item-section avatar>
-            <q-icon name="fas fa-user-tie" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Chairmans</q-item-label>
-            <q-item-label caption>For Public Meetings</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/public-meeting-chairmans"
+          icon="fas fa-user-tie"
+          label="Chairmans"
+          caption="For Public Meetings"
+        />
 
-        <q-item clickable to="/public-meeting-readers">
-          <q-item-section avatar>
-            <q-icon name="mdi-chess-rook" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Watchtower's Readers</q-item-label>
-            <q-item-label caption>For Public Meetings</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/public-meeting-readers"
+          icon="mdi-chess-rook"
+          label="Watchtower's Readers"
+          caption="For Public Meetings"
+        />
 
-        <q-item clickable to="/sound-department">
-          <q-item-section avatar>
-            <q-icon name="mdi-surround-sound" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Sound Department</q-item-label>
-            <q-item-label caption>Mixer, Pc, etc...</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/sound-department"
+          icon="mdi-surround-sound"
+          label="Sound Department"
+          caption="Mixer, Pc, etc..."
+        />
 
-        <q-item clickable to="/microphone-handlers">
-          <q-item-section avatar>
-            <q-icon name="fas fa-microphone" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Microphone Handlers</q-item-label>
-            <q-item-label caption>Schedules</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/microphone-handlers"
+          icon="fas fa-microphone"
+          label="Microphone Handlers"
+          caption="Schedules"
+        />
 
-        <q-item clickable to="/attendants">
-          <q-item-section avatar>
-            <q-icon name="mdi-shield-account" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Attendants</q-item-label>
-            <q-item-label caption>Schedules</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/attendants"
+          icon="mdi-shield-account"
+          label="Attendants"
+          caption="Schedules"
+        />
 
-        <q-item clickable to="/christian-life-chairmans">
-          <q-item-section avatar>
-            <q-icon name="fas fa-user-tie" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Chairmans</q-item-label>
-            <q-item-label caption>For Christian Life Meeting</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/christian-life-chairmans"
+          icon="fas fa-user-tie"
+          label="Chairmans"
+          caption="For Christian Life Meeting"
+        />
 
-        <q-item clickable to="/book-readers">
-          <q-item-section avatar>
-            <q-icon name="mdi-book-open-page-variant" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Book's Readers</q-item-label>
-            <q-item-label caption>For Christian Life Meetings</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/christian-life-prayers"
+          icon="fas fa-praying-hands"
+          label="Prayers"
+          caption="For Christian Life Meetings"
+        />
 
-        <q-item clickable to="/christian-life-prayers">
-          <q-item-section avatar>
-            <q-icon name="fas fa-praying-hands" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Prayers</q-item-label>
-            <q-item-label caption>For Christian Life Meetings</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/book-readers"
+          icon="mdi-book-open-page-variant"
+          label="Book's Readers"
+          caption="For Christian Life Meetings"
+        />
 
         <q-separator />
 
         <q-item-label header>Settings</q-item-label>
 
-        <q-item clickable to="/publishers">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Publishers</q-item-label>
-            <q-item-label caption>Anagraphics and Roles</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/publishers"
+          icon="school"
+          label="Publishers"
+          caption="Anagraphics and Roles"
+        />
 
-        <q-item clickable to="/congregation-settings">
-          <q-item-section avatar>
-            <q-icon name="fas fa-cog" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Congregation Settings</q-item-label>
-            <q-item-label caption>Customize roles and department</q-item-label>
-          </q-item-section>
-        </q-item>
+        <sidebar-item
+          to="/congregation-settings"
+          icon="fas fa-cog"
+          label="Congregation Settings"
+          caption="Customize roles and department"
+        />
       </q-list>
     </q-drawer>
 
@@ -182,9 +141,12 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-
+import SidebarItem from "../components/Layout/SidebarItem";
 export default {
   name: "MyLayout",
+  components: {
+    SidebarItem
+  },
   computed: {
     ...mapState("auth", ["loggedIn"])
   },
