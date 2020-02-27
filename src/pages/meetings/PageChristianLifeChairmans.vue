@@ -25,7 +25,9 @@
             </q-item-section>
             <q-item-section>
               <q-item-label>
-                <span class="text-h6">{{ meeting.who.label }}</span>
+                <span class="text-h6">{{
+                  meeting.who ? meeting.who.label : null
+                }}</span>
               </q-item-label>
             </q-item-section>
           </q-item>
