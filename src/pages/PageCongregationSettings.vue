@@ -45,6 +45,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { Notify } from "quasar";
 export default {
   name: "PageCongregationSettings",
   computed: {
@@ -60,7 +61,7 @@ export default {
         this.updateSetting({
           key: "noOfPeopleAtSoundDepartment",
           value: newValue
-        });
+        }).then(() => Notify.create(this.$t("Setting updated")));
       }
     },
     invitationCodeLabel: function() {

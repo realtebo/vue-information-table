@@ -85,15 +85,13 @@ const actions = {
     let congregationId = userMembership.id;
     let settingsRef = firebaseDb.ref("settings/" + congregationId);
 
-    settingsRef.update(
+    return settingsRef.update(
       {
         [payload.key]: payload.value
       },
       error => {
         if (error) {
           showErrorMessage(error.message);
-        } else {
-          Notify.create("Setting updated");
         }
       }
     );

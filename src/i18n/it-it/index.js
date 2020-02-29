@@ -14,6 +14,7 @@ export default {
   "Choose what to call your new congregation":
     "Scegli come chiamare la nuova congregazione",
   "christian life meeting prayers": "preghiera adunanza vita cristiana",
+  "Click to generate a code": "Clicca per generare un codice",
   Congregation: "Congregazione",
   "congregation settings": "impostazioni di congregazione",
   "Create a new congregation, and become its administrator, being able to enter names and commitments":
@@ -21,8 +22,10 @@ export default {
   Create: "Crea",
   "Customize roles and departments": "Personalizza incarichi e reparti",
   Dashboard: "Bacheca",
+  Done: "Finito",
   "For Christian Life Meeting": "Per l'adunanza Vita Cristiana",
   "For Public Meetings": "Per l'adunanza pubblica",
+  Generate: "Genera",
   "Generate the invitation code": "Genera il codice di invito",
   Existing: "Esistente",
   Home: "Pagina inziale",
@@ -36,8 +39,8 @@ export default {
   "invite other to join this congregation":
     "Invita altri ad unirsi a questa congregazione",
   "It's your turn": "Ora tocca a te",
-  "You, as admin, can find the code, if already generated, in the Congregation Setting Page":
-    "Tu, come amministratore, puoi trovare il codice, se già generato, anche nella pagine delle impostazioni della congregazione",
+  "Keep in mind that invitations are disposable, disposable, so as soon as a user uses a code, it is deleted and, to invite another user, you must generate a new invitation code":
+    "Tieni conto che gli inviti sono usa-e-getta, monouso, quindi appena un utente utilizza un codice, questo viene cancellato e, per invitare un altro utente, dovrai generare un nuovo codice d'invito",
   Login: "Accedi",
   Logout: "Esci",
   "meetings for field service": "Adunanze per il ministero di campo",
@@ -52,17 +55,27 @@ export default {
   schedules: "programmi",
   "see istructions and generate invitation code":
     "Leggi le istruzioni e genera il codice d'invito",
+  "Setting updated": "Impostazione aggiornata",
   Settings: "Impostazioni",
   "Sorry, nothing here": "Spiacente, ma qui non c'è nulla",
   "sound department": "reparto acustica",
   "Tell him/her to choose to join an existing one":
     "Spiegagli/le che dovrà scegliere di unirsi ad una congregazione già esistente",
+  "That's all you, as administrator, have to do":
+    "Tu, come amministratore, non devi fare altro",
   "Then, him/her must insert the invitation code that you can find or generate below these instructions":
     "A questo punto, dovrà inserire il codice di invito che puoi trovare, o generare, sotto a queste istruzioni",
+  "The user will now need to register, choose to join an existing congregation, and enter the code that you have communicated to him or her":
+    "L'utente ora dovrà registrarsi, scegliere di unirsi ad una congregazione già esistente, ed inserire il codice che gli avrai comunicato",
   "This feature is actually being develope, it's coming as soon as possible":
     "Questa funzionalità è in corso di sviluppo, arriverà appena possibile",
+  "This is your invitation code": "Questo è il tuo codice di invito",
   "View and Edit Schedules": "Visualizza e modifica i programmi",
   "watchtower reader": "lettore torre di guardia",
   "watchtower's readers": "lettori torre di guardia",
-  "What other user needs": "Di cosa han bisogno i nuovi utenti"
+  "Wait for the user to join your congregation":
+    "Aspetta che l'utente si unisca alla tua congregazione",
+  "What other user needs": "Di cosa han bisogno i nuovi utenti",
+  "You, as admin, can find the code, if already generated, in the Congregation Setting Page":
+    "Tu, come amministratore, puoi trovare il codice, se già generato, anche nella pagine delle impostazioni della congregazione"
 };
