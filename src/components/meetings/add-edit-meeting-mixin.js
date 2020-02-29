@@ -7,6 +7,9 @@ export default {
     publishersOptions: function() {
       let options = [];
       let publishers = this.publishers;
+      if (typeof publishers === "undefined") {
+        return options;
+      }
       Object.keys(publishers).forEach(key => {
         options.push({
           label: publishers[key].fullName,
