@@ -13,6 +13,9 @@ const getters = {
     return state.settings.noOfPeopleAtSoundDepartment
       ? state.settings.noOfPeopleAtSoundDepartment
       : 1;
+  },
+  invitationCode: state => {
+    return state.settings.invitationCode ? state.settings.invitationCode : null;
   }
 };
 

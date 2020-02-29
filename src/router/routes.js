@@ -20,6 +20,10 @@ const routes = [
         component: () => import("pages/PageCongregationSettings.vue")
       },
       {
+        path: "/congregation-settings/invitation",
+        component: () => import("pages/settings/PageInvitation.vue")
+      },
+      {
         path: "/meetings-for-field-service",
         component: () =>
           import("pages/meetings/PageMeetingsForFieldService.vue")

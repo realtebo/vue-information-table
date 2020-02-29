@@ -22,6 +22,24 @@
         </q-item-section>
       </q-item>
     </q-list>
+
+    <q-list bordered padding class="q-mb-md">
+      <q-item-label header>{{
+        $t("members of your congregation") | titleCase
+      }}</q-item-label>
+
+      <q-item to="/congregation-settings/invitation" tag="label" v-ripple>
+        <q-item-section>
+          <q-item-label>{{
+            $t("invite other to join this congregation")
+          }}</q-item-label>
+          <q-item-label caption>{{ invitationCodeLabel }} </q-item-label>
+        </q-item-section>
+        <q-item-section side>
+          <q-icon name="chevron_right" />
+        </q-item-section>
+      </q-item>
+    </q-list>
   </q-page>
 </template>
 
@@ -30,7 +48,10 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "PageCongregationSettings",
   computed: {
-    ...mapGetters("settings", ["noOfPeopleAtSoundDepartment"]),
+    ...mapGetters("settings", [
+      "noOfPeopleAtSoundDepartment",
+      "invitationCode"
+    ]),
     peopleAtSoundDepartment: {
       get: function() {
         return this.noOfPeopleAtSoundDepartment;
@@ -41,6 +62,13 @@ export default {
           value: newValue
         });
       }
+    },
+    invitationCodeLabel: function() {
+      if (this.invitationCode) {
+        return this.$t("Invitation code") + ":" + this.invitationCode;
+      }
+
+      return this.$t("see istructions and generate invitation code");
     }
   },
   methods: {
