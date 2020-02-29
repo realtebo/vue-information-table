@@ -15,6 +15,8 @@
   "devDependencies": {
     "@quasar/app": "^1.5.0",
     "@quasar/extras": "^1.5.2",
+    "@sentry/browser": "^5.13.0",
+    "@sentry/integrations": "^5.13.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "axios": "^0.19.2",
     "babel-eslint": "^10.0.1",
