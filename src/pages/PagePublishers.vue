@@ -1,8 +1,8 @@
 <template>
   <q-page>
-    <internal-container>
-      <page-title>Publishers of {{ memberOf.name }}</page-title>
-
+    <internal-container
+      :title="($t('publishers of') + ' ' + memberOf.name) | titleCase"
+    >
       <scroll-area>
         <q-list
           v-if="Object.keys(publishersSorted).length > 0"
@@ -103,7 +103,6 @@
 import { mapGetters } from "vuex";
 import AddPublisher from "../components/Publishers/AddPublisher";
 import EditPublisher from "../components/Publishers/EditPublisher";
-import PageTitle from "../components/Shared/PageTitle";
 import ScrollArea from "../components/Shared/ScrollArea";
 import InternalContainer from "../components/Shared/InternalContainer";
 export default {
@@ -119,7 +118,6 @@ export default {
   components: {
     AddPublisher,
     EditPublisher,
-    PageTitle,
     ScrollArea,
     InternalContainer
   },

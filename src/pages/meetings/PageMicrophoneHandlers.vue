@@ -1,8 +1,6 @@
 <template>
   <q-page>
-    <internal-container>
-      <page-title>Microphone Handlers</page-title>
-
+    <internal-container :title="$t('microphone handlers') | titleCase">
       <scroll-area>
         <q-list
           v-if="Object.keys(meetingsSorted).length > 0"
@@ -70,7 +68,6 @@
 import { mapGetters } from "vuex";
 import AddMeeting from "../../components/meetings/MicrophoneHandlers/AddMeeting";
 import EditMeeting from "../../components/meetings/MicrophoneHandlers/EditMeeting";
-import PageTitle from "../../components/Shared/PageTitle";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
 export default {
@@ -86,7 +83,6 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
-    PageTitle,
     ScrollArea,
     InternalContainer
   },

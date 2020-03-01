@@ -1,13 +1,7 @@
 <template>
   <q-page padding>
     <instructions />
-    <p>
-      {{
-        $t(
-          "This feature is actually being develope, it's coming as soon as possible"
-        )
-      }}.
-    </p>
+
     <div class="row">
       <q-card
         class="my-card  

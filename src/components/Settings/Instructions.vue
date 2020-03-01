@@ -56,7 +56,7 @@
         {{ $t("That's all you, as administrator, have to do") }}. <br />
         {{
           $t(
-            "Keep in mind that invitations are disposable, disposable, so as soon as a user uses a code, it is deleted and, to invite another user, you must generate a new invitation code"
+            "Keep in mind that the invitation code remains valid at all times, so if you want to prevent it from being reused by someone else you can simply generate a new code"
           )
         }}
       </div>

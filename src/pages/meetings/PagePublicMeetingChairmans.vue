@@ -1,10 +1,8 @@
 <template>
   <q-page>
-    <internal-container>
-      <page-title>
-        Public Meeting's Chairmans
-      </page-title>
-
+    <internal-container
+      :title="($t('chairmans') + ' ' + $t('for public meeting')) | titleCase"
+    >
       <scroll-area>
         <q-list
           v-if="Object.keys(meetingsSorted).length > 0"
@@ -62,7 +60,6 @@
 import { mapGetters } from "vuex";
 import AddMeeting from "../../components/meetings/PublicMeetingChairmans/AddMeeting";
 import EditMeeting from "../../components/meetings/PublicMeetingChairmans/EditMeeting";
-import PageTitle from "../../components/Shared/PageTitle";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
 export default {
@@ -78,7 +75,6 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
-    PageTitle,
     ScrollArea,
     InternalContainer
   },

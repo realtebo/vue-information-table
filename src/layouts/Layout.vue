@@ -3,6 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn
+          v-if="loggedIn"
           flat
           dense
           round
@@ -36,106 +37,108 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-2"
-    >
-      <q-list>
-        <sidebar-item
-          to="/"
-          icon="home"
-          :label="$t('Home')"
-          :caption="$t('Dashboard')"
-        />
+    <template v-if="loggedIn">
+      <q-drawer
+        v-model="leftDrawerOpen"
+        show-if-above
+        bordered
+        content-class="bg-grey-2"
+      >
+        <q-list>
+          <sidebar-item
+            to="/"
+            icon="home"
+            :label="$t('Home')"
+            :caption="$t('Dashboard')"
+          />
 
-        <q-separator />
+          <q-separator />
 
-        <q-item-label header>{{ $t("schedules") | titleCase }} </q-item-label>
+          <q-item-label header>{{ $t("schedules") | titleCase }} </q-item-label>
 
-        <sidebar-item
-          to="/meetings-for-field-service"
-          icon="card_travel"
-          :label="$t('meetings for field service') | titleCase"
-          :caption="$t('View and Edit Schedules')"
-        />
+          <sidebar-item
+            to="/meetings-for-field-service"
+            icon="card_travel"
+            :label="$t('meetings for field service') | titleCase"
+            :caption="$t('View and Edit Schedules')"
+          />
 
-        <sidebar-item
-          to="/public-meeting-chairmans"
-          icon="fas fa-user-tie"
-          :label="$t('chairmans') | titleCase"
-          :caption="$t('For Public Meetings')"
-        />
+          <sidebar-item
+            to="/public-meeting-chairmans"
+            icon="fas fa-user-tie"
+            :label="$t('chairmans') | titleCase"
+            :caption="$t('for public meeting') | titleCase"
+          />
 
-        <sidebar-item
-          to="/public-meeting-readers"
-          icon="mdi-chess-rook"
-          :label="$t('watchtower\'s readers') | titleCase"
-          :caption="$t('For Public Meetings')"
-        />
+          <sidebar-item
+            to="/public-meeting-readers"
+            icon="mdi-chess-rook"
+            :label="$t('watchtower\'s readers') | titleCase"
+            :caption="$t('for public meeting') | titleCase"
+          />
 
-        <sidebar-item
-          to="/sound-department"
-          icon="mdi-surround-sound"
-          :label="$t('sound department') | titleCase"
-          :caption="$t('Mixer, Pc, etc...')"
-        />
+          <sidebar-item
+            to="/sound-department"
+            icon="mdi-surround-sound"
+            :label="$t('sound department') | titleCase"
+            :caption="$t('Mixer, Pc, etc...')"
+          />
 
-        <sidebar-item
-          to="/microphone-handlers"
-          icon="fas fa-microphone"
-          :label="$t('microphone handlers') | titleCase"
-          :caption="$t('schedules') | titleCase"
-        />
+          <sidebar-item
+            to="/microphone-handlers"
+            icon="fas fa-microphone"
+            :label="$t('microphone handlers') | titleCase"
+            :caption="$t('schedules') | titleCase"
+          />
 
-        <sidebar-item
-          to="/attendants"
-          icon="mdi-shield-account"
-          :label="$t('attendants') | titleCase"
-          :caption="$t('schedules') | titleCase"
-        />
+          <sidebar-item
+            to="/attendants"
+            icon="mdi-shield-account"
+            :label="$t('attendants') | titleCase"
+            :caption="$t('schedules') | titleCase"
+          />
 
-        <sidebar-item
-          to="/christian-life-chairmans"
-          icon="fas fa-user-tie"
-          :label="$t('chairmans') | titleCase"
-          :caption="$t('For Christian Life Meeting')"
-        />
+          <sidebar-item
+            to="/christian-life-chairmans"
+            icon="fas fa-user-tie"
+            :label="$t('chairmans') | titleCase"
+            :caption="$t('for christian life meeting') | titleCase"
+          />
 
-        <sidebar-item
-          to="/christian-life-prayers"
-          icon="fas fa-praying-hands"
-          :label="$t('prayers') | titleCase"
-          :caption="$t('For Christian Life Meeting')"
-        />
+          <sidebar-item
+            to="/christian-life-prayers"
+            icon="fas fa-praying-hands"
+            :label="$t('prayers') | titleCase"
+            :caption="$t('for christian life meeting') | titleCase"
+          />
 
-        <sidebar-item
-          to="/book-readers"
-          icon="mdi-book-open-page-variant"
-          :label="$t('book study readers') | titleCase"
-          :caption="$t('For Christian Life Meeting')"
-        />
+          <sidebar-item
+            to="/book-readers"
+            icon="mdi-book-open-page-variant"
+            :label="$t('book study readers') | titleCase"
+            :caption="$t('for christian life meeting') | titleCase"
+          />
 
-        <q-separator />
+          <q-separator />
 
-        <q-item-label header>{{ $t("Settings") }} </q-item-label>
+          <q-item-label header>{{ $t("Settings") }} </q-item-label>
 
-        <sidebar-item
-          to="/publishers"
-          icon="school"
-          :label="$t('publishers') | titleCase"
-          :caption="$t('Anagraphics and Roles')"
-        />
+          <sidebar-item
+            to="/publishers"
+            icon="school"
+            :label="$t('publishers') | titleCase"
+            :caption="$t('Anagraphics and Roles')"
+          />
 
-        <sidebar-item
-          to="/congregation-settings"
-          icon="fas fa-cog"
-          :label="$t('congregation settings') | titleCase"
-          :caption="$t('Customize roles and departments')"
-        />
-      </q-list>
-    </q-drawer>
+          <sidebar-item
+            to="/congregation-settings"
+            icon="fas fa-cog"
+            :label="$t('congregation settings') | titleCase"
+            :caption="$t('Customize roles and departments')"
+          />
+        </q-list>
+      </q-drawer>
+    </template>
 
     <q-page-container>
       <router-view />
