@@ -5,16 +5,16 @@
         <template v-slot:avatar>
           <q-icon name="account_circle" color="primary" />
         </template>
-        {{ tab | titleCase }}
-        to access To Do everywhere.
+        {{ $t(tab) | titleCase }}
+        {{ $t("to access schedules everywhere") }}.
       </q-banner>
     </div>
 
     <div class="row ">
       <p class="col text-center">
-        I suggest you to login using social login.
+        {{ $t("I suggest you to login using social login") }}.
         <br />
-        You will be registered automatically
+        {{ $t("You will be registered automatically") }}
       </p>
     </div>
     <div class="row q-mb-md">
@@ -32,7 +32,9 @@
 
     <div class="row ">
       <p class="col text-center">
-        Otherwise, feel free to use your email address and a password
+        {{
+          $t("Otherwise, feel free to use your email address and a password")
+        }}
       </p>
     </div>
 
@@ -42,12 +44,12 @@
         class="col"
         outlined
         v-model="formData.email"
-        label="Email"
+        :label="$t('Email')"
         ref="email"
         stack-label
         :rules="[
           val =>
-            isValidEmailAddress(val) || 'Please enter a valid email address'
+            isValidEmailAddress(val) || $t('Please enter a valid email address')
         ]"
         lazy-rules
       />
@@ -55,13 +57,13 @@
 
     <div class="row q-mb-md">
       <q-input
-        :rules="[val => val.length >= 6 || 'Please enter at least 6 chars']"
+        :rules="[val => val.length >= 6 || $t('Please enter at least 6 chars')]"
         lazy-rules
         type="password"
         class="col"
         outlined
         v-model="formData.password"
-        label="Password"
+        :label="$t('Password')"
         ref="password"
         stack-label
       />
@@ -69,7 +71,7 @@
 
     <div class="row">
       <q-space />
-      <q-btn type="submit" color="primary" :label="tab" />
+      <q-btn type="submit" color="primary" :label="$t(tab)" />
     </div>
   </q-form>
 </template>
