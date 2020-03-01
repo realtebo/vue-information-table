@@ -79,7 +79,6 @@ const actions = {
       commit("deleteSetting", snapshot.key);
     });
   },
-
   updateSetting({ state, rootGetters }, payload) {
     let userMembership = rootGetters["membership/memberOf"];
     let congregationId = userMembership.id;
@@ -102,6 +101,57 @@ const actions = {
         }
       }
     );
+  },
+  async findByInvitationCode(_, payload) {
+    const code = payload;
+
+    // Filtro per figlio: https://firebase.google.com/docs/database/admin/retrieve-data#ordering-by-a-specified-child-key
+    let settingsRef = firebaseDb.ref("settings");
+
+    // questo modo di fare la query equivale a 'where invitationCode = <codice contenuto nel payload>"
+    // il risultato è un DataSnapshot dove
+    // - result.key è "settings"
+    // -.val() è un Datasnapshot (il primo figlio è il nodo che noi dobbiamo esaminare)
+    const result = await settingsRef
+      .indexOn("invitationCode")
+      .orderByChild("invitationCode")
+      .equalTo(payload)
+      .limitToFirst(1)
+      .once(
+        "value",
+        snapshot => {
+          const out = {
+            id: snapshot.key,
+            name: snapshot.val() ? snapshot.val().name : null
+          };
+          return out;
+        },
+        error => {
+          showErrorMessage(error.message);
+          return false;
+        }
+      );
+
+    if (typeof result.val !== "function") {
+      //console.log("Tipo non previsto", typeof result.val);
+      return false;
+    }
+    const congregation_node = result.val(); // DataSnapshot
+    if (congregation_node === null) {
+      return false;
+    }
+
+    // Ricavo il primo figlio
+    const first_key = Object.keys(congregation_node)[0];
+    const congregation_data = congregation_node[first_key];
+    // console.log("######");
+    // console.log("first_key", first_key);
+    // console.log("data", congregation_data);
+    // console.log("######");
+
+    // console.log(congregation_node);
+
+    return { id: first_key, name: congregation_data.name };
   }
 };
 

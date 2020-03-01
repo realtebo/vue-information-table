@@ -92,6 +92,25 @@
               "Associate with an existing one; get the invitation code and you will be able to view the pledges, but not administer them"
             )
           }}
+
+          <div class="row q-mt-md">
+            <q-input
+              class="full-width"
+              :label="$t('Invitation code')"
+              outlined
+              stack-label
+              v-model="invitation_code"
+            />
+          </div>
+
+          <div class="row q-mt-md">
+            <q-space />
+            <q-btn
+              @click="findCongregationByInvitationCode"
+              color="secondary"
+              :label="$t('Join')"
+            />
+          </div>
         </q-tab-panel>
       </q-tab-panels>
 
@@ -107,7 +126,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { showErrorMessage } from "../functions/function-show-error-message";
-import { Loading } from "quasar";
+import { Loading, Notify } from "quasar";
 import Calendar from "../components/Index/Calendar";
 export default {
   name: "PageIndex",
@@ -117,15 +136,17 @@ export default {
   data() {
     return {
       tab: "new",
-      new_congregation_name: ""
+      new_congregation_name: "",
+      invitation_code: ""
     };
   },
   computed: {
     ...mapGetters("membership", ["membershipDownloaded", "memberOf"])
   },
   methods: {
-    ...mapActions("membership", ["fbAddCongregation"]),
+    ...mapActions("membership", ["fbAddCongregation", "fbJoinToCongregation"]),
     ...mapActions("auth", ["logoutUser"]),
+    ...mapActions("settings", ["findByInvitationCode"]),
     addMembershipAsAdmin() {
       Loading.show();
       if (!this.new_congregation_name) {
@@ -135,6 +156,27 @@ export default {
       this.fbAddCongregation({
         name: this.new_congregation_name,
         setAdmin: true
+      });
+    },
+    async findCongregationByInvitationCode() {
+      // false | { key, name } dove key è l'id e name è il nome della congregazione
+      const congregation_data = await this.findByInvitationCode(
+        this.invitation_code
+      );
+      // In caso di errore, il find lo visualizza
+      if (congregation_data === false) {
+        Notify.create(this.$t("Invitation code not found"));
+        return false;
+      }
+      this.fbJoinToCongregation({
+        congregation_id: congregation_data.id,
+        congregation_name: congregation_data.name
+      }).then(() => {
+        Notify.create(
+          this.$t(
+            "You have been added as a member of the requested congregation"
+          )
+        );
       });
     }
   }

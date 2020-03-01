@@ -39,6 +39,7 @@ export default {
   "Instruct the user": "Spiega la procedura all'utente",
   Istructions: "Istruzioni",
   "Invitation code": "Codice d'invito",
+  "Invitation code not found": "Codice di invito non trovato",
   "invite other to join this congregation":
     "Invita altri ad unirsi a questa congregazione",
   "It's your turn": "Ora tocca a te",
@@ -92,5 +93,7 @@ export default {
   "What other user needs": "Di cosa han bisogno i nuovi utenti",
   "You, as admin, can find the code, if already generated, in the Congregation Setting Page":
     "Tu, come amministratore, puoi trovare il codice, se già generato, anche nella pagine delle impostazioni della congregazione",
+  "You have been added as a member of the requested congregation":
+    "Sei stato aggiunto come membro alla congregazione richiesta",
   "You will be registered automatically": "La registrazione sarà automatica"
 };

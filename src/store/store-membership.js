@@ -169,7 +169,27 @@ const actions = {
     );
   },
 
-  fbJoinByCode(_, payload) {}
+  fbJoinToCongregation({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let user_ref = firebaseDb.ref(
+      "memberOf/" + userId + "/" + payload.congregation_id
+    );
+    return user_ref.set(
+      {
+        name: payload.congregation_name,
+        isAdmin: false
+      },
+      error => {
+        if (error) {
+          showErrorMessage(error.message);
+        } else {
+          dispatch("fbReadData");
+
+          Loading.hide();
+        }
+      }
+    );
+  }
 };
 
 export default {
