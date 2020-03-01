@@ -12,24 +12,12 @@
           separator
           bordered
         >
-          <q-item
+          <single-entry
             v-for="(meeting, key) in meetingsSorted"
             :key="key"
-            clickable
-            v-ripple
-            @click="openForEdit(key, meeting)"
-          >
-            <q-item-section>
-              <q-item-label>
-                <span class="text-h6">{{ meeting.when }}</span>
-              </q-item-label>
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>
-                <span class="text-h6">{{ meeting.who.label }}</span>
-              </q-item-label>
-            </q-item-section>
-          </q-item>
+            :meeting="meeting"
+            @edit="openForEdit(key, meeting)"
+          />
         </q-list>
       </scroll-area>
 
@@ -65,6 +53,8 @@ import AddMeeting from "../../components/meetings/PublicMeetingReaders/AddMeetin
 import EditMeeting from "../../components/meetings/PublicMeetingReaders/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
+import SingleEntry from "../../components/meetings/shared/SingleEntry";
+
 export default {
   name: "PagePublicMeetingReaders",
   data() {
@@ -79,6 +69,7 @@ export default {
     AddMeeting,
     EditMeeting,
     ScrollArea,
+    SingleEntry,
     InternalContainer
   },
   computed: {

@@ -7,28 +7,16 @@
           separator
           bordered
         >
-          <q-item
+          <single-entry
             v-for="(meeting, key) in meetingsSorted"
             :key="key"
-            clickable
-            v-ripple
-            @click="openForEdit(key, meeting)"
-          >
-            <q-item-section>
-              <q-item-label>
-                <span class="text-h6">{{ meeting.when }}</span>
-              </q-item-label>
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>
-                <span class="text-h6">{{ meeting.who.label }}</span>
-              </q-item-label>
-            </q-item-section>
-          </q-item>
+            :meeting="meeting"
+            @edit="openForEdit(key, meeting)"
+          />
         </q-list>
       </scroll-area>
 
-      <div class="fixed-bottom text-center q-mb-lg no-pointer-events">
+      <div class="bottom text-center q-mb-lg no-pointer-events">
         <q-btn
           round
           color="primary"
@@ -60,6 +48,8 @@ import AddMeeting from "../../components/meetings/MeetingsForFieldService/AddMee
 import EditMeeting from "../../components/meetings/MeetingsForFieldService/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
+import SingleEntry from "../../components/meetings/shared/SingleEntry";
+
 export default {
   name: "PageMeetingsForFieldService",
   data() {
@@ -74,6 +64,7 @@ export default {
     AddMeeting,
     EditMeeting,
     ScrollArea,
+    SingleEntry,
     InternalContainer
   },
   computed: {

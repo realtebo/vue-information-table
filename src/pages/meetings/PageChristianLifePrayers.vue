@@ -11,33 +11,16 @@
           separator
           bordered
         >
-          <q-item
+          <single-entry
             v-for="(meeting, key) in meetingsSorted"
             :key="key"
-            clickable
-            v-ripple
-            @click="openForEdit(key, meeting)"
-          >
-            <q-item-section>
-              <q-item-label>
-                <span class="text-h6">{{ meeting.when }}</span>
-              </q-item-label>
-            </q-item-section>
-            <q-item-section v-if="meeting.who1">
-              <q-item-label>
-                <span class="text-h6">{{ meeting.who1.label }}</span>
-              </q-item-label>
-            </q-item-section>
-            <q-item-section v-if="meeting.who2">
-              <q-item-label>
-                <span class="text-h6">{{ meeting.who2.label }}</span>
-              </q-item-label>
-            </q-item-section>
-          </q-item>
+            :meeting="meeting"
+            @edit="openForEdit(key, meeting)"
+          />
         </q-list>
       </scroll-area>
 
-      <div class="fixed-bottom text-center q-mb-lg no-pointer-events">
+      <div class="bottom text-center q-mb-lg no-pointer-events">
         <q-btn
           round
           color="primary"
@@ -69,6 +52,8 @@ import AddMeeting from "../../components/meetings/ChristianLifePrayers/AddMeetin
 import EditMeeting from "../../components/meetings/ChristianLifePrayers/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
+import SingleEntry from "../../components/meetings/shared/SingleEntry";
+
 export default {
   name: "PageChristianLifePrayers",
   data() {
@@ -83,6 +68,7 @@ export default {
     AddMeeting,
     EditMeeting,
     ScrollArea,
+    SingleEntry,
     InternalContainer
   },
   computed: {
