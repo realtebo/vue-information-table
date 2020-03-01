@@ -23,12 +23,15 @@ export default {
   "Customize roles and departments": "Personalizza incarichi e reparti",
   Dashboard: "Bacheca",
   Done: "Finito",
+  Email: "Email",
+  Existing: "Esistente",
   "For Christian Life Meeting": "Per l'adunanza Vita Cristiana",
   "For Public Meetings": "Per l'adunanza pubblica",
   Generate: "Genera",
   "Generate the invitation code": "Genera il codice di invito",
-  Existing: "Esistente",
   Home: "Pagina inziale",
+  "I suggest you to login using social login":
+    "Ti suggerisco di eseguire l'accesso usando il login via social",
   "If you have already generated the invitation code, and you have communicated it to the user, do not generate a new code otherwise the user you sent will not be able to complete the registration":
     "Se hai già generato il codice di invito, e lo hai comunicato all'utente, non generare un nuovo codice altrimenti l'utente che hai inviato non riuscira a completare la registrazione",
   "If you haven't generated the code yet, click on the button below to generate a new code, then tell the user you want to invite":
@@ -39,8 +42,10 @@ export default {
   "invite other to join this congregation":
     "Invita altri ad unirsi a questa congregazione",
   "It's your turn": "Ora tocca a te",
+  Join: "Unisciti",
   "Keep in mind that invitations are disposable, disposable, so as soon as a user uses a code, it is deleted and, to invite another user, you must generate a new invitation code":
     "Tieni conto che gli inviti sono usa-e-getta, monouso, quindi appena un utente utilizza un codice, questo viene cancellato e, per invitare un altro utente, dovrai generare un nuovo codice d'invito",
+  login: "accedi",
   Login: "Accedi",
   Logout: "Esci",
   "meetings for field service": "Adunanze per il ministero di campo",
@@ -50,8 +55,16 @@ export default {
   "Name of the new congregation": "Nome della nuova congregazione",
   New: "Nuova",
   "Number of people": "Numero di persone",
+  "Otherwise, feel free to use your email address and a password":
+    "Altrimenti, sentiti libero/a di usare il tuo indirizzo email e una password",
+  Password: "Password",
+  "Please enter a valid email address":
+    "Per favore, inserisci un indirizzo email valido",
+  "Please enter at least 6 chars": "Per favore, inserisci almeno 6 caratteri",
   prayers: "preghiere",
   publishers: "proclamatori",
+  register: "registrati",
+  Register: "Registrati",
   schedules: "programmi",
   "see istructions and generate invitation code":
     "Leggi le istruzioni e genera il codice d'invito",
@@ -70,6 +83,7 @@ export default {
   "This feature is actually being develope, it's coming as soon as possible":
     "Questa funzionalità è in corso di sviluppo, arriverà appena possibile",
   "This is your invitation code": "Questo è il tuo codice di invito",
+  "to access schedules everywhere": "per accedere ai programmi dovunque tu sia",
   "View and Edit Schedules": "Visualizza e modifica i programmi",
   "watchtower reader": "lettore torre di guardia",
   "watchtower's readers": "lettori torre di guardia",
@@ -77,5 +91,6 @@ export default {
     "Aspetta che l'utente si unisca alla tua congregazione",
   "What other user needs": "Di cosa han bisogno i nuovi utenti",
   "You, as admin, can find the code, if already generated, in the Congregation Setting Page":
-    "Tu, come amministratore, puoi trovare il codice, se già generato, anche nella pagine delle impostazioni della congregazione"
+    "Tu, come amministratore, puoi trovare il codice, se già generato, anche nella pagine delle impostazioni della congregazione",
+  "You will be registered automatically": "La registrazione sarà automatica"
 };

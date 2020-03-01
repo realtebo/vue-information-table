@@ -10,8 +10,8 @@
         align="justify"
         narrow-indicator
       >
-        <q-tab name="login" label="Login" />
-        <q-tab name="register" label="Register" />
+        <q-tab name="login" :label="$t('Login')" />
+        <q-tab name="register" :label="$t('Register')" />
       </q-tabs>
 
       <q-separator />
