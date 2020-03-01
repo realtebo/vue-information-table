@@ -55,7 +55,7 @@ export default {
   methods: {
     ...mapActions("settings", ["updateSetting"]),
     genereateCode() {
-      let text = " ";
+      let text = "";
       let chars = "1234567890";
 
       for (let i = 0; i < 6; i++) {
