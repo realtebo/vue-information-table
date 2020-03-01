@@ -140,7 +140,7 @@ const actions = {
     );
   },
 
-  fbAddCongregation(_, payload) {
+  fbAddCongregation({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let user_ref = firebaseDb.ref("memberOf/" + userId + "/");
     let new_key_ref = user_ref.push();
@@ -153,12 +153,23 @@ const actions = {
         if (error) {
           showErrorMessage(error.message);
         } else {
+          // Creo il nodo in setitngs per salvare il nome
+          dispatch(
+            "settings/updateSetting",
+            { key: "name", value: payload.name },
+            { root: true }
+          );
+
+          dispatch("fbReadData");
+
           Notify.create("Nuova congregazione creata");
           Loading.hide();
         }
       }
     );
-  }
+  },
+
+  fbJoinByCode(_, payload) {}
 };
 
 export default {
