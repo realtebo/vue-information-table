@@ -31,7 +31,7 @@ const mutations = {
     Vue.set(state.settings, payload.id, payload.setting);
   },
   updateSetting(state, payload) {
-    // Si usa Vues.set perchè payload.updates NON è un oggetto
+    // Si usa Vue.set perchè payload.updates NON è un oggetto
     Vue.set(state.settings, payload.id, payload.updates);
   },
   deleteSetting(state, id) {
@@ -80,10 +80,17 @@ const actions = {
     });
   },
 
-  updateSetting({ rootGetters }, payload) {
+  updateSetting({ state, rootGetters }, payload) {
     let userMembership = rootGetters["membership/memberOf"];
     let congregationId = userMembership.id;
     let settingsRef = firebaseDb.ref("settings/" + congregationId);
+
+    // Mi assicuro che anche le vecchie congregazioni abbiano il nome nelle impostazioni
+    if (typeof state.settings.name === "undefined") {
+      settingsRef.update({
+        name: rootGetters["membership/memberOf"].name
+      });
+    }
 
     return settingsRef.update(
       {
