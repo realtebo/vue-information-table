@@ -20,7 +20,7 @@
         </q-list>
       </scroll-area>
 
-      <fab-add @add="showAdd = true" />
+      <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
         <add-meeting @close="showAdd = false" />
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import AddMeeting from "../../components/meetings/ChristianLifeChairmans/AddMeeting";
 import EditMeeting from "../../components/meetings/ChristianLifeChairmans/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
@@ -65,10 +65,12 @@ export default {
     InternalContainer
   },
   computed: {
+    ...mapState("membership", ["isAdmin"]),
     ...mapGetters("christianLifeChairmans", ["meetingsSorted"])
   },
   methods: {
     openForEdit(key, meeting) {
+      if (!this.isAdmin) return;
       this.meetingKeySelected = key;
       this.meetingSelected = meeting;
       this.showEdit = true;

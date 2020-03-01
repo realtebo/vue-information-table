@@ -119,23 +119,25 @@
             :caption="$t('for christian life meeting') | titleCase"
           />
 
-          <q-separator />
+          <template v-if="isAdmin">
+            <q-separator />
 
-          <q-item-label header>{{ $t("Settings") }} </q-item-label>
+            <q-item-label header>{{ $t("Settings") }} </q-item-label>
 
-          <sidebar-item
-            to="/publishers"
-            icon="school"
-            :label="$t('publishers') | titleCase"
-            :caption="$t('Anagraphics and Roles')"
-          />
+            <sidebar-item
+              to="/publishers"
+              icon="school"
+              :label="$t('publishers') | titleCase"
+              :caption="$t('Anagraphics and Roles')"
+            />
 
-          <sidebar-item
-            to="/congregation-settings"
-            icon="fas fa-cog"
-            :label="$t('congregation settings') | titleCase"
-            :caption="$t('Customize roles and departments')"
-          />
+            <sidebar-item
+              to="/congregation-settings"
+              icon="fas fa-cog"
+              :label="$t('congregation settings') | titleCase"
+              :caption="$t('Customize roles and departments')"
+            />
+          </template>
         </q-list>
       </q-drawer>
     </template>
@@ -155,7 +157,8 @@ export default {
     SidebarItem
   },
   computed: {
-    ...mapState("auth", ["loggedIn"])
+    ...mapState("auth", ["loggedIn"]),
+    ...mapState("membership", ["isAdmin"])
   },
   methods: {
     ...mapActions("auth", ["logoutUser"])

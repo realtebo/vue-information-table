@@ -16,7 +16,7 @@
         </q-list>
       </scroll-area>
 
-      <fab-add @add="showAdd = true" />
+      <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
         <add-meeting @close="showAdd = false" />
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import AddMeeting from "../../components/meetings/Attendants/AddMeeting";
 import EditMeeting from "../../components/meetings/Attendants/EditMeeting";
 import SingleEntry from "../../components/meetings/shared/SingleEntry";
@@ -60,10 +60,12 @@ export default {
     InternalContainer
   },
   computed: {
+    ...mapState("membership", ["isAdmin"]),
     ...mapGetters("attendants", ["meetingsSorted"])
   },
   methods: {
     openForEdit(key, meeting) {
+      if (!this.isAdmin) return;
       this.meetingKeySelected = key;
       this.meetingSelected = meeting;
       this.showEdit = true;
