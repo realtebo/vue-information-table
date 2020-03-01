@@ -16,16 +16,7 @@
         </q-list>
       </scroll-area>
 
-      <div class="bottom text-center q-mb-lg no-pointer-events">
-        <q-btn
-          round
-          color="primary"
-          size="24px"
-          class="all-pointer-events"
-          icon="add"
-          @click="showAddMeeting = true"
-        />
-      </div>
+      <fab-add @add="showAdd = true" />
 
       <q-dialog v-model="showAddMeeting" persistent>
         <add-meeting @close="showAddMeeting = false" />
@@ -49,6 +40,7 @@ import EditMeeting from "../../components/meetings/MeetingsForFieldService/EditM
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
 import SingleEntry from "../../components/meetings/shared/SingleEntry";
+import FabAdd from "../../components/meetings/shared/FabAdd";
 
 export default {
   name: "PageMeetingsForFieldService",
@@ -63,6 +55,7 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
+    FabAdd,
     ScrollArea,
     SingleEntry,
     InternalContainer
