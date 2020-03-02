@@ -1,17 +1,19 @@
 <template>
   <q-page>
-    <internal-container
-      :title="
-        ($t('watchtower\'s readers') + ' ' + $t('for public meeting'))
-          | titleCase
-      "
-    >
+    <internal-container :title="$t('watchtower\'s readers') | titleCase">
       <entry-list namespace="publicMeetingReaders" @edit="openForEdit" />
 
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <add-meeting @close="showAdd = false" />
+        <generic-add
+          subject="watchtower's readers"
+          namespace="public-meeting-readers"
+          hasWhen="true"
+          hasWho="true"
+          :whoLabel="$t('reader') | titleCase"
+          @close="showAdd = false"
+        />
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
@@ -26,12 +28,12 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import AddMeeting from "../../components/meetings/PublicMeetingReaders/AddMeeting";
+import { mapState } from "vuex";
 import EditMeeting from "../../components/meetings/PublicMeetingReaders/EditMeeting";
 import EntryList from "../../components/meetings/Shared/EntryList";
-import InternalContainer from "../../components/Shared/InternalContainer";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import GenericAdd from "../../components/meetings/Shared/GenericAdd";
+import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
   name: "PagePublicMeetingReaders",
@@ -44,10 +46,10 @@ export default {
     };
   },
   components: {
-    AddMeeting,
     EditMeeting,
     EntryList,
     FabAdd,
+    GenericAdd,
     InternalContainer
   },
   computed: {

@@ -23,3 +23,7 @@ Vue.filter("titleCase", function(value) {
   // Directly return the joined string
   return splitStr.join(" ");
 });
+
+Vue.filter("firstLower", function(value) {
+  return value.charAt(0).toLowerCase() + value.substring(1);
+});

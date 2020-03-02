@@ -10,7 +10,17 @@
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <add-meeting @close="showAdd = false" />
+        <generic-add
+          subject="prayers"
+          subject2="for christian life meeting"
+          namespace="christian-life-prayers"
+          hasWhen="true"
+          hasWho1="true"
+          :who1Label="$t('initial') | titleCase"
+          hasWho2="true"
+          :who2Label="$t('final') | titleCase"
+          @close="showAdd = false"
+        />
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
@@ -25,12 +35,12 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import AddMeeting from "../../components/meetings/ChristianLifePrayers/AddMeeting";
+import { mapState } from "vuex";
 import EditMeeting from "../../components/meetings/ChristianLifePrayers/EditMeeting";
 import EntryList from "../../components/meetings/Shared/EntryList";
-import InternalContainer from "../../components/Shared/InternalContainer";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import GenericAdd from "../../components/meetings/Shared/GenericAdd";
+import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
   name: "PageChristianLifePrayers",
@@ -43,10 +53,10 @@ export default {
     };
   },
   components: {
-    AddMeeting,
     EditMeeting,
     EntryList,
     FabAdd,
+    GenericAdd,
     InternalContainer
   },
   computed: {

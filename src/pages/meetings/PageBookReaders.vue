@@ -1,17 +1,20 @@
 <template>
   <q-page>
-    <internal-container
-      :title="
-        ($t('book study readers') + ' ' + $t('for christian life meeting'))
-          | titleCase
-      "
-    >
+    <internal-container :title="$t('book study readers') | titleCase">
       <entry-list namespace="bookReaders" @edit="openForEdit" />
 
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <add-meeting @close="showAdd = false" />
+        <!-- <add-meeting @close="showAdd = false" /> -->
+        <generic-add
+          subject="book study readers"
+          namespace="book-readers"
+          hasWhen="true"
+          hasWho="true"
+          :whoLabel="$t('reader') | titleCase"
+          @close="showAdd = false"
+        />
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
@@ -26,11 +29,11 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import AddMeeting from "../../components/meetings/BookReaders/AddMeeting";
+import { mapState } from "vuex";
 import EditMeeting from "../../components/meetings/BookReaders/EditMeeting";
 import EntryList from "../../components/meetings/Shared/EntryList";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import GenericAdd from "../../components/meetings/Shared/GenericAdd";
 import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
@@ -44,10 +47,10 @@ export default {
     };
   },
   components: {
-    AddMeeting,
     EditMeeting,
     EntryList,
     FabAdd,
+    GenericAdd,
     InternalContainer
   },
   computed: {

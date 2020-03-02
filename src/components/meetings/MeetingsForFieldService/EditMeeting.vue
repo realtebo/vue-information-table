@@ -81,8 +81,8 @@ export default {
   },
   computed: {
     ...mapGetters("publishers", {
-      publishers: "conductorsOfMeetingsForFieldService",
-      numberOfPublishers: "numberOfConductorsOfMeetingsForFieldService"
+      publishers: "meetingsForFieldService",
+      numberOfPublishers: "numberOfMeetingsForFieldService"
     })
   },
   methods: {

@@ -33,7 +33,7 @@ const getters = {
 
     return publishersSorted;
   },
-  conductorsOfMeetingsForFieldService: (state, getters) => {
+  meetingsForFieldService: (state, getters) => {
     let publishersFiltered = {};
     let publishers = getters.publishersSorted;
     Object.keys(publishers).forEach(key => {
@@ -44,8 +44,8 @@ const getters = {
     });
     return publishersFiltered;
   },
-  numberOfConductorsOfMeetingsForFieldService: (state, getters) => {
-    return Object.keys(getters.conductorsOfMeetingsForFieldService).length;
+  numberOfMeetingsForFieldService: (state, getters) => {
+    return Object.keys(getters.meetingsForFieldService).length;
   },
   publicMeetingChairmans: (state, getters) => {
     let publishersFiltered = {};
@@ -75,7 +75,7 @@ const getters = {
   numberOfPublicMeetingReaders: (state, getters) => {
     return Object.keys(getters.publicMeetingReaders).length;
   },
-  assignedToSoundDepartment: (state, getters) => {
+  soundDepartment: (state, getters) => {
     let publishersFiltered = {};
     let publishers = getters.publishersSorted;
     Object.keys(publishers).forEach(key => {
@@ -86,8 +86,8 @@ const getters = {
     });
     return publishersFiltered;
   },
-  numberOfAssignedToSoundDepartment: (state, getters) => {
-    return Object.keys(getters.publicMeetingReaders).length;
+  numberOfSoundDepartment: (state, getters) => {
+    return Object.keys(getters.soundDepartment).length;
   },
   microphoneHandlers: (state, getters) => {
     let publishersFiltered = {};
@@ -101,7 +101,7 @@ const getters = {
     return publishersFiltered;
   },
   numberOfMicrophoneHandlers: (state, getters) => {
-    return Object.keys(getters.publicMeetingReaders).length;
+    return Object.keys(getters.microphoneHandlers).length;
   },
   attendants: (state, getters) => {
     let publishersFiltered = {};
@@ -115,7 +115,7 @@ const getters = {
     return publishersFiltered;
   },
   numberOfAttendants: (state, getters) => {
-    return Object.keys(getters.publicMeetingReaders).length;
+    return Object.keys(getters.attendants).length;
   },
   christianLifeChairmans: (state, getters) => {
     let publishersFiltered = {};

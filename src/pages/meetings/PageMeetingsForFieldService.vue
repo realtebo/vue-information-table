@@ -6,7 +6,15 @@
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <add-meeting @close="showAdd = false" />
+        <!-- <add-meeting @close="showAdd = false" /> -->
+        <generic-add
+          subject="meetings for field service"
+          namespace="meetings-for-field-service"
+          hasWhen="true"
+          hasWho="true"
+          :whoLabel="$t('conductor') | titleCase"
+          @close="showAdd = false"
+        />
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
@@ -21,12 +29,12 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import AddMeeting from "../../components/meetings/MeetingsForFieldService/AddMeeting";
+import { mapState } from "vuex";
 import EditMeeting from "../../components/meetings/MeetingsForFieldService/EditMeeting";
 import EntryList from "../../components/meetings/Shared/EntryList";
-import InternalContainer from "../../components/Shared/InternalContainer";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import GenericAdd from "../../components/meetings/Shared/GenericAdd";
+import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
   name: "PageMeetingsForFieldService",
@@ -39,10 +47,10 @@ export default {
     };
   },
   components: {
-    AddMeeting,
     EditMeeting,
     EntryList,
     FabAdd,
+    GenericAdd,
     InternalContainer
   },
   computed: {

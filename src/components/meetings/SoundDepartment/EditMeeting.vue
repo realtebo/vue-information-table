@@ -89,8 +89,8 @@ export default {
   },
   computed: {
     ...mapGetters("publishers", {
-      publishers: "assignedToSoundDepartment",
-      numberOfPublishers: "numberOfAssignedToSoundDepartment"
+      publishers: "soundDepartment",
+      numberOfPublishers: "numberOfSoundDepartment"
     }),
     ...mapGetters("settings", ["noOfPeopleAtSoundDepartment"])
   },

@@ -10,7 +10,15 @@
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <add-meeting @close="showAdd = false" />
+        <generic-add
+          subject="chairmans"
+          subject2="for christian life meeting"
+          namespace="christian-life-chairmans"
+          hasWhen="true"
+          hasWho="true"
+          :whoLabel="$t('chairman') | titleCase"
+          @close="showAdd = false"
+        />
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
@@ -25,12 +33,12 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import AddMeeting from "../../components/meetings/ChristianLifeChairmans/AddMeeting";
+import { mapState } from "vuex";
 import EditMeeting from "../../components/meetings/ChristianLifeChairmans/EditMeeting";
 import EntryList from "../../components/meetings/Shared/EntryList";
-import InternalContainer from "../../components/Shared/InternalContainer";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import GenericAdd from "../../components/meetings/Shared/GenericAdd";
+import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
   name: "PageChristianLifeChairmans",
@@ -43,10 +51,10 @@ export default {
     };
   },
   components: {
-    AddMeeting,
     EditMeeting,
     EntryList,
     FabAdd,
+    GenericAdd,
     InternalContainer
   },
   computed: {

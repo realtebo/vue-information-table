@@ -6,7 +6,18 @@
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <add-meeting @close="showAdd = false" />
+        <generic-add
+          subject="sound department"
+          namespace="sound-department"
+          hasWhen="true"
+          hasWho1="true"
+          :who1Label="$t('first') | titleCase"
+          hasWho2="true"
+          :who2Label="$t('second') | titleCase"
+          :hasWho3="noOfPeopleAtSoundDepartment > 2"
+          :who3Label="$t('third') | titleCase"
+          @close="showAdd = false"
+        />
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
@@ -22,11 +33,11 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import AddMeeting from "../../components/meetings/SoundDepartment/AddMeeting";
 import EditMeeting from "../../components/meetings/SoundDepartment/EditMeeting";
 import EntryList from "../../components/meetings/Shared/EntryList";
-import InternalContainer from "../../components/Shared/InternalContainer";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import GenericAdd from "../../components/meetings/Shared/GenericAdd";
+import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
   name: "PageSoundDepartment",
@@ -39,14 +50,15 @@ export default {
     };
   },
   components: {
-    AddMeeting,
     EditMeeting,
     EntryList,
     FabAdd,
+    GenericAdd,
     InternalContainer
   },
   computed: {
-    ...mapState("membership", ["isAdmin"])
+    ...mapState("membership", ["isAdmin"]),
+    ...mapGetters("settings", ["noOfPeopleAtSoundDepartment"])
   },
   methods: {
     openForEdit(key, meeting) {

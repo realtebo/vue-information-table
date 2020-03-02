@@ -15,6 +15,7 @@ export default {
     "Scegli come chiamare la nuova congregazione",
   "christian life meeting prayers": "preghiera adunanza vita cristiana",
   "Click to generate a code": "Clicca per generare un codice",
+  conductor: "Conduttore",
   Congregation: "Congregazione",
   "congregation settings": "impostazioni di congregazione",
   "Create a new congregation, and become its administrator, being able to enter names and commitments":
@@ -25,6 +26,8 @@ export default {
   Done: "Finito",
   Email: "Email",
   Existing: "Esistente",
+  final: "Finale",
+  first: "primo",
   "for christian life meeting": "Per l'adunanza Vita Cristiana",
   "for public meeting": "Per l'adunanza pubblica",
   Generate: "Genera",
@@ -36,6 +39,7 @@ export default {
     "Se hai già generato il codice di invito, e lo hai comunicato all'utente, non generare un nuovo codice altrimenti l'utente che hai inviato non riuscira a completare la registrazione",
   "If you haven't generated the code yet, click on the button below to generate a new code, then tell the user you want to invite":
     "Se non hai ancora generato il codice, clicca sul pulsante qui sotto per generare un nuovo codice, quindi comunicalo all'utente che vuoi invitare",
+  initial: "Iniziale",
   "Instruct the user": "Spiega la procedura all'utente",
   Istructions: "Istruzioni",
   "Invitation code": "Codice d'invito",
@@ -65,9 +69,11 @@ export default {
   prayers: "preghiere",
   publishers: "proclamatori",
   "publishers of": "proclamatori di",
+  reader: "lettore",
   register: "registrati",
   Register: "Registrati",
   schedules: "programmi",
+  second: "secondo",
   "see istructions and generate invitation code":
     "Leggi le istruzioni e genera il codice d'invito",
   "Setting updated": "Impostazione aggiornata",
@@ -82,6 +88,9 @@ export default {
     "A questo punto, dovrà inserire il codice di invito che puoi trovare, o generare, sotto a queste istruzioni",
   "The user will now need to register, choose to join an existing congregation, and enter the code that you have communicated to him or her":
     "L'utente ora dovrà registrarsi, scegliere di unirsi ad una congregazione già esistente, ed inserire il codice che gli avrai comunicato",
+  "There are no publishers assigned to this role. Go to Publishers's list and enable at least one publisher for this assignment":
+    "Nessun proclamatore è stato assegnato a questo incarico. Vai alla lista dei proclamatori e abilita almeno un proclamatore per questa assegnazione",
+  third: "terzo",
   "This feature is actually being develope, it's coming as soon as possible":
     "Questa funzionalità è in corso di sviluppo, arriverà appena possibile",
   "This is your invitation code": "Questo è il tuo codice di invito",
