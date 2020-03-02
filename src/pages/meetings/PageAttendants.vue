@@ -1,20 +1,7 @@
 <template>
   <q-page>
     <internal-container :title="$t('attendants') | titleCase">
-      <scroll-area>
-        <q-list
-          v-if="Object.keys(meetingsSorted).length > 0"
-          separator
-          bordered
-        >
-          <single-entry
-            v-for="(meeting, key) in meetingsSorted"
-            :key="key"
-            :meeting="meeting"
-            @edit="openForEdit(key, meeting)"
-          />
-        </q-list>
-      </scroll-area>
+      <entry-list namespace="attendants" @edit="openForEdit" />
 
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
@@ -37,10 +24,10 @@
 import { mapGetters, mapState } from "vuex";
 import AddMeeting from "../../components/meetings/Attendants/AddMeeting";
 import EditMeeting from "../../components/meetings/Attendants/EditMeeting";
-import SingleEntry from "../../components/meetings/Shared/SingleEntry";
+import EntryList from "../../components/meetings/Shared/EntryList";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
-import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
+
 export default {
   name: "PageAttendants",
   data() {
@@ -54,14 +41,12 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
+    EntryList,
     FabAdd,
-    ScrollArea,
-    SingleEntry,
     InternalContainer
   },
   computed: {
-    ...mapState("membership", ["isAdmin"]),
-    ...mapGetters("attendants", ["meetingsSorted"])
+    ...mapState("membership", ["isAdmin"])
   },
   methods: {
     openForEdit(key, meeting) {

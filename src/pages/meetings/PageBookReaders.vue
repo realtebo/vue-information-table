@@ -6,20 +6,7 @@
           | titleCase
       "
     >
-      <scroll-area>
-        <q-list
-          v-if="Object.keys(meetingsSorted).length > 0"
-          separator
-          bordered
-        >
-          <single-entry
-            v-for="(meeting, key) in meetingsSorted"
-            :key="key"
-            :meeting="meeting"
-            @edit="openForEdit(key, meeting)"
-          />
-        </q-list>
-      </scroll-area>
+      <entry-list namespace="bookReaders" @edit="openForEdit" />
 
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
@@ -42,10 +29,10 @@
 import { mapGetters, mapState } from "vuex";
 import AddMeeting from "../../components/meetings/BookReaders/AddMeeting";
 import EditMeeting from "../../components/meetings/BookReaders/EditMeeting";
-import ScrollArea from "../../components/Shared/ScrollArea";
-import SingleEntry from "../../components/meetings/Shared/SingleEntry";
+import EntryList from "../../components/meetings/Shared/EntryList";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
 import InternalContainer from "../../components/Shared/InternalContainer";
+
 export default {
   name: "PageBookReaders",
   data() {
@@ -59,14 +46,12 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
+    EntryList,
     FabAdd,
-    ScrollArea,
-    SingleEntry,
     InternalContainer
   },
   computed: {
-    ...mapState("membership", ["isAdmin"]),
-    ...mapGetters("bookReaders", ["meetingsSorted"])
+    ...mapState("membership", ["isAdmin"])
   },
   methods: {
     openForEdit(key, meeting) {

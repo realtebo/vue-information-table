@@ -1,20 +1,7 @@
 <template>
   <q-page>
     <internal-container :title="$t('microphone handlers') | titleCase">
-      <scroll-area>
-        <q-list
-          v-if="Object.keys(meetingsSorted).length > 0"
-          separator
-          bordered
-        >
-          <single-entry
-            v-for="(meeting, key) in meetingsSorted"
-            :key="key"
-            :meeting="meeting"
-            @edit="openForEdit(key, meeting)"
-          />
-        </q-list>
-      </scroll-area>
+      <entry-list namespace="microphoneHandlers" @edit="openForEdit" />
 
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
@@ -34,13 +21,12 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 import AddMeeting from "../../components/meetings/MicrophoneHandlers/AddMeeting";
 import EditMeeting from "../../components/meetings/MicrophoneHandlers/EditMeeting";
-import ScrollArea from "../../components/Shared/ScrollArea";
-import InternalContainer from "../../components/Shared/InternalContainer";
-import SingleEntry from "../../components/meetings/Shared/SingleEntry";
+import EntryList from "../../components/meetings/Shared/EntryList";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
+import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
   name: "PageMicrophoneHandlers",
@@ -55,15 +41,12 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
-    //EntryList,
+    EntryList,
     FabAdd,
-    ScrollArea,
-    SingleEntry,
     InternalContainer
   },
   computed: {
-    ...mapState("membership", ["isAdmin"]),
-    ...mapGetters("microphoneHandlers", ["meetingsSorted"])
+    ...mapState("membership", ["isAdmin"])
   },
   methods: {
     openForEdit(key, meeting) {
