@@ -41,8 +41,8 @@ import AddMeeting from "../../components/meetings/PublicMeetingChairmans/AddMeet
 import EditMeeting from "../../components/meetings/PublicMeetingChairmans/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
-import SingleEntry from "../../components/meetings/shared/SingleEntry";
-import FabAdd from "../../components/meetings/shared/FabAdd";
+import SingleEntry from "../../components/meetings/Shared/SingleEntry";
+import FabAdd from "../../components/meetings/Shared/FabAdd";
 
 export default {
   name: "PagePublicMeetingChairmans",

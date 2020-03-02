@@ -39,8 +39,8 @@ import AddMeeting from "../../components/meetings/MicrophoneHandlers/AddMeeting"
 import EditMeeting from "../../components/meetings/MicrophoneHandlers/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
 import InternalContainer from "../../components/Shared/InternalContainer";
-import SingleEntry from "../../components/meetings/shared/SingleEntry";
-import FabAdd from "../../components/meetings/shared/FabAdd";
+import SingleEntry from "../../components/meetings/Shared/SingleEntry";
+import FabAdd from "../../components/meetings/Shared/FabAdd";
 
 export default {
   name: "PageMicrophoneHandlers",
@@ -55,6 +55,7 @@ export default {
   components: {
     AddMeeting,
     EditMeeting,
+    //EntryList,
     FabAdd,
     ScrollArea,
     SingleEntry,

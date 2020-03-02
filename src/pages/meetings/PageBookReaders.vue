@@ -43,8 +43,8 @@ import { mapGetters, mapState } from "vuex";
 import AddMeeting from "../../components/meetings/BookReaders/AddMeeting";
 import EditMeeting from "../../components/meetings/BookReaders/EditMeeting";
 import ScrollArea from "../../components/Shared/ScrollArea";
-import SingleEntry from "../../components/meetings/shared/SingleEntry";
-import FabAdd from "../../components/meetings/shared/FabAdd";
+import SingleEntry from "../../components/meetings/Shared/SingleEntry";
+import FabAdd from "../../components/meetings/Shared/FabAdd";
 import InternalContainer from "../../components/Shared/InternalContainer";
 export default {
   name: "PageBookReaders",
