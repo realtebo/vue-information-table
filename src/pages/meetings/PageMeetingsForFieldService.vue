@@ -18,11 +18,11 @@
 
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
-      <q-dialog v-model="showAddMeeting" persistent>
-        <add-meeting @close="showAddMeeting = false" />
+      <q-dialog v-model="showAdd" persistent>
+        <add-meeting @close="showAdd = false" />
       </q-dialog>
 
-      <q-dialog v-model="showEditMeeting" persistent>
+      <q-dialog v-model="showEdit" persistent>
         <edit-meeting
           @close="closeEdit()"
           :id="meetingKeySelected"
@@ -46,8 +46,8 @@ export default {
   name: "PageMeetingsForFieldService",
   data() {
     return {
-      showAddMeeting: false,
-      showEditMeeting: false,
+      showAdd: false,
+      showEdit: false,
       meetingSelected: null,
       meetingKeySelected: null
     };
@@ -69,12 +69,12 @@ export default {
       if (!this.isAdmin) return;
       this.meetingKeySelected = key;
       this.meetingSelected = meeting;
-      this.showEditMeeting = true;
+      this.showEdit = true;
     },
     closeEdit() {
       this.meetingKeySelected = null;
       this.meetingSelected = null;
-      this.showEditMeeting = false;
+      this.showEdit = false;
     }
   }
 };
