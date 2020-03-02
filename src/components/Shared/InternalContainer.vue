@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="q-pa-md absolute full-width full-height"
-    :class="{ column: $q.platform.is.desktop }"
-  >
+  <div class="q-pa-md absolute full-width full-height column">
     <page-title>{{ title }}</page-title>
     <slot></slot>
   </div>
