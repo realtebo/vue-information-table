@@ -11,6 +11,7 @@
           subject="meetings for field service"
           namespace="meetings-for-field-service"
           hasWhen="true"
+          whenWithTime="true"
           hasWho="true"
           :whoLabel="$t('conductor') | titleCase"
           @close="showAdd = false"

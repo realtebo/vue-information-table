@@ -25,7 +25,19 @@
                     v-model="meetingToSubmit.when"
                     :today-btn="true"
                     :first-day-of-week="1"
-                    mask="YYYY-MM-DD"
+                    :mask="whenWithTime ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD'"
+                  />
+                </q-popup-proxy>
+              </q-icon>
+            </template>
+
+            <template v-slot:append v-if="whenWithTime">
+              <q-icon name="access_time" class="cursor-pointer">
+                <q-popup-proxy transition-show="scale" transition-hide="scale">
+                  <q-time
+                    v-model="meetingToSubmit.when"
+                    mask="YYYY-MM-DD HH:mm"
+                    format24h
                   />
                 </q-popup-proxy>
               </q-icon>
@@ -102,6 +114,7 @@ export default {
     "subject2",
     "namespace",
     "hasWhen",
+    "whenWithTime",
     "when",
     "hasWho",
     "whoLabel",

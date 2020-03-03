@@ -23,7 +23,7 @@
               </q-icon>
             </template>
 
-            <template v-slot:append>
+            <template v-slot:append v-if="whenWithTime">
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy transition-show="scale" transition-hide="scale">
                   <q-time
