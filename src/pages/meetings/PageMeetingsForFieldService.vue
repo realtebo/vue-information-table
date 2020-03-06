@@ -10,9 +10,9 @@
         <generic-add
           subject="meetings for field service"
           namespace="meetingsForFieldService"
-          hasWhen="true"
-          whenWithTime="true"
-          hasWho="true"
+          :hasWhen="true"
+          :whenWithTime="true"
+          :hasWho="true"
           :whoLabel="$t('conductor') | titleCase"
           @close="showAdd = false"
         />
@@ -23,6 +23,7 @@
           @close="closeEdit()"
           :id="meetingKeySelected"
           :meeting="meetingSelected"
+          :whenWithTime="true"
         />
       </q-dialog>
     </internal-container>

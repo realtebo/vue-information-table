@@ -14,10 +14,10 @@
           subject="prayers"
           subject2="for christian life meeting"
           namespace="christianLifePrayers"
-          hasWhen="true"
-          hasWho1="true"
+          :hasWhen="true"
+          :hasWho1="true"
           :who1Label="$t('initial') | titleCase"
-          hasWho2="true"
+          :hasWho2="true"
           :who2Label="$t('final') | titleCase"
           @close="showAdd = false"
         />

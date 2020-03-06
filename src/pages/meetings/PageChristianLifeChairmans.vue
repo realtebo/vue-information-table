@@ -14,8 +14,8 @@
           subject="chairmans"
           subject2="for christian life meeting"
           namespace="christianLifeChairmans"
-          hasWhen="true"
-          hasWho="true"
+          :hasWhen="true"
+          :hasWho="true"
           :whoLabel="$t('chairman') | titleCase"
           @close="showAdd = false"
         />

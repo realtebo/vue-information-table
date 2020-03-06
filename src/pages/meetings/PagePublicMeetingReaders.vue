@@ -9,8 +9,8 @@
         <generic-add
           subject="watchtower's readers"
           namespace="publicMeetingReaders"
-          hasWhen="true"
-          hasWho="true"
+          :hasWhen="true"
+          :hasWho="true"
           :whoLabel="$t('reader') | titleCase"
           @close="showAdd = false"
         />

@@ -10,8 +10,8 @@
         <generic-add
           subject="book study readers"
           namespace="bookReaders"
-          hasWhen="true"
-          hasWho="true"
+          :hasWhen="true"
+          :hasWho="true"
           :whoLabel="$t('reader') | titleCase"
           @close="showAdd = false"
         />

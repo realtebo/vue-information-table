@@ -9,10 +9,10 @@
         <generic-add
           subject="sound department"
           namespace="soundDepartment"
-          hasWhen="true"
-          hasWho1="true"
+          :hasWhen="true"
+          :hasWho1="true"
           :who1Label="$t('first') | titleCase"
-          hasWho2="true"
+          :hasWho2="true"
           :who2Label="$t('second') | titleCase"
           :hasWho3="noOfPeopleAtSoundDepartment > 2"
           :who3Label="$t('third') | titleCase"

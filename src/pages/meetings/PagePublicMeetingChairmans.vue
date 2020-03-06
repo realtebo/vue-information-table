@@ -12,8 +12,8 @@
           subject="chairmans"
           subject2="for public meeting"
           namespace="publicMeetingChairmans"
-          hasWhen="true"
-          hasWho="true"
+          :hasWhen="true"
+          :hasWho="true"
           :whoLabel="$t('chairman') | titleCase"
           @close="showAdd = false"
         />

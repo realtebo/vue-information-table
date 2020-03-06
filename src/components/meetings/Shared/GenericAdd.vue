@@ -109,22 +109,21 @@
 <script>
 export default {
   name: "GenericAdd",
-  props: [
-    "subject",
-    "subject2",
-    "namespace",
-    "hasWhen",
-    "whenWithTime",
-    "when",
-    "hasWho",
-    "whoLabel",
-    "hasWho1",
-    "who1Label",
-    "hasWho2",
-    "who2Label",
-    "hasWho3",
-    "who3Label"
-  ],
+  props: {
+    subject: String,
+    subject2: String,
+    namespace: String,
+    hasWhen: Boolean,
+    whenWithTime: Boolean,
+    hasWho: Boolean,
+    whoLabel: String,
+    hasWho1: Boolean,
+    who1Label: String,
+    hasWho2: Boolean,
+    who2Label: String,
+    hasWho3: Boolean,
+    who3Label: String
+  },
   data() {
     return {
       meetingToSubmit: {}
@@ -156,16 +155,7 @@ export default {
       return "publishers/" + this.namespace;
     },
     addAction() {
-      // Partiamo come namespace da meetings-for-field-service
-      // che è il nome dello store
-      const with_spaces = this.namespace.replace(/-/g, " ");
-      // qui abbiamo "meetings for field service"
-      const titled = this.$options.filters.titleCase(with_spaces);
-      // qui abbiamo "Meetings For Field Service"
-      const first_lower = this.$options.filters.firstLower(titled);
-      // qui abbiamo "meetings For Field Service"
-      return first_lower.replace(/\s/g, "") + "/addMeeting";
-      //  abbiamo restituito "meetingsForFieldService/addMeeting"
+      return this.namespace + "/addMeeting";
     },
     numberOfPublishers() {
       return this.$store.getters[this.numberOfPublisherProperty];

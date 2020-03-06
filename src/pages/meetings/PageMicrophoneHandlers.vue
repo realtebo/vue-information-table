@@ -9,12 +9,12 @@
         <generic-add
           subject="microphone handlers"
           namespace="microphoneHandlers"
-          hasWhen="true"
-          hasWho1="true"
+          :hasWhen="true"
+          :hasWho1="true"
           :who1Label="$t('first') | titleCase"
-          hasWho2="true"
+          :hasWho2="true"
           :who2Label="$t('second') | titleCase"
-          hasWho3="true"
+          :hasWho3="true"
           :who3Label="$t('third') | titleCase"
           @close="showAdd = false"
         />

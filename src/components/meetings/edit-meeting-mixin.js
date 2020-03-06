@@ -2,7 +2,7 @@
 
 export default {
   name: "EditMeeting",
-  props: ["id", "meeting"],
+  props: ["id", "meeting", "whenWithTime"],
   methods: {
     // Assicurarsi di disporre di
     // - this.meetingToSubmit
