@@ -16,6 +16,7 @@ export default {
   "christian life meeting prayers": "preghiera adunanza vita cristiana",
   "Click to generate a code": "Clicca per generare un codice",
   conductor: "Conduttore",
+  Confirm: "Conferma",
   Congregation: "Congregazione",
   "congregation settings": "impostazioni di congregazione",
   "Create a new congregation, and become its administrator, being able to enter names and commitments":
@@ -23,6 +24,8 @@ export default {
   Create: "Crea",
   "Customize roles and departments": "Personalizza incarichi e reparti",
   Dashboard: "Bacheca",
+  Delete: "Elimina",
+  "Do you really want to delete it?": "Vuoi davvero elimianrlo?",
   Done: "Finito",
   Email: "Email",
   Existing: "Esistente",
@@ -59,6 +62,7 @@ export default {
   "Mixer, Pc, etc...": "Mixer, Pc, etc...",
   "Name of the new congregation": "Nome della nuova congregazione",
   New: "Nuova",
+  No: "No",
   "Number of people": "Numero di persone",
   "Otherwise, feel free to use your email address and a password":
     "Altrimenti, sentiti libero/a di usare il tuo indirizzo email e una password",
@@ -72,6 +76,7 @@ export default {
   reader: "lettore",
   register: "registrati",
   Register: "Registrati",
+  Save: "Salva",
   schedules: "programmi",
   second: "secondo",
   "see istructions and generate invitation code":
@@ -101,6 +106,7 @@ export default {
   "Wait for the user to join your congregation":
     "Aspetta che l'utente si unisca alla tua congregazione",
   "What other user needs": "Di cosa han bisogno i nuovi utenti",
+  Yes: "Si",
   "You, as admin, can find the code, if already generated, in the Congregation Setting Page":
     "Tu, come amministratore, puoi trovare il codice, se già generato, anche nella pagine delle impostazioni della congregazione",
   "You have been added as a member of the requested congregation":

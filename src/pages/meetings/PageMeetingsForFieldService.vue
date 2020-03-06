@@ -7,7 +7,8 @@
 
       <q-dialog v-model="showAdd" persistent>
         <!-- <add-meeting @close="showAdd = false" /> -->
-        <generic-add
+        <add-edit
+          mode="add"
           subject="meetings for field service"
           namespace="meetingsForFieldService"
           :hasWhen="true"
@@ -19,11 +20,17 @@
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
-        <edit-meeting
-          @close="closeEdit()"
+        <add-edit
+          mode="edit"
+          subject="meetings for field service"
+          namespace="meetingsForFieldService"
           :id="meetingKeySelected"
           :meeting="meetingSelected"
+          :hasWhen="true"
           :whenWithTime="true"
+          :hasWho="true"
+          :whoLabel="$t('conductor') | titleCase"
+          @close="closeEdit()"
         />
       </q-dialog>
     </internal-container>
@@ -32,10 +39,9 @@
 
 <script>
 import { mapState } from "vuex";
-import EditMeeting from "../../components/meetings/MeetingsForFieldService/EditMeeting";
+import AddEdit from "../../components/meetings/Shared/AddEdit";
 import EntryList from "../../components/meetings/Shared/EntryList";
 import FabAdd from "../../components/meetings/Shared/FabAdd";
-import GenericAdd from "../../components/meetings/Shared/GenericAdd";
 import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
@@ -49,10 +55,9 @@ export default {
     };
   },
   components: {
-    EditMeeting,
+    AddEdit,
     EntryList,
     FabAdd,
-    GenericAdd,
     InternalContainer
   },
   computed: {
