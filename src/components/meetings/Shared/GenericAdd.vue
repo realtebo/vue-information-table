@@ -129,23 +129,6 @@ export default {
       meetingToSubmit: {}
     };
   },
-  created() {
-    if (this.hasWhen) {
-      meetingToSubmit.when = null;
-    }
-    if (this.hasWho) {
-      meetingToSubmit.who = null;
-    }
-    if (this.hasWho1) {
-      meetingToSubmit.who1 = null;
-    }
-    if (this.hasWho2) {
-      meetingToSubmit.who2 = null;
-    }
-    if (this.hasWho3) {
-      meetingToSubmit.who3 = null;
-    }
-  },
   computed: {
     numberOfPublisherProperty() {
       const titled = this.$options.filters.firstUpper(this.namespace);
