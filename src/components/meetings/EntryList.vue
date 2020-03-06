@@ -13,7 +13,7 @@
 
 <script>
 import SingleEntry from "./SingleEntry";
-import ScrollArea from "../../Shared/ScrollArea";
+import ScrollArea from "../Shared/ScrollArea";
 export default {
   name: "EntryList",
   props: ["namespace"],
