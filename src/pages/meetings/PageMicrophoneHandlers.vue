@@ -8,7 +8,7 @@
       <q-dialog v-model="showAdd" persistent>
         <generic-add
           subject="microphone handlers"
-          namespace="microphone-handlers"
+          namespace="microphoneHandlers"
           hasWhen="true"
           hasWho1="true"
           :who1Label="$t('first') | titleCase"

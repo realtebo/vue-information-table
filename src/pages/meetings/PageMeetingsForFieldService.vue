@@ -9,7 +9,7 @@
         <!-- <add-meeting @close="showAdd = false" /> -->
         <generic-add
           subject="meetings for field service"
-          namespace="meetings-for-field-service"
+          namespace="meetingsForFieldService"
           hasWhen="true"
           whenWithTime="true"
           hasWho="true"

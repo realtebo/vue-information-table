@@ -8,7 +8,7 @@
       <q-dialog v-model="showAdd" persistent>
         <generic-add
           subject="watchtower's readers"
-          namespace="public-meeting-readers"
+          namespace="publicMeetingReaders"
           hasWhen="true"
           hasWho="true"
           :whoLabel="$t('reader') | titleCase"

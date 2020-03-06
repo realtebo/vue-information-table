@@ -9,7 +9,7 @@
         <!-- <add-meeting @close="showAdd = false" /> -->
         <generic-add
           subject="book study readers"
-          namespace="book-readers"
+          namespace="bookReaders"
           hasWhen="true"
           hasWho="true"
           :whoLabel="$t('reader') | titleCase"

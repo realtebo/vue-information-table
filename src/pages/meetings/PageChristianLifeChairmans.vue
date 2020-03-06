@@ -13,7 +13,7 @@
         <generic-add
           subject="chairmans"
           subject2="for christian life meeting"
-          namespace="christian-life-chairmans"
+          namespace="christianLifeChairmans"
           hasWhen="true"
           hasWho="true"
           :whoLabel="$t('chairman') | titleCase"

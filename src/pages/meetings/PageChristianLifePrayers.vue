@@ -13,7 +13,7 @@
         <generic-add
           subject="prayers"
           subject2="for christian life meeting"
-          namespace="christian-life-prayers"
+          namespace="christianLifePrayers"
           hasWhen="true"
           hasWho1="true"
           :who1Label="$t('initial') | titleCase"

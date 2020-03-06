@@ -11,7 +11,7 @@
         <generic-add
           subject="chairmans"
           subject2="for public meeting"
-          namespace="public-meeting-chairmans"
+          namespace="publicMeetingChairmans"
           hasWhen="true"
           hasWho="true"
           :whoLabel="$t('chairman') | titleCase"

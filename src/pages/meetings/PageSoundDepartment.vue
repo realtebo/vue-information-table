@@ -8,7 +8,7 @@
       <q-dialog v-model="showAdd" persistent>
         <generic-add
           subject="sound department"
-          namespace="sound-department"
+          namespace="soundDepartment"
           hasWhen="true"
           hasWho1="true"
           :who1Label="$t('first') | titleCase"

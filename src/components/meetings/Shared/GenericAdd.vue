@@ -149,26 +149,11 @@ export default {
   },
   computed: {
     numberOfPublisherProperty() {
-      // Partiamo come namespace da meetings-for-field-service
-      // che è il nome dello store
-      const with_spaces = this.namespace.replace(/-/g, " ");
-      // qui abbiamo "meetings for field service"
-      const titled = this.$options.filters.titleCase(with_spaces);
-      // qui abbiamo "Meetings For Field Service"
-      return "publishers/numberOf" + titled.replace(/\s/g, "");
-      //  abbiamo restituito "publishers/numberOfMeetingsForFieldService"
+      const titled = this.$options.filters.firstUpper(this.namespace);
+      return "publishers/numberOf" + titled;
     },
     publisherProperty() {
-      // Partiamo come namespace da meetings-for-field-service
-      // che è il nome dello store
-      const with_spaces = this.namespace.replace(/-/g, " ");
-      // qui abbiamo "meetings for field service"
-      const titled = this.$options.filters.titleCase(with_spaces);
-      // qui abbiamo "Meetings For Field Service"
-      const first_lower = this.$options.filters.firstLower(titled);
-      // qui abbiamo "meetings For Field Service"
-      return "publishers/" + first_lower.replace(/\s/g, "");
-      //  abbiamo restituito "publishers/meetingsForFieldService"
+      return "publishers/" + this.namespace;
     },
     addAction() {
       // Partiamo come namespace da meetings-for-field-service
