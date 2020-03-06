@@ -10,7 +10,8 @@
       <fab-add @add="showAdd = true" v-if="isAdmin" />
 
       <q-dialog v-model="showAdd" persistent>
-        <generic-add
+        <add-edit
+          mode="add"
           subject="chairmans"
           subject2="for christian life meeting"
           namespace="christianLifeChairmans"
@@ -22,10 +23,17 @@
       </q-dialog>
 
       <q-dialog v-model="showEdit" persistent>
-        <edit-meeting
-          @close="closeEdit()"
+        <add-edit
+          mode="edit"
           :id="meetingKeySelected"
           :meeting="meetingSelected"
+          subject="chairmans"
+          subject2="for christian life meeting"
+          namespace="christianLifeChairmans"
+          :hasWhen="true"
+          :hasWho="true"
+          :whoLabel="$t('chairman') | titleCase"
+          @close="closeEdit()"
         />
       </q-dialog>
     </internal-container>
@@ -34,10 +42,9 @@
 
 <script>
 import { mapState } from "vuex";
-import EditMeeting from "../../components/meetings/ChristianLifeChairmans/EditMeeting";
-import EntryList from "../../components/meetings/Shared/EntryList";
-import FabAdd from "../../components/meetings/Shared/FabAdd";
-import GenericAdd from "../../components/meetings/Shared/GenericAdd";
+import AddEdit from "../../components/meetings//AddEdit";
+import EntryList from "../../components/meetings//EntryList";
+import FabAdd from "../../components/meetings/FabAdd";
 import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
@@ -51,10 +58,9 @@ export default {
     };
   },
   components: {
-    EditMeeting,
+    AddEdit,
     EntryList,
     FabAdd,
-    GenericAdd,
     InternalContainer
   },
   computed: {

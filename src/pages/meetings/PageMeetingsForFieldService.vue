@@ -39,9 +39,9 @@
 
 <script>
 import { mapState } from "vuex";
-import AddEdit from "../../components/meetings/Shared/AddEdit";
-import EntryList from "../../components/meetings/Shared/EntryList";
-import FabAdd from "../../components/meetings/Shared/FabAdd";
+import AddEdit from "../../components/meetings//AddEdit";
+import EntryList from "../../components/meetings//EntryList";
+import FabAdd from "../../components/meetings/FabAdd";
 import InternalContainer from "../../components/Shared/InternalContainer";
 
 export default {
