@@ -27,3 +27,7 @@ Vue.filter("titleCase", function(value) {
 Vue.filter("firstLower", function(value) {
   return value.charAt(0).toLowerCase() + value.substring(1);
 });
+
+Vue.filter("firstUpper", function(value) {
+  return value.charAt(0).toUpperCase() + value.substring(1);
+});

@@ -90,7 +90,14 @@
           <!-- End Who 2-->
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn label="Save" type="submit" color="primary" />
+          <q-btn
+            v-if="mode === 'edit'"
+            :label="$t('Delete')"
+            color="negative"
+            @click.stop="promptToDelete(id)"
+          />
+
+          <q-btn :label="$t('Save')" type="submit" color="primary" />
         </q-card-actions>
       </q-form>
     </template>
@@ -108,79 +115,51 @@
 
 <script>
 export default {
-  name: "GenericAdd",
-  props: [
-    "subject",
-    "subject2",
-    "namespace",
-    "hasWhen",
-    "whenWithTime",
-    "when",
-    "hasWho",
-    "whoLabel",
-    "hasWho1",
-    "who1Label",
-    "hasWho2",
-    "who2Label",
-    "hasWho3",
-    "who3Label"
-  ],
+  name: "AddEdit",
+  props: {
+    mode: String,
+    subject: String,
+    subject2: String,
+    namespace: String,
+    id: String,
+    meeting: Object,
+    hasWhen: Boolean,
+    whenWithTime: Boolean,
+    hasWho: Boolean,
+    whoLabel: String,
+    hasWho1: Boolean,
+    who1Label: String,
+    hasWho2: Boolean,
+    who2Label: String,
+    hasWho3: Boolean,
+    who3Label: String
+  },
   data() {
     return {
       meetingToSubmit: {}
     };
   },
-  created() {
-    if (this.hasWhen) {
-      meetingToSubmit.when = null;
-    }
-    if (this.hasWho) {
-      meetingToSubmit.who = null;
-    }
-    if (this.hasWho1) {
-      meetingToSubmit.who1 = null;
-    }
-    if (this.hasWho2) {
-      meetingToSubmit.who2 = null;
-    }
-    if (this.hasWho3) {
-      meetingToSubmit.who3 = null;
+  mounted() {
+    if (this.mode === "edit") {
+      this.meetingToSubmit = Object.assign({}, this.meeting);
     }
   },
   computed: {
     numberOfPublisherProperty() {
-      // Partiamo come namespace da meetings-for-field-service
-      // che è il nome dello store
-      const with_spaces = this.namespace.replace(/-/g, " ");
-      // qui abbiamo "meetings for field service"
-      const titled = this.$options.filters.titleCase(with_spaces);
-      // qui abbiamo "Meetings For Field Service"
-      return "publishers/numberOf" + titled.replace(/\s/g, "");
-      //  abbiamo restituito "publishers/numberOfMeetingsForFieldService"
+      const titled = this.$options.filters.firstUpper(this.namespace);
+      return "publishers/numberOf" + titled;
     },
     publisherProperty() {
-      // Partiamo come namespace da meetings-for-field-service
-      // che è il nome dello store
-      const with_spaces = this.namespace.replace(/-/g, " ");
-      // qui abbiamo "meetings for field service"
-      const titled = this.$options.filters.titleCase(with_spaces);
-      // qui abbiamo "Meetings For Field Service"
-      const first_lower = this.$options.filters.firstLower(titled);
-      // qui abbiamo "meetings For Field Service"
-      return "publishers/" + first_lower.replace(/\s/g, "");
-      //  abbiamo restituito "publishers/meetingsForFieldService"
+      return "publishers/" + this.namespace;
     },
     addAction() {
-      // Partiamo come namespace da meetings-for-field-service
-      // che è il nome dello store
-      const with_spaces = this.namespace.replace(/-/g, " ");
-      // qui abbiamo "meetings for field service"
-      const titled = this.$options.filters.titleCase(with_spaces);
-      // qui abbiamo "Meetings For Field Service"
-      const first_lower = this.$options.filters.firstLower(titled);
-      // qui abbiamo "meetings For Field Service"
-      return first_lower.replace(/\s/g, "") + "/addMeeting";
-      //  abbiamo restituito "meetingsForFieldService/addMeeting"
+      return this.namespace + "/addMeeting";
+    },
+    updateAction() {
+      return this.namespace + "/updateMeeting";
+    },
+    deleteAction() {
+      return this.namespace + "/deleteMeeting";
     },
     numberOfPublishers() {
       return this.$store.getters[this.numberOfPublisherProperty];
@@ -205,10 +184,31 @@ export default {
   },
   methods: {
     submitForm() {
-      this.$store.dispatch(this.addAction, this.meetingToSubmit, {
-        root: true
-      });
+      if (this.mode === "add") {
+        this.$store.dispatch(this.addAction, this.meetingToSubmit, {
+          root: true
+        });
+      } else {
+        this.$store.dispatch(this.updateAction, {
+          id: this.id,
+          updates: this.meetingToSubmit
+        });
+      }
       this.$emit("close");
+    },
+    promptToDelete(id) {
+      this.$q
+        .dialog({
+          title: this.$t("Confirm"),
+          message: this.$t("Do you really want to delete it?"),
+          ok: { color: "negative", label: this.$t("Yes") },
+          cancel: { color: "primary", label: this.$t("No") },
+          persistent: true
+        })
+        .onOk(() => {
+          this.$store.dispatch(this.deleteAction, id, { root: true });
+          this.$emit("close");
+        });
     }
   }
 };
