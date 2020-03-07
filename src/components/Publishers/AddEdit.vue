@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-section class="row">
-      <div class="text-h6">Add publisher</div>
+      <div class="text-h6">{{ $t("Publisher's data") }}</div>
       <q-space />
       <q-btn flat round dense icon="close" v-close-popup />
     </q-card-section>
@@ -12,70 +12,85 @@
           class="col"
           outlined
           v-model="publisherToSubmit.fullName"
-          label="Full Name"
+          :label="$t('Surname And Name')"
           stack-label
         />
-        <q-separator />
         <q-toggle
           color="primary"
-          :label="conductsMeetingsForFieldServiceLabel"
+          :label="$t('meetings for field service') | titleCase"
           v-model="publisherToSubmit.conductsMeetingsForFieldService"
           icon="card_travel"
         />
         <q-toggle
+          class="full-width"
           color="primary"
-          :label="presidesAsPublicMeetingChairmanLabel"
+          :label="($t('chairman') + ' ' + $t('for public meeting')) | titleCase"
           v-model="publisherToSubmit.presidesAsPublicMeetingChairman"
           icon="fas fa-user-tie"
         />
         <q-toggle
+          class="full-width"
           color="primary"
-          :label="readsWatchtowerLabel"
+          :label="$t('watchtower reader') | titleCase"
           v-model="publisherToSubmit.readsWatchtower"
           icon="mdi-chess-rook"
         />
         <q-toggle
+          class="full-width"
           color="primary"
-          :label="assignedToSoundDepartmentLabel"
+          :label="$t('sound department') | titleCase"
           v-model="publisherToSubmit.assignedToSoundDepartment"
           icon="mdi-surround-sound"
         />
         <q-toggle
           class="full-width"
           color="primary"
-          :label="microphoneHandlerLabel"
+          :label="$t('microphone handler') | titleCase"
           v-model="publisherToSubmit.microphoneHandler"
           icon="fas fa-microphone"
         />
         <q-toggle
           class="full-width"
           color="primary"
-          :label="attendantLabel"
+          :label="$t('attendant') | titleCase"
           v-model="publisherToSubmit.attendant"
           icon="mdi-shield-account"
         />
         <q-toggle
+          class="full-width"
           color="primary"
-          :label="presidesAsChristianLifeChairmanLabel"
+          :label="
+            ($t('chairman') + ' ' + $t('for christian life meeting'))
+              | titleCase
+          "
           v-model="publisherToSubmit.presidesAsChristianLifeChairman"
           icon="fas fa-user-tie"
         />
         <q-toggle
+          class="full-width"
           color="primary"
-          :label="readsBookLabel"
+          :label="$t('book study reader') | titleCase"
           v-model="publisherToSubmit.readsBook"
           icon="mdi-book-open-page-variant"
         />
         <q-toggle
           color="primary"
-          :label="offersPrayerAtChristianLifeMeetingsLabel"
+          :label="
+            ($t('prayers') + ' ' + $t('for christian life meeting')) | titleCase
+          "
           v-model="publisherToSubmit.offersPrayerAtChristianLifeMeetings"
           icon="fas fa-praying-hands"
         />
       </q-card-section>
 
       <q-card-actions align="right">
-        <q-btn label="Save" type="submit" color="primary" />
+        <q-btn
+          v-if="mode === 'edit'"
+          :label="$t('Delete')"
+          color="negative"
+          @click.stop="promptToDelete(id)"
+        />
+        <q-btn :label="$t('Save')" type="submit" color="primary" />
       </q-card-actions>
     </q-form>
   </q-card>
@@ -86,7 +101,7 @@ import { mapActions } from "vuex";
 
 export default {
   name: "AddPublisher",
-
+  props: ["mode", "id", "publisher"],
   data() {
     return {
       publisherToSubmit: {
@@ -103,71 +118,35 @@ export default {
       }
     };
   },
-  computed: {
-    conductsMeetingsForFieldServiceLabel() {
-      return (
-        (this.publisherToSubmit.conductsMeetingsForFieldService
-          ? ""
-          : "Do Not ") + "Conducts Meeting for Field Service"
-      );
+  methods: {
+    ...mapActions("publishers", ["addPublisher", "deletePublisher"]),
+    submitForm() {
+      if (this.mode === "add") {
+        this.addPublisher(this.publisherToSubmit);
+      } else {
+        this.deletePublisher(this.id);
+        this.addPublisher(this.publisherToSubmit);
+      }
+      this.$emit("close");
     },
-    presidesAsPublicMeetingChairmanLabel() {
-      return (
-        (this.publisherToSubmit.presidesAsPublicMeetingChairman
-          ? ""
-          : "Do Not ") + "Presides as Public Meeting's Chairman"
-      );
-    },
-    readsWatchtowerLabel() {
-      return (
-        (this.publisherToSubmit.readsWatchtower ? "" : "Does Not ") +
-        "Reads Watchtower at Public Meetings"
-      );
-    },
-    assignedToSoundDepartmentLabel() {
-      return (
-        (this.publisherToSubmit.assignedToSoundDepartment ? "" : "Not ") +
-        "Assigned to Sound Department"
-      );
-    },
-    microphoneHandlerLabel() {
-      return (
-        (this.publisherToSubmit.microphoneHandler ? "" : "Does Not ") +
-        "Serves as Microphone Handler"
-      );
-    },
-    attendantLabel() {
-      return (
-        (this.publisherToSubmit.attendant ? "" : "Does Not ") +
-        "Serves as Attendant"
-      );
-    },
-    presidesAsChristianLifeChairmanLabel() {
-      return (
-        (this.publisherToSubmit.presidesAsChristianLifeChairman
-          ? ""
-          : "Does Not ") + "Presides as Christian Life Meeting's Chairman"
-      );
-    },
-    readsBookLabel() {
-      return (
-        (this.publisherToSubmit.readsBook ? "" : "Does Not ") +
-        "Reads Book at Christian Life Meetings"
-      );
-    },
-    offersPrayerAtChristianLifeMeetingsLabel() {
-      return (
-        (this.publisherToSubmit.offersPrayerAtChristianLifeMeetings
-          ? ""
-          : "Does Not ") + "Offers Prayer at Christian Life Meeting"
-      );
+    promptToDelete(id) {
+      this.$q
+        .dialog({
+          title: this.$t("Confirm"),
+          message: this.$t("Do you really want to delete it?"),
+          ok: { color: "negative", label: this.$t("Yes") },
+          cancel: { color: "primary", label: this.$t("No") },
+          persistent: true
+        })
+        .onOk(() => {
+          this.deletePublisher(id);
+          this.$emit("close");
+        });
     }
   },
-  methods: {
-    ...mapActions("publishers", ["addPublisher"]),
-    submitForm() {
-      this.addPublisher(this.publisherToSubmit);
-      this.$emit("close");
+  mounted() {
+    if (this.mode === "edit") {
+      this.publisherToSubmit = Object.assign({}, this.publisher);
     }
   }
 };
