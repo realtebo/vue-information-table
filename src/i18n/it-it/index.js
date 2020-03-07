@@ -6,6 +6,7 @@ export default {
   "Anagraphics and Roles": "Anagrafiche e Incarichi",
   "Associate with an existing one; get the invitation code and you will be able to view the pledges, but not administer them":
     "Associati ad una già esistente; fatti dare il codice di invito e potrai visualizzare gli impegni, ma non amministrarli",
+  attendant: "usciere",
   attendants: "uscieri",
   "book study reader": "lettore studio di libro",
   "book study readers": "lettori studio di libro",
@@ -58,6 +59,7 @@ export default {
   Logout: "Esci",
   "meetings for field service": "Adunanze per il ministero di campo",
   "members of your congregation": "Membri della tua congregazione",
+  "microphone handler": "microfonista",
   "microphone handlers": "microfonisti",
   "Mixer, Pc, etc...": "Mixer, Pc, etc...",
   "Name of the new congregation": "Nome della nuova congregazione",
@@ -71,6 +73,7 @@ export default {
     "Per favore, inserisci un indirizzo email valido",
   "Please enter at least 6 chars": "Per favore, inserisci almeno 6 caratteri",
   prayers: "preghiere",
+  "Publisher's data": "Dati del proclamatore",
   publishers: "proclamatori",
   "publishers of": "proclamatori di",
   reader: "lettore",
@@ -85,6 +88,7 @@ export default {
   Settings: "Impostazioni",
   "Sorry, nothing here": "Spiacente, ma qui non c'è nulla",
   "sound department": "reparto acustica",
+  "Surname And Name": "Cognome E Nome",
   "Tell him/her to choose to join an existing one":
     "Spiegagli/le che dovrà scegliere di unirsi ad una congregazione già esistente",
   "That's all you, as administrator, have to do":

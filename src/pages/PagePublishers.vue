@@ -25,48 +25,56 @@
                 caption
                 v-if="publisher.conductsMeetingsForFieldService"
               >
-                Conducts Meetings for Field Service
+                {{ $t("meetings for field service") | titleCase }}
               </q-item-label>
 
               <q-item-label
                 caption
                 v-if="publisher.presidesAsPublicMeetingChairman"
               >
-                Presides as Public Meeting's Chairman
+                {{
+                  ($t("chairman") + " " + $t("for public meeting")) | titleCase
+                }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.readsWatchtower">
-                Reads Watchtower at Public Meetings
+                {{ $t("watchtower reader") | titleCase }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.assignedToSoundDepartment">
-                Assigned to Sound Department
+                {{ $t("sound department") | titleCase }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.microphoneHandler">
-                Serves has Microphone Handler
+                {{ $t("microphone handler") | titleCase }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.attendant">
-                Serves has Attendant
+                {{ $t("attendant") | titleCase }}
               </q-item-label>
 
               <q-item-label
                 caption
                 v-if="publisher.presidesAsChristianLifeChairman"
               >
-                Presides as Christian Life Meeting's Chairman
+                {{
+                  ($t("chairman") + " " + $t("for christian life meeting"))
+                    | titleCase
+                }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.readsBook">
-                Reads Book at Christian Life Meeting
+                {{ $t("book study reader") | titleCase }}
               </q-item-label>
 
               <q-item-label
                 caption
                 v-if="publisher.offersPrayerAtChristianLifeMeetings"
               >
-                Offers Prayer at Christian Life Meetings
+                {{
+                  ($t("prayers") + " " + $t("for christian life meeting"))
+                    | titleCase
+                }}
               </q-item-label>
             </q-item-section>
           </q-item>
@@ -85,11 +93,12 @@
       </div>
 
       <q-dialog v-model="showAddPublisher" persistent>
-        <add-publisher @close="showAddPublisher = false" />
+        <add-edit mode="add" @close="showAddPublisher = false" />
       </q-dialog>
 
       <q-dialog v-model="showEditPublisher" persistent>
-        <edit-publisher
+        <add-edit
+          mode="edit"
           @close="closeEditPublisher()"
           :id="publisherKeySelected"
           :publisher="publisherSelected"
@@ -101,8 +110,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import AddPublisher from "../components/Publishers/AddPublisher";
-import EditPublisher from "../components/Publishers/EditPublisher";
+import AddEdit from "../components/Publishers/AddEdit";
+// import EditPublisher from "../components/Publishers/EditPublisher";
 import ScrollArea from "../components/Shared/ScrollArea";
 import InternalContainer from "../components/Shared/InternalContainer";
 export default {
@@ -116,8 +125,7 @@ export default {
     };
   },
   components: {
-    AddPublisher,
-    EditPublisher,
+    AddEdit,
     ScrollArea,
     InternalContainer
   },
