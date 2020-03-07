@@ -185,7 +185,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-congregazione {
-  max-width: 500px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }

@@ -1,8 +1,10 @@
 <template>
   <q-page>
-    <internal-container
-      :title="($t('publishers of') + ' ' + memberOf.name) | titleCase"
-    >
+    <div class="q-pa-md absolute full-width full-height column">
+      <page-title>{{
+        ($t("publishers of") + " " + memberOf.name) | titleCase
+      }}</page-title>
+
       <scroll-area>
         <q-list
           v-if="Object.keys(publishersSorted).length > 0"
@@ -25,48 +27,56 @@
                 caption
                 v-if="publisher.conductsMeetingsForFieldService"
               >
-                Conducts Meetings for Field Service
+                {{ $t("meetings for field service") | titleCase }}
               </q-item-label>
 
               <q-item-label
                 caption
                 v-if="publisher.presidesAsPublicMeetingChairman"
               >
-                Presides as Public Meeting's Chairman
+                {{
+                  ($t("chairman") + " " + $t("for public meeting")) | titleCase
+                }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.readsWatchtower">
-                Reads Watchtower at Public Meetings
+                {{ $t("watchtower reader") | titleCase }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.assignedToSoundDepartment">
-                Assigned to Sound Department
+                {{ $t("sound department") | titleCase }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.microphoneHandler">
-                Serves has Microphone Handler
+                {{ $t("microphone handler") | titleCase }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.attendant">
-                Serves has Attendant
+                {{ $t("attendant") | titleCase }}
               </q-item-label>
 
               <q-item-label
                 caption
                 v-if="publisher.presidesAsChristianLifeChairman"
               >
-                Presides as Christian Life Meeting's Chairman
+                {{
+                  ($t("chairman") + " " + $t("for christian life meeting"))
+                    | titleCase
+                }}
               </q-item-label>
 
               <q-item-label caption v-if="publisher.readsBook">
-                Reads Book at Christian Life Meeting
+                {{ $t("book study reader") | titleCase }}
               </q-item-label>
 
               <q-item-label
                 caption
                 v-if="publisher.offersPrayerAtChristianLifeMeetings"
               >
-                Offers Prayer at Christian Life Meetings
+                {{
+                  ($t("prayers") + " " + $t("for christian life meeting"))
+                    | titleCase
+                }}
               </q-item-label>
             </q-item-section>
           </q-item>
@@ -85,26 +95,27 @@
       </div>
 
       <q-dialog v-model="showAddPublisher" persistent>
-        <add-publisher @close="showAddPublisher = false" />
+        <add-edit mode="add" @close="showAddPublisher = false" />
       </q-dialog>
 
       <q-dialog v-model="showEditPublisher" persistent>
-        <edit-publisher
+        <add-edit
+          mode="edit"
           @close="closeEditPublisher()"
           :id="publisherKeySelected"
           :publisher="publisherSelected"
         />
       </q-dialog>
-    </internal-container>
+    </div>
   </q-page>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import AddPublisher from "../components/Publishers/AddPublisher";
-import EditPublisher from "../components/Publishers/EditPublisher";
+import AddEdit from "../components/Publishers/AddEdit";
+// import EditPublisher from "../components/Publishers/EditPublisher";
 import ScrollArea from "../components/Shared/ScrollArea";
-import InternalContainer from "../components/Shared/InternalContainer";
+import PageTitle from "../components/Shared/PageTitle";
 export default {
   name: "PagePublishers",
   data() {
@@ -116,10 +127,9 @@ export default {
     };
   },
   components: {
-    AddPublisher,
-    EditPublisher,
-    ScrollArea,
-    InternalContainer
+    AddEdit,
+    PageTitle,
+    ScrollArea
   },
   computed: {
     ...mapGetters("membership", ["memberOf"]),

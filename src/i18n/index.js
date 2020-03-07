@@ -1,10 +1,13 @@
+import itCH from "./it-it";
+import itIT from "./it-it";
 import enUS from "./en-us";
-import itIt from "./it-it";
-import enUs from "./en-us";
+import enGB from "./en-gb";
 
 export default {
-  en: enUs,
+  en: enUS,
+  "en-gb": enGB,
   "en-us": enUS,
-  it: itIt,
-  "it-it": itIt
+  it: itIT,
+  "it-ch": itCH,
+  "it-it": itIT
 };

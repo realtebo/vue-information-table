@@ -1,109 +1,112 @@
 <template>
   <div>
-    <q-card
+    <!-- <q-card
       class="relative-position card-congregazione q-mt-lg"
       v-for="(meeting, when) in meetingsByDate"
       :key="when"
     >
-      <q-card-section>
-        <div class="text-h6">{{ when }}</div>
-
-        <div v-if="meeting.ATTENDANTS" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("attendants") | toUpperCase }}: <br />
-            <span
-              v-for="(name, index) in meeting.ATTENDANTS"
-              :key="`att_${when}_${index}`"
-            >
-              - {{ name }} <br />
-            </span>
-          </div>
-        </div>
-
-        <div v-if="meeting.MICROPHONE_HANDLERS" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("microphone handlers") | toUpperCase }}: <br />
-            <span
-              v-for="(name, index) in meeting.MICROPHONE_HANDLERS"
-              :key="`att_${when}_${index}`"
-            >
-              <span v-if="name"> - {{ name }} <br /> </span>
-            </span>
-          </div>
-        </div>
-
-        <div v-if="meeting.SOUND_DEPARTMENT" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("sound department") | toUpperCase }}: <br />
-            <span
-              v-for="(name, index) in meeting.SOUND_DEPARTMENT"
-              :key="`att_${when}_${index}`"
-            >
-              <span v-if="name"> - {{ name }} <br /> </span>
-            </span>
-          </div>
-        </div>
-
-        <div v-if="meeting.PUBLIC_MEETING_CHAIRMAN" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("chairman") | toUpperCase }}: <br />
-            - {{ meeting.PUBLIC_MEETING_CHAIRMAN }}
-          </div>
-        </div>
-
-        <div v-if="meeting.WATCHTOWER_READER" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("watchtower reader") | toUpperCase }}: <br />
-            - {{ meeting.WATCHTOWER_READER }}
-          </div>
-        </div>
-
-        <div v-if="meeting.MEETINGS_FOR_FIELD_SERVICE">
-          <div class="bold">
-            {{ $t("meetings for field service") | toUpperCase }}: <br />
-            <span
-              v-for="(name, hour) in meeting.MEETINGS_FOR_FIELD_SERVICE"
-              :key="`mffs_${when}_${hour}`"
-            >
-              - {{ hour }}: {{ name }} <br />
-            </span>
-          </div>
-        </div>
-
-        <div v-if="meeting.CHRISTIAN_LIFE_CHAIRMAN" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("chairman") | toUpperCase }}: <br />
-            - {{ meeting.CHRISTIAN_LIFE_CHAIRMAN }}
-          </div>
-        </div>
-
-        <div v-if="meeting.BOOK_READER" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("book study reader") | toUpperCase }}: <br />
-            - {{ meeting.BOOK_READER }}
-          </div>
-        </div>
-
-        <div v-if="meeting.CHRISTIAN_LIFE_PRAYERS" class="q-mb-sm">
-          <div class="bold">
-            {{ $t("christian life meeting prayers") | toUpperCase }}: <br />
-            <span
-              v-for="(name, index) in meeting.CHRISTIAN_LIFE_PRAYERS"
-              :key="`att_${when}_${index}`"
-            >
-              <span v-if="name"> - {{ name }} <br /> </span>
-            </span>
-          </div>
-        </div>
+      <q-card-section class="bg-primary text-white meeting_date">
+        <div class="text-h6">{{ localizeDate(when) }}</div>
+        <div>{{ dayOfWeek(when) }}</div>
       </q-card-section>
-    </q-card>
+    </q-card> -->
+    <template v-for="(meeting, when) in meetingsByDate">
+      <q-card :key="`date_${when}`" class="meeting-date q-mt-sm">
+        <q-card-section
+          class="bg-primary text-white"
+          style="padding: 0.4rem 1rem;"
+        >
+          <div>{{ dayOfWeek(when) }}</div>
+          <div class="text-h6">{{ localizeLongDate(when) }}</div>
+        </q-card-section>
+      </q-card>
+
+      <q-card
+        :key="`main_${when}`"
+        class="relative-position card-congregazione q-mt-0 q-pt-sm"
+      >
+        <q-card-section>
+          <calendar-item
+            v-if="meeting.PUBLIC_MEETING_CHAIRMAN"
+            icon="fas fa-user-tie"
+            :items="meeting.PUBLIC_MEETING_CHAIRMAN"
+            :title="$t('chairman') + ' ' + $t('for public meeting')"
+          />
+
+          <calendar-item
+            v-if="meeting.WATCHTOWER_READER"
+            icon="mdi-chess-rook"
+            :items="meeting.WATCHTOWER_READER"
+            :withTime="true"
+            :title="$t('watchtower reader')"
+          />
+
+          <calendar-item
+            v-if="meeting.CHRISTIAN_LIFE_CHAIRMAN"
+            icon="fas fa-user-tie"
+            :items="meeting.CHRISTIAN_LIFE_CHAIRMAN"
+            :title="$t('chairman') + ' ' + $t('for christian life meeting')"
+          />
+
+          <calendar-item
+            v-if="meeting.CHRISTIAN_LIFE_PRAYERS"
+            icon="fas fa-praying-hands"
+            :items="meeting.CHRISTIAN_LIFE_PRAYERS"
+            :title="$t('christian life meeting prayers')"
+          />
+
+          <calendar-item
+            v-if="meeting.BOOK_READER"
+            icon="mdi-book-open-page-variant"
+            :items="meeting.BOOK_READER"
+            :title="$t('book study reader')"
+          />
+
+          <calendar-item
+            v-if="meeting.ATTENDANTS"
+            icon="mdi-shield-account"
+            :items="meeting.ATTENDANTS"
+            :title="$t('attendants')"
+          />
+
+          <calendar-item
+            v-if="meeting.MICROPHONE_HANDLERS"
+            icon="fas fa-microphone"
+            :items="meeting.MICROPHONE_HANDLERS"
+            :title="$t('microphone handlers')"
+          />
+
+          <calendar-item
+            v-if="meeting.SOUND_DEPARTMENT"
+            icon="mdi-surround-sound"
+            :items="meeting.SOUND_DEPARTMENT"
+            :title="$t('sound department')"
+          />
+
+          <calendar-item
+            v-if="meeting.MEETINGS_FOR_FIELD_SERVICE"
+            icon="card_travel"
+            :items="meeting.MEETINGS_FOR_FIELD_SERVICE"
+            :withTime="true"
+            :title="$t('meetings for field service')"
+          />
+        </q-card-section>
+      </q-card>
+    </template>
   </div>
 </template>
 
 <script>
+import { date } from "quasar";
+import date_utils from "../../mixins/dates-utils";
 import { mapGetters, mapActions } from "vuex";
+import CalendarItem from "./CalendarItem";
 export default {
   name: "Calendar",
+  components: {
+    CalendarItem
+  },
+  mixins: [date_utils],
   computed: {
     meetingsByDate: function() {
       let out = {};
@@ -254,8 +257,17 @@ export default {
 
 <style lang="scss" scoped>
 .card-congregazione {
-  max-width: 500px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+}
+.meeting-date {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 13rem;
+  left: -4rem;
+  top: 1em;
+  z-index: 1;
 }
 </style>
