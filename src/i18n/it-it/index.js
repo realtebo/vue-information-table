@@ -25,6 +25,16 @@ export default {
   Create: "Crea",
   "Customize roles and departments": "Personalizza incarichi e reparti",
   Dashboard: "Bacheca",
+  date_localized_format: "D/MM/YYYY",
+  days: [
+    "Domenica",
+    "Lunedì",
+    "Martedì",
+    "Mercoledì",
+    "Giovedì",
+    "Venerdì",
+    "Sabato"
+  ],
   Delete: "Elimina",
   "Do you really want to delete it?": "Vuoi davvero elimianrlo?",
   Done: "Finito",

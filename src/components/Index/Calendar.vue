@@ -6,8 +6,10 @@
       :key="when"
     >
       <q-card-section class="bg-primary text-white">
-        <div class="text-h6">{{ when }}</div>
+        <div class="text-h6">{{ localizeDate(when) }}</div>
+        <div>{{ dayOfWeek(when) }}</div>
       </q-card-section>
+
       <q-card-section>
         <calendar-item
           v-if="meeting.PUBLIC_MEETING_CHAIRMAN"
@@ -79,6 +81,8 @@
 </template>
 
 <script>
+import { date } from "quasar";
+import date_utils from "../../mixins/dates-utils";
 import { mapGetters, mapActions } from "vuex";
 import CalendarItem from "./CalendarItem";
 export default {
@@ -86,6 +90,7 @@ export default {
   components: {
     CalendarItem
   },
+  mixins: [date_utils],
   computed: {
     meetingsByDate: function() {
       let out = {};
