@@ -1,82 +1,98 @@
 <template>
   <div>
-    <q-card
+    <!-- <q-card
       class="relative-position card-congregazione q-mt-lg"
       v-for="(meeting, when) in meetingsByDate"
       :key="when"
     >
-      <q-card-section class="bg-primary text-white">
+      <q-card-section class="bg-primary text-white meeting_date">
         <div class="text-h6">{{ localizeDate(when) }}</div>
         <div>{{ dayOfWeek(when) }}</div>
       </q-card-section>
+    </q-card> -->
+    <template v-for="(meeting, when) in meetingsByDate">
+      <q-card :key="`date_${when}`" class="meeting-date q-mt-sm">
+        <q-card-section
+          class="bg-primary text-white"
+          style="padding: 0.4rem 1rem;"
+        >
+          <div class="text-h6">{{ localizeDate(when) }}</div>
+          <div>{{ dayOfWeek(when) }}</div>
+        </q-card-section>
+      </q-card>
 
-      <q-card-section>
-        <calendar-item
-          v-if="meeting.PUBLIC_MEETING_CHAIRMAN"
-          icon="fas fa-user-tie"
-          :items="meeting.PUBLIC_MEETING_CHAIRMAN"
-          :title="$t('chairman') + ' ' + $t('for public meeting')"
-        />
+      <q-card
+        :key="`main_${when}`"
+        class="relative-position card-congregazione q-mt-0 q-pt-sm"
+      >
+        <q-card-section>
+          <calendar-item
+            v-if="meeting.PUBLIC_MEETING_CHAIRMAN"
+            icon="fas fa-user-tie"
+            :items="meeting.PUBLIC_MEETING_CHAIRMAN"
+            :title="$t('chairman') + ' ' + $t('for public meeting')"
+          />
 
-        <calendar-item
-          v-if="meeting.WATCHTOWER_READER"
-          icon="mdi-chess-rook"
-          :items="meeting.WATCHTOWER_READER"
-          :withTime="true"
-          :title="$t('watchtower reader')"
-        />
+          <calendar-item
+            v-if="meeting.WATCHTOWER_READER"
+            icon="mdi-chess-rook"
+            :items="meeting.WATCHTOWER_READER"
+            :withTime="true"
+            :title="$t('watchtower reader')"
+          />
 
-        <calendar-item
-          v-if="meeting.CHRISTIAN_LIFE_CHAIRMAN"
-          icon="fas fa-user-tie"
-          :items="meeting.CHRISTIAN_LIFE_CHAIRMAN"
-          :title="$t('chairman') + ' ' + $t('for christian life meeting')"
-        />
+          <calendar-item
+            v-if="meeting.CHRISTIAN_LIFE_CHAIRMAN"
+            icon="fas fa-user-tie"
+            :items="meeting.CHRISTIAN_LIFE_CHAIRMAN"
+            :title="$t('chairman') + ' ' + $t('for christian life meeting')"
+          />
 
-        <calendar-item
-          v-if="meeting.CHRISTIAN_LIFE_PRAYERS"
-          icon="fas fa-praying-hands"
-          :items="meeting.CHRISTIAN_LIFE_PRAYERS"
-          :title="$t('christian life meeting prayers')"
-        />
+          <calendar-item
+            v-if="meeting.CHRISTIAN_LIFE_PRAYERS"
+            icon="fas fa-praying-hands"
+            :items="meeting.CHRISTIAN_LIFE_PRAYERS"
+            :title="$t('christian life meeting prayers')"
+          />
 
-        <calendar-item
-          v-if="meeting.BOOK_READER"
-          icon="mdi-book-open-page-variant"
-          :items="meeting.BOOK_READER"
-          :title="$t('book study reader')"
-        />
+          <calendar-item
+            v-if="meeting.BOOK_READER"
+            icon="mdi-book-open-page-variant"
+            :items="meeting.BOOK_READER"
+            :title="$t('book study reader')"
+          />
 
-        <calendar-item
-          v-if="meeting.ATTENDANTS"
-          icon="mdi-shield-account"
-          :items="meeting.ATTENDANTS"
-          :title="$t('attendants')"
-        />
+          <calendar-item
+            v-if="meeting.ATTENDANTS"
+            icon="mdi-shield-account"
+            :items="meeting.ATTENDANTS"
+            :title="$t('attendants')"
+          />
 
-        <calendar-item
-          v-if="meeting.MICROPHONE_HANDLERS"
-          icon="fas fa-microphone"
-          :items="meeting.MICROPHONE_HANDLERS"
-          :title="$t('microphone handlers')"
-        />
+          <calendar-item
+            v-if="meeting.MICROPHONE_HANDLERS"
+            icon="fas fa-microphone"
+            :items="meeting.MICROPHONE_HANDLERS"
+            :title="$t('microphone handlers')"
+          />
 
-        <calendar-item
-          v-if="meeting.SOUND_DEPARTMENT"
-          icon="mdi-surround-sound"
-          :items="meeting.SOUND_DEPARTMENT"
-          :title="$t('sound department')"
-        />
+          <calendar-item
+            v-if="meeting.SOUND_DEPARTMENT"
+            icon="mdi-surround-sound"
+            :items="meeting.SOUND_DEPARTMENT"
+            :title="$t('sound department')"
+          />
 
-        <calendar-item
-          v-if="meeting.MEETINGS_FOR_FIELD_SERVICE"
-          icon="card_travel"
-          :items="meeting.MEETINGS_FOR_FIELD_SERVICE"
-          :withTime="true"
-          :title="$t('meetings for field service')"
-        />
-      </q-card-section>
-    </q-card>
+          <calendar-item
+            v-if="meeting.MEETINGS_FOR_FIELD_SERVICE"
+            icon="card_travel"
+            :items="meeting.MEETINGS_FOR_FIELD_SERVICE"
+            :withTime="true"
+            :title="$t('meetings for field service')"
+          />
+        </q-card-section>
+      </q-card>
+    </template>
   </div>
 </template>
 
@@ -241,8 +257,17 @@ export default {
 
 <style lang="scss" scoped>
 .card-congregazione {
-  max-width: 450px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+}
+.meeting-date {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 9rem;
+  left: -7rem;
+  top: 1em;
+  z-index: 1;
 }
 </style>
