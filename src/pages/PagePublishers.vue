@@ -1,8 +1,10 @@
 <template>
   <q-page>
-    <internal-container
-      :title="($t('publishers of') + ' ' + memberOf.name) | titleCase"
-    >
+    <div class="q-pa-md absolute full-width full-height column">
+      <page-title>{{
+        ($t("publishers of") + " " + memberOf.name) | titleCase
+      }}</page-title>
+
       <scroll-area>
         <q-list
           v-if="Object.keys(publishersSorted).length > 0"
@@ -104,7 +106,7 @@
           :publisher="publisherSelected"
         />
       </q-dialog>
-    </internal-container>
+    </div>
   </q-page>
 </template>
 
@@ -113,7 +115,7 @@ import { mapGetters } from "vuex";
 import AddEdit from "../components/Publishers/AddEdit";
 // import EditPublisher from "../components/Publishers/EditPublisher";
 import ScrollArea from "../components/Shared/ScrollArea";
-import InternalContainer from "../components/Shared/InternalContainer";
+import PageTitle from "../components/Shared/PageTitle";
 export default {
   name: "PagePublishers",
   data() {
@@ -126,8 +128,8 @@ export default {
   },
   components: {
     AddEdit,
-    ScrollArea,
-    InternalContainer
+    PageTitle,
+    ScrollArea
   },
   computed: {
     ...mapGetters("membership", ["memberOf"]),

@@ -2,7 +2,8 @@
   <q-card>
     <q-card-section class="row">
       <div class="text-h5">
-        {{ $t(this.subject) | titleCase }} {{ $t(this.subject2) | titleCase }}
+        {{ this.subject | titleCase }}
+        {{ (this.subject2 ? this.subject2 : "") | titleCase }}
       </div>
       <q-space />
       <q-btn flat round dense icon="close" v-close-popup />
@@ -52,7 +53,7 @@
             outlined
             v-model="meetingToSubmit.who"
             :options="publishersOptions"
-            :label="whoLabel"
+            :label="whoLabel | titleCase"
           />
           <!-- End Who-->
 
@@ -63,7 +64,7 @@
             outlined
             v-model="meetingToSubmit.who1"
             :options="publishersOptions"
-            :label="who1Label"
+            :label="who1Label | titleCase"
           />
           <!-- End Who 1-->
 
@@ -74,7 +75,7 @@
             outlined
             v-model="meetingToSubmit.who2"
             :options="publishersOptions"
-            :label="who2Label"
+            :label="who2Label | titleCase"
           />
           <!-- End Who 2-->
 
@@ -85,7 +86,7 @@
             outlined
             v-model="meetingToSubmit.who3"
             :options="publishersOptions"
-            :label="who3Label"
+            :label="who3Label | titleCase"
           />
           <!-- End Who 2-->
         </q-card-section>

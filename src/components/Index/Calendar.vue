@@ -16,8 +16,8 @@
           class="bg-primary text-white"
           style="padding: 0.4rem 1rem;"
         >
-          <div class="text-h6">{{ localizeDate(when) }}</div>
           <div>{{ dayOfWeek(when) }}</div>
+          <div class="text-h6">{{ localizeLongDate(when) }}</div>
         </q-card-section>
       </q-card>
 
@@ -265,8 +265,8 @@ export default {
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 9rem;
-  left: -7rem;
+  max-width: 13rem;
+  left: -4rem;
   top: 1em;
   z-index: 1;
 }
