@@ -1,8 +1,6 @@
 <template>
   <q-page class="bg-grey-3 ">
-    <div class="q-pa-md absolute full-width full-height column">
-      <page-title>{{ fullTitle | titleCase }}</page-title>
-
+    <internal-container :title="fullTitle">
       <entry-list
         :namespace="namespace"
         :whenWithTime="whenWithTime"
@@ -52,7 +50,7 @@
           @close="closeEdit()"
         />
       </q-dialog>
-    </div>
+    </internal-container>
   </q-page>
 </template>
 
@@ -61,11 +59,11 @@ import { mapState } from "vuex";
 import AddEdit from "./AddEdit";
 import EntryList from "./EntryList";
 import FabAdd from "./FabAdd";
-import PageTitle from "../Shared/PageTitle";
+import InternalContainer from "../Shared/InternalContainer";
 
 export default {
   name: "Assignments",
-  components: { AddEdit, EntryList, FabAdd, PageTitle },
+  components: { AddEdit, EntryList, FabAdd, InternalContainer },
   props: {
     pageTitle: { type: String, required: true },
     pageTitle2: { type: String, default: null },
