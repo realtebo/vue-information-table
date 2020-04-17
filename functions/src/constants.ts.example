@@ -1,0 +1,4 @@
+export const BOT_TOKEN = "";
+export const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/`;
+export const MIRKO = 0;
+

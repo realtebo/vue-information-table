@@ -1,58 +1,56 @@
 <template>
-  <q-page class="bg-grey-3 ">
-    <div class="q-pa-md absolute full-width full-height column">
-      <page-title>{{ fullTitle | titleCase }}</page-title>
+  <q-page class="bg-grey-3" padding>
+    <page-title>{{ fullTitle | titleCase }}</page-title>
 
-      <entry-list
+    <entry-list
+      :namespace="namespace"
+      :whenWithTime="whenWithTime"
+      @edit="openForEdit"
+    />
+
+    <fab-add @add="showAdd = true" v-if="isAdmin" />
+
+    <q-dialog v-model="showAdd" persistent>
+      <add-edit
+        mode="add"
+        :subject="pageTitle"
+        :subject2="pageTitle2"
         :namespace="namespace"
+        :hasWhen="hasWhen"
         :whenWithTime="whenWithTime"
-        @edit="openForEdit"
+        :hasWho="hasWho"
+        :whoLabel="whoLabel"
+        :hasWho1="hasWho1"
+        :who1Label="who1Label"
+        :hasWho2="hasWho2"
+        :who2Label="who2Label"
+        :hasWho3="hasWho3"
+        :who3Label="who3Label"
+        @close="showAdd = false"
       />
+    </q-dialog>
 
-      <fab-add @add="showAdd = true" v-if="isAdmin" />
-
-      <q-dialog v-model="showAdd" persistent>
-        <add-edit
-          mode="add"
-          :subject="pageTitle"
-          :subject2="pageTitle2"
-          :namespace="namespace"
-          :hasWhen="hasWhen"
-          :whenWithTime="whenWithTime"
-          :hasWho="hasWho"
-          :whoLabel="whoLabel"
-          :hasWho1="hasWho1"
-          :who1Label="who1Label"
-          :hasWho2="hasWho2"
-          :who2Label="who2Label"
-          :hasWho3="hasWho3"
-          :who3Label="who3Label"
-          @close="showAdd = false"
-        />
-      </q-dialog>
-
-      <q-dialog v-model="showEdit" persistent>
-        <add-edit
-          mode="edit"
-          :subject="pageTitle"
-          :subject2="pageTitle2"
-          :namespace="namespace"
-          :id="meetingKeySelected"
-          :meeting="meetingSelected"
-          :hasWhen="hasWhen"
-          :whenWithTime="whenWithTime"
-          :hasWho="hasWho"
-          :whoLabel="whoLabel"
-          :hasWho1="hasWho1"
-          :who1Label="who1Label"
-          :hasWho2="hasWho2"
-          :who2Label="who2Label"
-          :hasWho3="hasWho3"
-          :who3Label="who3Label"
-          @close="closeEdit()"
-        />
-      </q-dialog>
-    </div>
+    <q-dialog v-model="showEdit" persistent>
+      <add-edit
+        mode="edit"
+        :subject="pageTitle"
+        :subject2="pageTitle2"
+        :namespace="namespace"
+        :id="meetingKeySelected"
+        :meeting="meetingSelected"
+        :hasWhen="hasWhen"
+        :whenWithTime="whenWithTime"
+        :hasWho="hasWho"
+        :whoLabel="whoLabel"
+        :hasWho1="hasWho1"
+        :who1Label="who1Label"
+        :hasWho2="hasWho2"
+        :who2Label="who2Label"
+        :hasWho3="hasWho3"
+        :who3Label="who3Label"
+        @close="closeEdit()"
+      />
+    </q-dialog>
   </q-page>
 </template>
 
