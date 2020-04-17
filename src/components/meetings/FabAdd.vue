@@ -1,14 +1,7 @@
 <template>
-  <div class="bottom text-center q-mb-lg no-pointer-events">
-    <q-btn
-      round
-      color="primary"
-      size="24px"
-      class="all-pointer-events"
-      icon="add"
-      @click="clicked"
-    />
-  </div>
+  <q-page-sticky position="bottom-right" :offset="[18, 18]">
+    <q-btn fab icon="add" color="accent" @click="clicked" />
+  </q-page-sticky>
 </template>
 
 <script>
