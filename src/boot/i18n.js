@@ -5,8 +5,6 @@ import { Quasar } from "quasar";
 
 Vue.use(VueI18n);
 
-console.log("Lingua rilevata: " + Quasar.lang.getLocale());
-
 const i18n = new VueI18n({
   locale: Quasar.lang.getLocale(),
   fallbackLocale: "en-us",

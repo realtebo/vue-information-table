@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     openForEdit: function(key, meeting) {
-      console.log("EntryList - ", this.namespace, "edit", key);
       this.$emit("edit", key, meeting);
     }
   }
